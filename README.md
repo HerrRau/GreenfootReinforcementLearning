@@ -220,4 +220,7 @@ Ja. Das Projekt ist halt entstanden aus bereits existierenden BlueJ-Projekten fÃ
 ## Was ist das mit dem Tic-Tac-Toe?
 
 Lange Geschichte, der Versuch, das BlueJ-Projekt irgendwie zu visualisieren.
+
 Fragen gerne an Thomas Rau, lehrerzimmer@herr-rau.de
+
+![KI nach 100 Runden](/assets/ki_auto_strecke_runde100.png)
