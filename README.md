@@ -244,7 +244,3 @@ Lange Geschichte, der Versuch, das BlueJ-Projekt irgendwie zu visualisieren.
 Fragen gerne an Thomas Rau, lehrerzimmer@herr-rau.de
 
 ![KI nach 100 Runden](/assets/ki_auto_strecke_runde100.png)
-
-<video width="320" height="240" controls>
-  <source src="assets/snake.mp4" type="video/mp4">
-</video>
