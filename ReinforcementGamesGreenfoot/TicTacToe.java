@@ -1,5 +1,5 @@
 
-public class TicTacToe extends AbstractGame implements Game
+public class TicTacToe extends AbstractGame
 {
     private char [] grid;
     private int activePlayer;
