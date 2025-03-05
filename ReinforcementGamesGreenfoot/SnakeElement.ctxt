@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=SnakeElement
+comment1.params=farbe
+comment1.target=void\ setImage(greenfoot.Color)
+comment2.params=i
+comment2.target=greenfoot.Color\ getColor(int)
+comment3.params=
+comment3.target=SnakeGame\ gibWelt()
+comment4.params=
+comment4.target=int\ gibWeltBreite()
+comment5.params=
+comment5.target=int\ gibWeltHoehe()
+comment6.params=
+comment6.target=boolean\ istWeltGrenzenlos()
+comment7.params=
+comment7.target=int\ gibX()
+comment8.params=
+comment8.target=int\ gibY()
+numComments=9

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Hindernis
+comment1.params=
+comment1.target=void\ reduziereLeben()
+comment2.params=
+comment2.target=Hindernis()
+comment3.params=i
+comment3.target=Hindernis(int)
+comment4.params=i
+comment4.target=void\ setzeLeben(int)
+comment5.params=
+comment5.target=void\ act()
+numComments=6

@@ -1,0 +1,27 @@
+Eingaenge: 3
+Versteckte Ebenen 0: 4
+Ausgaenge: 3
+Gewichtung Ebene 0, Knoten 0, Eingang 0: -0.41373210862986226
+Gewichtung Ebene 0, Knoten 0, Eingang 1: -0.24879394032718707
+Gewichtung Ebene 0, Knoten 0, Eingang 2: -1.0722698925508873
+Gewichtung Ebene 0, Knoten 1, Eingang 0: -1.9384382319303095
+Gewichtung Ebene 0, Knoten 1, Eingang 1: -1.9979821761683159
+Gewichtung Ebene 0, Knoten 1, Eingang 2: 3.0817821038310638
+Gewichtung Ebene 0, Knoten 2, Eingang 0: -2.5722897703831316
+Gewichtung Ebene 0, Knoten 2, Eingang 1: 2.5032854396204787
+Gewichtung Ebene 0, Knoten 2, Eingang 2: 0.0014875661595273113
+Gewichtung Ebene 0, Knoten 3, Eingang 0: 1.8887087487849392
+Gewichtung Ebene 0, Knoten 3, Eingang 1: 0.3394772807324782
+Gewichtung Ebene 0, Knoten 3, Eingang 2: 1.630107826018904
+Gewichtung Ebene 1, Knoten 0, Eingang 0: 0.589643057402562
+Gewichtung Ebene 1, Knoten 0, Eingang 1: -3.901085033907157
+Gewichtung Ebene 1, Knoten 0, Eingang 2: 5.589405419759093
+Gewichtung Ebene 1, Knoten 0, Eingang 3: -2.919152303621831
+Gewichtung Ebene 1, Knoten 1, Eingang 0: -0.43931680141572743
+Gewichtung Ebene 1, Knoten 1, Eingang 1: -3.3873279637534415
+Gewichtung Ebene 1, Knoten 1, Eingang 2: -5.176110635139854
+Gewichtung Ebene 1, Knoten 1, Eingang 3: 2.330244119295777
+Gewichtung Ebene 1, Knoten 2, Eingang 0: 0.03780377760054663
+Gewichtung Ebene 1, Knoten 2, Eingang 1: 3.815143551408905
+Gewichtung Ebene 1, Knoten 2, Eingang 2: -0.168211224031583
+Gewichtung Ebene 1, Knoten 2, Eingang 3: -2.543878052688301

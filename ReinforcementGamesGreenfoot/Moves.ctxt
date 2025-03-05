@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Moves
+comment1.params=
+comment1.target=int\ getBestMove()
+comment10.params=
+comment10.target=double\ getHighestValue()
+comment2.params=
+comment2.target=int\ getRandomWeightedMove()
+comment3.params=
+comment3.target=int\ getRandomMove()
+comment4.params=b
+comment4.target=void\ setVerbose(boolean)
+comment5.params=
+comment5.target=void\ printList()
+comment6.params=
+comment6.target=java.lang.String\ getList()
+comment7.params=move\ amount
+comment7.target=void\ increaseValue(int,\ double)
+comment8.params=move\ newValue
+comment8.target=void\ setValue(int,\ double)
+comment9.params=move
+comment9.target=double\ getValue(int)
+numComments=11

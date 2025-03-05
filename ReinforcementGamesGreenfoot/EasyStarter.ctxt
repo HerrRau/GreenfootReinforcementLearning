@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=EasyStarter
+comment1.params=
+comment1.target=java.lang.String\ fetchInput()
+comment2.params=
+comment2.target=void\ playTTTTrained()
+comment3.params=
+comment3.target=void\ playTTTUntrained()
+numComments=4

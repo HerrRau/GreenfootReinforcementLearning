@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Tastenbeweger
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ ueberpruefeSteuerung()
+comment3.params=
+comment3.target=void\ geheNachRechts()
+comment4.params=
+comment4.target=void\ geheNachLinks()
+comment5.params=
+comment5.target=void\ geheNachOben()
+comment6.params=
+comment6.target=void\ geheNachUnten()
+comment7.params=x\ y
+comment7.target=void\ bewegeDichUm(int,\ int)
+numComments=8

@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=RandomMove
+comment1.params=m
+comment1.target=int\ useStrategy(Moves)
+numComments=2

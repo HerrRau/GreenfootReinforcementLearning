@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=SnakeBodyPart
+comment1.params=lebenszeit
+comment1.target=SnakeBodyPart(int)
+comment2.params=lebenszeit\ c\ besitzer
+comment2.target=SnakeBodyPart(int,\ greenfoot.Color,\ int)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ reduziereLebenszeit()
+comment5.params=
+comment5.target=void\ loescheDich()
+numComments=6

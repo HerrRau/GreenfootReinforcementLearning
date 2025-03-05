@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Auto
+comment1.params=w
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment10.params=
+comment10.target=void\ accelerate()
+comment11.params=
+comment11.target=void\ decelerate()
+comment12.params=c
+comment12.target=void\ setColor(greenfoot.Color)
+comment2.params=
+comment2.target=void\ removedFromWorld()
+comment3.params=id
+comment3.target=void\ setNumber(int)
+comment4.params=
+comment4.target=java.lang.String\ getState()
+comment5.params=
+comment5.target=java.lang.String\ getType()
+comment6.params=distance
+comment6.target=void\ straight(int)
+comment7.params=
+comment7.target=void\ straight()
+comment8.params=
+comment8.target=void\ straightLeft()
+comment9.params=
+comment9.target=void\ straightRight()
+numComments=13

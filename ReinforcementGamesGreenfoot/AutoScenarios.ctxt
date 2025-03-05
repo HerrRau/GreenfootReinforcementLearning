@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=AutoScenarios
+comment1.params=
+comment1.target=AutoScenarios()
+comment2.params=i
+comment2.target=void\ chooseBackground(int)
+comment3.params=option
+comment3.target=void\ setupScenario(int)
+numComments=4

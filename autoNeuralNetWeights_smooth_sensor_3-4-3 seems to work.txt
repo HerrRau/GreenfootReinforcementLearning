@@ -1,0 +1,27 @@
+Eingaenge: 3
+Versteckte Knoten: 4
+Ausgaenge: 3
+Gewichtung Eingang 0 nach Hidden 0: 0.7998059133149864
+Gewichtung Eingang 1 nach Hidden 0: -1.2966335948208005
+Gewichtung Eingang 2 nach Hidden 0: 0.7802767612311049
+Gewichtung Eingang 0 nach Hidden 1: 0.47997770107881377
+Gewichtung Eingang 1 nach Hidden 1: 0.3041140192966136
+Gewichtung Eingang 2 nach Hidden 1: -0.48701296301668223
+Gewichtung Eingang 0 nach Hidden 2: 1.0898004530206795
+Gewichtung Eingang 1 nach Hidden 2: 0.8196594573745231
+Gewichtung Eingang 2 nach Hidden 2: 0.28795610124421456
+Gewichtung Eingang 0 nach Hidden 3: 0.4800590339127874
+Gewichtung Eingang 1 nach Hidden 3: -0.5917906413100217
+Gewichtung Eingang 2 nach Hidden 3: -0.2695910976943537
+Gewichtung Hidden 0 nach Ausgang 0: -1.7915710996554255
+Gewichtung Hidden 1 nach Ausgang 0: 0.37584810772200206
+Gewichtung Hidden 2 nach Ausgang 0: -1.2921793571166622
+Gewichtung Hidden 3 nach Ausgang 0: -0.46292520916137525
+Gewichtung Hidden 0 nach Ausgang 1: -0.5215220500324449
+Gewichtung Hidden 1 nach Ausgang 1: 0.5828486425962082
+Gewichtung Hidden 2 nach Ausgang 1: -1.9236157575580952
+Gewichtung Hidden 3 nach Ausgang 1: 0.707799813050863
+Gewichtung Hidden 0 nach Ausgang 2: -0.21806098185910747
+Gewichtung Hidden 1 nach Ausgang 2: -0.6086912967227798
+Gewichtung Hidden 2 nach Ausgang 2: -0.9495714375670123
+Gewichtung Hidden 3 nach Ausgang 2: -0.7608198569283257

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=GameRunner
+comment1.params=n
+comment1.target=void\ playNewRounds(int)
+comment1.text=\r\n\ Play\ a\ number\ of\ rounds\ of\ associated\ game\r\n\ @param\ n\ number\ of\ rounds\ to\ play\r\n
+comment2.params=
+comment2.target=void\ playNewRound()
+comment2.text=\r\n\ plays\ one\ round\ of\ the\ game\ \r\n\ game\ must\ have\ been\ initialised\r\n
+comment3.params=
+comment3.target=boolean\ playNextIteration()
+comment4.params=
+comment4.target=boolean\ continueIterationContinuous()
+comment4.text=\r\n\ Active\ player\ makes\ move.\ \r\n\ All\ players\ are\ potentially\ updated.\r\n\ @return\ true\ if\ to\ continue,\ false\ if\ end\ of\ game\r\n
+comment5.params=
+comment5.target=boolean\ continueIterationSimple()
+comment5.text=\r\n\ Active\ player\ makes\ move.\ \r\n\ @return\ true\ if\ to\ continue,\ false\ if\ end\ of\ game\r\n
+numComments=6

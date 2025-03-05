@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=KugelLocation
+comment1.params=
+comment1.target=KugelLocation()
+comment2.params=
+comment2.target=void\ bewege()
+comment3.params=
+comment3.target=void\ kollidiereVertikal()
+comment4.params=
+comment4.target=void\ kollidiereHorizontal()
+comment5.params=
+comment5.target=void\ kollidiereMitSchlaeger()
+comment6.params=
+comment6.target=void\ kollidiereMitSchlaeger2()
+comment7.params=
+comment7.target=void\ kollidiereMitHindernis()
+numComments=8

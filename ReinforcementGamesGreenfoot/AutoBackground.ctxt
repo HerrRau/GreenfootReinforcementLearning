@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=AutoBackground
+comment1.params=name\ min\ max\ c
+comment1.target=AutoBackground(java.lang.String,\ int,\ int,\ greenfoot.Color)
+numComments=2

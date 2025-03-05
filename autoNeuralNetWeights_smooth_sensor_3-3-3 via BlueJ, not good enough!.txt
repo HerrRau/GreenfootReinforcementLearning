@@ -1,0 +1,21 @@
+Eingaenge: 3
+Versteckte Ebenen 0: 3
+Ausgaenge: 3
+Gewichtung Ebene 0, Knoten 0, Eingang 0: -0.41196
+Gewichtung Ebene 0, Knoten 0, Eingang 1: -0.24789
+Gewichtung Ebene 0, Knoten 0, Eingang 2: -1.07166
+Gewichtung Ebene 0, Knoten 1, Eingang 0: -1.6002
+Gewichtung Ebene 0, Knoten 1, Eingang 1: -2.47159
+Gewichtung Ebene 0, Knoten 1, Eingang 2: 3.13192
+Gewichtung Ebene 0, Knoten 2, Eingang 0: -2.30506
+Gewichtung Ebene 0, Knoten 2, Eingang 1: 2.6683
+Gewichtung Ebene 0, Knoten 2, Eingang 2: -0.60884
+Gewichtung Ebene 1, Knoten 0, Eingang 0: 0.59089
+Gewichtung Ebene 1, Knoten 0, Eingang 1: -1.8016
+Gewichtung Ebene 1, Knoten 0, Eingang 2: 3.95602
+Gewichtung Ebene 1, Knoten 1, Eingang 0: -0.44155
+Gewichtung Ebene 1, Knoten 1, Eingang 1: -1.99076
+Gewichtung Ebene 1, Knoten 1, Eingang 2: -3.31812
+Gewichtung Ebene 1, Knoten 2, Eingang 0: 0.03815
+Gewichtung Ebene 1, Knoten 2, Eingang 1: 2.07832
+Gewichtung Ebene 1, Knoten 2, Eingang 2: -0.3408

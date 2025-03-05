@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=AutoSensor
+comment1.params=
+comment1.target=AutoSensor()
+comment10.params=degree\ sensor
+comment10.target=int\ sensor(int,\ int)
+comment2.params=i
+comment2.target=AutoSensor(int)
+comment3.params=
+comment3.target=java.lang.String\ getType()
+comment4.params=w
+comment4.target=void\ addedToWorld(greenfoot.World)
+comment5.params=
+comment5.target=java.lang.String\ getStateSimple()
+comment6.params=
+comment6.target=java.lang.String\ getState()
+comment7.params=
+comment7.target=java.lang.String\ getStatePearls()
+comment8.params=
+comment8.target=void\ clearPearls()
+comment9.params=
+comment9.target=void\ removedFromWorld()
+numComments=11

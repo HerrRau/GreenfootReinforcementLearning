@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Kugelhelfer
+comment1.params=
+comment1.target=Schlaeger\ gibBeruehrtenSchlaeger()
+comment2.params=
+comment2.target=Hindernis\ gibBeruehrtesHindernis()
+comment3.params=
+comment3.target=void\ macheSpur()
+comment4.params=w
+comment4.target=void\ addedToWorld(greenfoot.World)
+numComments=5
