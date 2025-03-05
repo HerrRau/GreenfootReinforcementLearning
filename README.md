@@ -35,46 +35,55 @@ Beispiel: AutoGameKI, BreakoutGameKI, SnakeGameKI und BreakoutGameKIMinimal. Das
 
 ### Die ganz einfachen Methoden
 
-`public void setup()`
-* Überschreibt lediglich die Methode Oberklasse, die als Teil des Konstruktors dort aufgerufen wird. 
-* Ein Objekt vom Typ SchlaegerKI wird platziert, der sich vom ursprünglichen Schläger nur dadurch utnerscheidet, dass seine act-Methode (mit der er sonst vom Spielenden gesteuert würde) leer ist.
-* Die Greenfoot-World-Methode setActOrder wird aufgerufen, damit sichergestellt ist, dass Objekte der Klasse AnzeigeNextMoves nach allen anderen drankommen. Das muss man nicht machen, aber nur dann stimmt die Angabe des kommenden Spielzugs.      
-* Der Aufruf von setPlayers( new Agent []{ new Agent(0.0) } ) legt fest, dass ein Standardagent den Spielpart übernehmen soll. Standard heißt: Reinforcement Learning mit einem Q-Table. Man kann auch mehrere Agenten für mehrere zu bewegende Objekte haben. Der NeuralAgent benutzt ein Q-Netz für das Reinforcement Learning.
+`public void setup()`  
+Überschreibt lediglich die Methode Oberklasse, die als Teil des Konstruktors dort aufgerufen wird.  
+Ein Objekt vom Typ SchlaegerKI wird platziert, der sich vom ursprünglichen Schläger nur dadurch utnerscheidet, dass seine act-Methode (mit der er sonst vom Spielenden gesteuert würde) leer ist.  
+Die Greenfoot-World-Methode setActOrder wird aufgerufen, damit sichergestellt ist, dass Objekte der Klasse AnzeigeNextMoves nach allen anderen drankommen. Das muss man nicht machen, aber nur dann stimmt die Angabe des kommenden Spielzugs.  
+Der Aufruf von setPlayers( new Agent []{ new Agent(0.0) } ) legt fest, dass ein Standardagent den Spielpart übernehmen soll. Standard heißt: Reinforcement Learning mit einem Q-Table. Man kann auch mehrere Agenten für mehrere zu bewegende Objekte haben. Der NeuralAgent benutzt ein Q-Netz für das Reinforcement Learning.
 
-`public void erhoeheLevel()`
-* Ist nur dazu dazu, um die ererbte Methode, mit der man im regulären Spiel zum nächsten Schwierigkeitsgrad kommt, zu überschreiben.
+`public void erhoeheLevel()`  
+Ist nur dazu dazu, um die ererbte Methode, mit der man im regulären Spiel zum nächsten Schwierigkeitsgrad kommt, zu überschreiben.
 
-`private double berechneEntfernung(int x, int y, int x2, int y2)`
-* Eine Hilfsmethode, die die Entfernung zweier Punkte in einem kartesischen Koordinatensystem berechnet.
+`private double berechneEntfernung(int x, int y, int x2, int y2)`  
+Eine Hilfsmethode, die die Entfernung zweier Punkte in einem kartesischen Koordinatensystem berechnet.
 
 ### Die einfachen überschreibenden KI-Methoden
 
 Diese Methoden werden von AbstractGameWorld und verschiedenen weiteren Klassen verwendet.
 
-* `public int [] getLegalMoves() { return new int [] { 1, 2, 0}; }`  
+`public int [] getLegalMoves() { return new int [] { 1, 2, 0}; }`  
 Die verschiedenen Spielzüge oder Entscheidungsmöglichkeiten, zwischen denen die KI sich entscheichen kann, werden als int modelliert. Diese Methode gibt einfach ein Array zurück mit allen grundsätzlich möglichen Spielzügen.
-* `public String getNameForMove(int move)`  
+
+`public String getNameForMove(int move)`  
 Zur Anzeige kann man sich statt der Zahlen für die Züge auch einen schöneren Namen geben lassen. Wird diese Methode nicht überschrieben, werden stattdessen einfahc die Zahlenwerte dargestellt. Im Moment wird 0 auf "N" (nichts), 1 auf "L" (nach links gehen), 2 auf "R" (nach rechts gehen) abgebildet. Normalerweise würde man das it einem Array-Attribut umsetzen.
-* `public void makeMove(int player, int move)`  
+
+`public void makeMove(int player, int move)`  
 Der eigentliche Zug: Was bedeuten die oben angelegten Zahlen in der Spiewelt? 1 bedeutet, dass der Schläger etwas nach links bewegt wird, 2 bedeutet, dass er etwas nach rechts bewegt wird. 0 bedeutet, dass er da bleibt, wo er ist. Andere Zahlen dürften nicht auftauchen, sie kommen ja nur aus dem Pool der legalen Züge. Bei einem Einspieler-Spiel wie im Beispiel wird der player-Parameter ignoriert.
-* `public double getInitialValue()`  
+
+`public double getInitialValue()`  
 Kann man auch weglassen. Hier geht es um den Startwert für die Inhalte der Q-Tabelle. Standard ist 1.
 
 ### Die schwierigeren überschreibenden KI-Methoden
 
-* public String getState() {  return getState(0); }  
+`public String getState() {  return getState(0); }`  
 Hier geht es um den Zustand des Spiels. Manchmal ist der für jeden Spieler anders (bei unterschiedlichen Positionen einer Spielfigur, oder bei teilweise versteckter Information), manchmal ist er für alle identisch (Schach, Tic-Tac-Toe). Da es hier nur einen Zustand gibt statt unterschiedlicher Perspektiven, wird einfach die Perspektive von Player 0 aufgerufen.
-* public String getState(int playerID)  
+
+`public String getState(int playerID)`  
 Eine der schwierigsten Entscheidungen: Wie man den Zustand codiert. Er solle zur leichteren Weiterverarbeitung später nur aus durch Doppelpunkte getrennten Ganzzahlen bestehen. Im Beispiel ist der Zustand einfach die Differenz zwischen x-Position von Kugel und Schläger. Damit ist viel wesentliche Information für eine Lösung enthalten, andere mögliche Zustände wären eine Kombinationen von x- und y-Position von Kugel und Schläger, und Blickrichtung der Kugel, eventuell noch ihre Geschwindigkeit, wenn es verschiedene Geschwindigkeiten gibt. Hier wird man viel experimentieren wollen. Deshalb enthält diese Methode in den tatsächlichen KI-Klassen auch meist einen switch, um einfach Verschiedenes ausprobieren zu können.
-* public double getRewardWin() { return 10; }  
+
+`public double getRewardWin() { return 10; }`  
 Bei der einfachsten Form des Lernen, in der Tabelle und ohne Neuronales Netz, wird in jedem Schritt überprüft, ob man gewonnen oder verloren hat. Nur wenn man gewonnen hat, gibt es eine positive Belohnung, deren Wert hier angegeben werden kann. 
-* public double getRewardLose() { return -5; }  
+
+`public double getRewardLose() { return -5; }`  
 Wenn man verloren hat, gibt es eine negative Belohnung. Wenn das Spiel noch läuft, gibt es bei diesem einfachen Fall gar keine Belohnung.
-* public int getWinner()  
+
+`public int getWinner()`  
 Diese Methode wird regelmäßig aufgerufen und gibt zurück, ob man gewonnen hat (Rückgabewert 0, und das führt dann zur oben genannten positiven Belohnung), oder verloren hat  (Rückgabewert 1, und das führt dann zur oben genannten negativen Belohnung), oder ob das Spiel noch läuft (Rückgabe -1, oder irgendetwas <0).  
+
 Dieses einfache System eignet sich vor allem für Spiele mit ein oder zwei Agierenden.  
 Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
-* public double getRewardForPlayer(int id)  
+
+`public double getRewardForPlayer(int id)`  
 Hier wird statt de oben genannten Prinzips nicht nur bei Sieg oder Niederlage belohnt, sondern nach jeder einzelnen Entscheidung. Bei Agenten mit Neuronalen Netzen (NeuralAgent) muss das so sein, bei Q-Tabellen (Agent) kann man sich das aussuchen.
 Für das Breakout wird hier die 0 zurückgegeben, wenn sich die Kugel in der oberen Spielfeldhälfte befindet, 2 für die Berührung mit dem Schläger, und ansonsten eine negative Belohnung, deren Wert von der kartesischen Entfernung zwischen Kugel und Schläger abhängt. Auch hier kann man sich sehr viel verschiedene Varianten denken.
 
@@ -160,26 +169,36 @@ Hier die Klasse dazu:
 ### Praktische Hilfsmethoden
 
 In der Klasse AbstractGameWorld gibt es Hilfsmethoden, die man in den Unterklassen, vermutlich beim Setup, aufrufen kann:
-* public final void setExplorationRate(double e)
-* public void setBreakPeriodically(int i)  
+
+`public final void setExplorationRate(double e)`
+
+`public void setBreakPeriodically(int i)`  
 Alle i Siege pausiert der Ablauf. Zur Diagnose einsetzbar.
-* public final void setDisplayChanges(boolean b)  
+
+`public final void setDisplayChanges(boolean b)`  
 Sollen Änderungen in den Tabellenwerten angezeigt werden? Ist schön, dauert Zeit.
-* public final void setDisplayNextMoves(boolean b)  
+
+`public final void setDisplayNextMoves(boolean b)`  
 Soll der nächste Zug angezeigt werden? Ist schön, dauert Zeit.
-* public final void setDisplayWinsLossesStates(boolean b)  
+
+`public final void setDisplayWinsLossesStates(boolean b)`  
 Sollen die Anzahl von Siegen, Niederlagen und verrwalteten Zuständen angezeigt werden?
-* public final void setStopUpdating(boolean b)  
+
+`public final void setStopUpdating(boolean b)`  
 Soll das Lernen ab jetzt aufhören, um einen bestimmten Zustand zu bewahren?
-* protected void setUpdateOnGameEndOnly()  
-protected void setUpdateOnEveryMove()  
+
+`protected void setUpdateOnGameEndOnly()  
+protected void setUpdateOnEveryMove()`  
 Diese zwei Möglichkeiten schließen einander wechselseitig aus. Wird mit einem NeuralAgent gearbeitet, muss die zweite gewählt werden; das System versucht das selbständig zu erkennen. 
-* public final void setPlayers(Agent [] p)  
-public final void setPlayers(Agent p)
+
+`public final void setPlayers(Agent [] p)  
+public final void setPlayers(Agent p)`  
 Muss aufgerufen werden, um einen oder ein Array von Agenten ins Spiel zu bringen. Die Agenten erhalten fortlaufende Nummern, sie werden der Reihe nach über die Zustände des Systems informiert (via getState), können dann Entscheidungen treffen, die sie via makeMove kommunizieren. Der Methode makeMove obliegt dann die Umsetzung in der Spielwelt.
-* public void setVerbose(boolean b)  
+
+`public void setVerbose(boolean b)`  
 Eine Hilfsmethode, die den Ausdruck auf der Konsole steuert. Jeder Agent hat insbesondere eine eigene, ebenso benannte Methode setVerbose.
-* protected void showMessage(String s)
+
+`protected void showMessage(String s)`
 
 ## Agenten
 
