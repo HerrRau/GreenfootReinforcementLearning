@@ -89,6 +89,7 @@ Für das Breakout wird hier die 0 zurückgegeben, wenn sich die Kugel in der obe
 
 Hier die Klasse dazu:
 <div style="page-break-after: always;"></div>
+
     import greenfoot.*;
     public class BreakoutGameKIMinimal extends BreakoutGame {
 
