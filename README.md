@@ -88,7 +88,7 @@ Hier wird statt de oben genannten Prinzips nicht nur bei Sieg oder Niederlage be
 Für das Breakout wird hier die 0 zurückgegeben, wenn sich die Kugel in der oberen Spielfeldhälfte befindet, 2 für die Berührung mit dem Schläger, und ansonsten eine negative Belohnung, deren Wert von der kartesischen Entfernung zwischen Kugel und Schläger abhängt. Auch hier kann man sich sehr viel verschiedene Varianten denken.
 
 Hier die Klasse dazu:
-
+<div style="page-break-after: always;"></div>
     import greenfoot.*;
     public class BreakoutGameKIMinimal extends BreakoutGame {
 
