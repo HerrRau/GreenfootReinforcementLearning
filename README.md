@@ -1,15 +1,15 @@
 "# GreenfootReinforcementLearning" 
 
-#Ausprobieren (1)
+# Ausprobieren (1)
 1. Lege per Mausklick ein Objekt der Klasse BreakoutGame an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. 
 2. Lege per Mausklick ein Objekt der Klasse AutoGame an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. Das Spiel ist nicht sehr interessant, und man muss sich die Geschwindigkeit herabsetzen.
 3. Lege per Mausklick ein Objekt der Klasse Snake Game an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten ASDW.
 
-#Ausprobieren (2)
+# Ausprobieren (2)
 Lege per Mausklick ein Objekt der Klassen BreakoutGameKI, AutoGameKI oder SnakeGameKI an. Dann läuft ein kurzes Beispiel-Szenario mit einer lernenden KI ab. Es gibt dabei sehr viele Konfigurationsmöglichkeiten; die Unterklasse AutoScenarios, BreakoutScenarios und SnakeScenarios bieten einige vorkonfigurierte Szenarien an.
 
-#Allgemeines Vorgehen
-##Schritt 1: 
+# Allgemeines Vorgehen
+## Schritt 1: 
 Man erstellt ein einfaches grafisches Spiel mit Greenfoot. Beispiele: AutoGame, BreakoutGame, SnakeGame. Das Spiel sollte, weil es da einfacher macht, fast alles Nötige im Konstruktor erstellen, nur das Erstellen des zu steuernden Objekts, also Auto oder Schläger – sollte in einer setup-Methode ausgelagert sein, die vom Konstruktor aufgerufen wird. Dann können später Unterklassen leicht den Großteil der Initialisierungsarbeit der Oberklasse überlassen und nur die setup-Methode überschreiben.
 Es ist außerdem günstig, aber ebenfalls nicht nötig, alle zu dem Spiel gehörenden Actor-Unterklassen in einer gemeinsamen Oberklasse zu sammeln, siehe die Klassen AutoElement, BreakoutElement oder SnakeElement.
 Schritt 2:
