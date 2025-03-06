@@ -53,56 +53,59 @@ Ab jetzt folgen Kommentare zu Methoden, die angelegt werden sollten. Als Beispie
 ### Die ganz einfachen Methoden
 
 `public void setup()`  
-Überschreibt lediglich die Methode Oberklasse, die als Teil des Konstruktors dort aufgerufen wird.  
-Ein Objekt vom Typ SchlaegerKI wird platziert, der sich vom ursprünglichen Schläger nur dadurch utnerscheidet, dass seine act-Methode (mit der er sonst vom Spielenden gesteuert würde) leer ist.  
-Die Greenfoot-World-Methode setActOrder wird aufgerufen, damit sichergestellt ist, dass Objekte der Klasse AnzeigeNextMoves nach allen anderen drankommen. Das muss man nicht machen, aber nur dann stimmt die Angabe des kommenden Spielzugs.  
-Der Aufruf von setPlayers( new Agent []{ new Agent(0.0) } ) legt fest, dass ein Standardagent den Spielpart übernehmen soll. Standard heißt: Reinforcement Learning mit einem Q-Table. Man kann auch mehrere Agenten für mehrere zu bewegende Objekte haben. Der NeuralAgent benutzt ein Q-Netz für das Reinforcement Learning.
+Überschreibt lediglich die Methode der Oberklasse, die als Teil des Konstruktors dort aufgerufen wird.  
+Ein Objekt vom Typ SchlaegerKI wird platziert, der sich vom ursprünglichen Schläger nur dadurch unterscheidet, dass seine act-Methode, mit der er sonst vom Spielenden gesteuert würde, leer ist. Sonst könnte ja nicht nur die KI, sondern gleichzeitig auch der Mensch den Schläger bewegen.
+Die Greenfoot-World-Methode `setActOrder` wird aufgerufen, die festlegt, welche Reihenfolge der Actor-Unterklassen beim Aufruf ihrer act-Methode verwendet wird. Der Grund dafür ist, dass Objekte der Klasse `AnzeigeNextMoves` nach allen anderen drankommen sollen. Das muss man nicht machen, aber nur dann stimmt die Angabe des kommenden Spielzugs, weil dazu nach dem Zug des Agenten (also KI-Bots) der Zustand der Welt nicht mehr verändert werden sollte, damit vorhergesagt werden kann, welchen Zug der Agent beim nächsten Mal macht.  
+Der Aufruf von `setPlayers(  new Agent(0.0)  )` legt fest, dass ein Standard-Agent den Spielpart übernehmen soll. Standard heißt: Reinforcement Learning mit einer Q-Tabelle. In anderen Spielen wird man auch mehrere Agenten für mehrere zu bewegende Objekte haben. 
+(Die Q-Tabelle speichert für jeden aufgetretenen Zustand der Spielwelt alle möglichen Züge des Agenten und deren Bewertung. Beim Reinforcement Learning ändert sich diese Bewertung automatisch, und die Option mit der höchsten Bewertung wird gewählt, sofern die Explorationsrate nicht zu einem zufälligen anderen Zug greifen lässt. Greenfoot kann vermutlich sinnvoll wenige zehntausend Zustände verwalten, bei den meisten Spielen wird des aber sehr viel mehr Zustände geben, so dass die Q-Tabelle versagt. Dann greift man zu einem Q-Net, einem neuronalen Netz. Das geht mit dem Agenten `NeuralAgent`, wozu später mehr.)
 
 `public void erhoeheLevel()`  
-Ist nur dazu dazu, um die ererbte Methode, mit der man im regulären Spiel zum nächsten Schwierigkeitsgrad kommt, zu überschreiben.
+Ist nur dazu dazu, um die ererbte Methode, mit der man im regulären Spiel zum nächsten Schwierigkeitsgrad kommt, zu überschreiben, und das Spiel damit zu vereinfachen.
 
 `private double berechneEntfernung(int x, int y, int x2, int y2)`  
 Eine Hilfsmethode, die die Entfernung zweier Punkte in einem kartesischen Koordinatensystem berechnet.
 
 ### Die einfachen überschreibenden KI-Methoden
 
-Diese Methoden werden von AbstractGameWorld und verschiedenen weiteren Klassen verwendet.
+Diese Methoden werden von `AbstractGameWorld` und verschiedenen weiteren Klassen verwendet. Sie sind in `AbstractGameWorld` vordeklariert, müssen aber überschrieben werden.
 
 `public int [] getLegalMoves() { return new int [] { 1, 2, 0}; }`  
-Die verschiedenen Spielzüge oder Entscheidungsmöglichkeiten, zwischen denen die KI sich entscheichen kann, werden als int modelliert. Diese Methode gibt einfach ein Array zurück mit allen grundsätzlich möglichen Spielzügen.
+Die verschiedenen Spielzüge oder Entscheidungsmöglichkeiten, zwischen denen die KI sich entscheichen kann, werden als `int` modelliert. Diese Methode gibt einfach ein Array zurück mit allen grundsätzlich möglichen Spielzügen.
 
 `public String getNameForMove(int move)`  
-Zur Anzeige kann man sich statt der Zahlen für die Züge auch einen schöneren Namen geben lassen. Wird diese Methode nicht überschrieben, werden stattdessen einfahc die Zahlenwerte dargestellt. Im Moment wird 0 auf "N" (nichts), 1 auf "L" (nach links gehen), 2 auf "R" (nach rechts gehen) abgebildet. Normalerweise würde man das it einem Array-Attribut umsetzen.
+Zur Anzeige kann man sich statt der Zahlen für die Züge auch einen schöneren Namen geben lassen. Wird diese Methode nicht überschrieben, werden stattdessen einfach die Zahlenwerte dargestellt. Im Moment wird 0 auf "N" (nichts), 1 auf "L" (nach links gehen), 2 auf "R" (nach rechts gehen) abgebildet. Normalerweise würde man das sicher mit einem Array-Attribut umsetzen, aber ich wollte die Minimalklasse minimal halten.
 
 `public void makeMove(int player, int move)`  
-Der eigentliche Zug: Was bedeuten die oben angelegten Zahlen in der Spiewelt? 1 bedeutet, dass der Schläger etwas nach links bewegt wird, 2 bedeutet, dass er etwas nach rechts bewegt wird. 0 bedeutet, dass er da bleibt, wo er ist. Andere Zahlen dürften nicht auftauchen, sie kommen ja nur aus dem Pool der legalen Züge. Bei einem Einspieler-Spiel wie im Beispiel wird der player-Parameter ignoriert.
+Der eigentliche Zug: Was bedeuten die oben angelegten Zahlen in der Spiewelt, welche Auswirkungen haben sie? 1 bedeutet, dass der Schläger etwas nach links bewegt wird, 2 bedeutet, dass er etwas nach rechts bewegt wird. 0 bedeutet, dass er da bleibt, wo er ist. Andere Zahlen dürften nicht auftauchen, sie kommen ja nur aus dem Pool der legalen Züge der vorherigen Methode. Bei einem Einspieler-Spiel wie im Beispiel wird der player-Parameter ignoriert, ansonsten wird diese Methode von jedem Agenten mit der Spielernummer als Argument aufgerufen, der damit der Spielwelt die Entscheidung kundtut.
 
 `public double getInitialValue()`  
-Kann man auch weglassen. Hier geht es um den Startwert für die Inhalte der Q-Tabelle. Standard ist 1.
+Kann man auch weglassen. Hier geht es um die Anfangsbelegung für die Inhalte der Q-Tabelle. Standard ist 1.
 
 ### Die schwierigeren überschreibenden KI-Methoden
 
+Diese Methoden werden von `AbstractGameWorld` und verschiedenen weiteren Klassen verwendet. Sie sind in `AbstractGameWorld` vordeklariert, müssen aber überschrieben werden. Anders als bei den bisherigen Methoden muss man hier viel nachdenken.
+
 `public String getState() {  return getState(0); }`  
-Hier geht es um den Zustand des Spiels. Manchmal ist der für jeden Spieler anders (bei unterschiedlichen Positionen einer Spielfigur, oder bei teilweise versteckter Information), manchmal ist er für alle identisch (Schach, Tic-Tac-Toe). Da es hier nur einen Zustand gibt statt unterschiedlicher Perspektiven, wird einfach die Perspektive von Player 0 aufgerufen.
+Hier geht es um den Zustand des Spiels. Manchmal ist der für jeden Spieler anders (bei unterschiedlichen Positionen einer Spielfigur, oder bei teilweise versteckter Information), manchmal ist er für alle identisch (etwa: Schach, Tic-Tac-Toe; alle Einpersonenspiele). Da es hier nur einen Zustand gibt statt unterschiedlicher Perspektiven, wird einfach die Perspektive von Player 0 aufgerufen.
 
 `public String getState(int playerID)`  
-Eine der schwierigsten Entscheidungen: Wie man den Zustand codiert. Er solle zur leichteren Weiterverarbeitung später nur aus durch Doppelpunkte getrennten Ganzzahlen bestehen. Im Beispiel ist der Zustand einfach die Differenz zwischen x-Position von Kugel und Schläger. Damit ist viel wesentliche Information für eine Lösung enthalten, andere mögliche Zustände wären eine Kombinationen von x- und y-Position von Kugel und Schläger, und Blickrichtung der Kugel, eventuell noch ihre Geschwindigkeit, wenn es verschiedene Geschwindigkeiten gibt. Hier wird man viel experimentieren wollen. Deshalb enthält diese Methode in den tatsächlichen KI-Klassen auch meist einen switch, um einfach Verschiedenes ausprobieren zu können.
+Eine der schwierigsten Entscheidungen: Wie man den Zustand codiert. Er solle zur leichteren Weiterverarbeitung später nur aus durch Doppelpunkte getrennten Ganzzahlen bestehen. Im Beispiel ist der Zustand einfach die Differenz zwischen x-Position von Kugel und Schläger. Damit ist viel wesentliche Information für eine Lösung enthalten, andere mögliche Zustände wären eine Kombinationen von x- und y-Position von Kugel und Schläger, und Blickrichtung der Kugel, eventuell noch ihre Geschwindigkeit, wenn es verschiedene Geschwindigkeiten gibt. Hier wird man viel experimentieren wollen. Deshalb enthält diese Methode in den tatsächlichen KI-Klassen auch meist einen switch, um einfach Verschiedenes ausprobieren zu können.  
+Im Beispiel sind die Zustände also "0" oder "-1" oder "-10" oder "8", Doppelpunkte tauchen gar nicht auf, weil es ich ja nur um einen einzigen Wert handelt. In der Klasse `BreakoutGameKI` gibt es Alternativen, die dann etwa das Format "10:20:40:8" haben.
 
 `public double getRewardWin() { return 10; }`  
-Bei der einfachsten Form des Lernen, in der Tabelle und ohne Neuronales Netz, wird in jedem Schritt überprüft, ob man gewonnen oder verloren hat. Nur wenn man gewonnen hat, gibt es eine positive Belohnung, deren Wert hier angegeben werden kann. 
-
 `public double getRewardLose() { return -5; }`  
-Wenn man verloren hat, gibt es eine negative Belohnung. Wenn das Spiel noch läuft, gibt es bei diesem einfachen Fall gar keine Belohnung.
-
 `public int getWinner()`  
-Diese Methode wird regelmäßig aufgerufen und gibt zurück, ob man gewonnen hat (Rückgabewert 0, und das führt dann zur oben genannten positiven Belohnung), oder verloren hat  (Rückgabewert 1, und das führt dann zur oben genannten negativen Belohnung), oder ob das Spiel noch läuft (Rückgabe -1, oder irgendetwas <0).  
-
+Bei der einfachsten Form des Lernen, in der Tabelle und ohne Neuronales Netz, wird in jedem Schritt überprüft, ob man __gewonnen__ oder __verloren__ hat. Und nur wenn man __gewonnen__ hat, gibt es eine positive Belohnung, deren Wert hier angegeben werden kann.  
+Wenn man __verloren__ hat, gibt es eine negative Belohnung. Wenn das Spiel noch läuft, gibt es bei diesem einfachen Fall gar keine Belohnung.  
+Die Methode `getWinner` wird regelmäßig aufgerufen und gibt zurück, ob das Spiel gewonnen wurde gewonnen hat (Rückgabewert 0 für Spieler 0, und das führt dann zur oben genannten positiven Belohnung), oder verloren hat  (Rückgabewert 1, und das führt dann zur oben genannten negativen Belohnung), oder ob das Spiel noch läuft (Rückgabe -1, oder irgendetwas <0).  
 Dieses einfache System eignet sich vor allem für Spiele mit ein oder zwei Agierenden.  
 Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
 
 `public double getRewardForPlayer(int id)`  
-Hier wird statt de oben genannten Prinzips nicht nur bei Sieg oder Niederlage belohnt, sondern nach jeder einzelnen Entscheidung. Bei Agenten mit Neuronalen Netzen (NeuralAgent) muss das so sein, bei Q-Tabellen (Agent) kann man sich das aussuchen.
+Hier wird statt de oben genannten Prinzips nicht nur bei Sieg oder Niederlage belohnt, sondern nach `jeder` einzelnen Entscheidung, egal ob sie zu Sieg oder Niederlage führt, ohne dass dabei die Methode `getWinner` eine Rolle spielt. Bei Agenten mit Neuronalen Netzen (`NeuralAgent`) __muss__ das so sein, bei Q-Tabellen (`Agent`) __kann__ man sich das aussuchen.
 Für das Breakout wird hier die 0 zurückgegeben, wenn sich die Kugel in der oberen Spielfeldhälfte befindet, 2 für die Berührung mit dem Schläger, und ansonsten eine negative Belohnung, deren Wert von der kartesischen Entfernung zwischen Kugel und Schläger abhängt. Auch hier kann man sich sehr viel verschiedene Varianten denken.
+
+(Welche Belohnungsvariante man sich aussucht, wird mit den Methoden `setUpdateOnEveryMove` beziehungsweise `setUpdateOnGameEndOnly` festgelegt, dazu später mehr.)
 
 Hier die Klasse dazu:
 <div style="page-break-after: always;"></div>
@@ -114,7 +117,7 @@ Hier die Klasse dazu:
         
         @Override    
         public void setup() {
-            setActOrder( new Class[]{ BreakoutElement.class, AnzeigeNextMoves.class });
+            setActOrder( BreakoutElement.class, AnzeigeNextMoves.class );
             schlaeger = new SchlaegerKI();
             addObject(schlaeger, 360/2, 480-20);   
             setPlayers( new Agent []{ new Agent(0.0) } );    
@@ -186,7 +189,7 @@ Hier die Klasse dazu:
 
 ### Praktische Hilfsmethoden
 
-In der Klasse AbstractGameWorld gibt es Hilfsmethoden, die man in den Unterklassen, vermutlich beim Setup, aufrufen kann:
+In der Klasse `AbstractGameWorld` gibt es Hilfsmethoden, die man in den Unterklassen, vermutlich beim Setup, aufrufen kann:
 
 `public final void setExplorationRate(double e)`
 
@@ -220,13 +223,15 @@ Eine Hilfsmethode, die den Ausdruck auf der Konsole steuert. Jeder Agent hat ins
 
 ## Agenten
 
+Agenten heißen die Bots, die von der KI aufgefordert werden, einen Zug zu machen, indem deren Methode `play()` aufgerufen wird. Darin wird überlicherweise erst der Zustand der Spielwelt erfragt, dann wird beim Verwenden einer Q-Tabelle nachgeschlagen, was für diesen Zustand der beste Zug ist; wenn zu diesem Zustand keine Information erhalten ist, wird ein neuer Eintrag in der Tabelle angelegt. Dann wird der ausgewählte Zug dem Spiel kommuniziert, das wiederum den Zug durchführt und die Belohnung dafür kommuniziert. Unterklasse von `Agent` nutzen ein Q-Net statt einer Tabelle (`NeuralAgent`), oder - das braucht man nur in speziellen Fällen und zum Testen - wählen einen zufälligen Zug (`RandomAgent`) oder geben einem Menschen Gelegenheit, zu entscheiden (`HumanGreenfootMove`).
+
 ### Agent
 
-Der normale Agent benutzt eine Q-Tabelle für das Reinforcement Learning. Der Konstruktor hat als Parametern die Explorationsrate, also 0.0 oder 0.05.
+Der normale Agent benutzt eine Q-Tabelle für das Reinforcement Learning. Der Konstruktor hat als Parameter die Explorationsrate, also 0.0 oder 0.05, die angibt, mit welcher Wahrscheinlichkeit ein zufälliger statt des höchstbewerteten Zugs gemacht werden soll.
 
 ### NeuralAgent
 
-Dieser Agent benutzt ein Neuronales Netz für das Reinforcement Learning. Er erfordert das manuelle oder meist automatische Setzen setUpdateOnEveryMove() in der KI-Spiel-Klasse. Der Konstruktor des NeuralAgent hat vier Parameter:
+Dieser Agent benutzt ein Neuronales Netz für das Reinforcement Learning. Er erfordert das manuelle oder meist automatische Setzen `setUpdateOnEveryMove()` in der KI-Spiel-Klasse. Der Konstruktor des `NeuralAgent` hat vier Parameter:  
 * Erstens die Anzahl an Eingangsknoten – sie entsprechen den durch : getrennten Ganzzahlen, die den Zustand repräsentieren. Wenn getState das Format „1“ hat, ist das ein Eingansknoten, beim Format „1:1“ sind es zwei, bei Werten wie „1:1:1:0:32“ wären es fünf.
 * Zweitens die Anzahl an Knoten der einen versteckten Ebene. 10 ist eine gute Zahl.
 * Drittens die Anzahl an Knoten der Ausgabeebene; sie muss der Anzahl an möglichen Zügen entsprechen; beim Breakout also 3 (für nichts, links, rechts), bei Snake 5 (für Nord, Ost, Süd, West, Nichts).
