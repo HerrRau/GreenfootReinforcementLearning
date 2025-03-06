@@ -208,8 +208,8 @@ Sollen die Anzahl von Siegen, Niederlagen und verrwalteten Zuständen angezeigt 
 `public final void setStopUpdating(boolean b)`  
 Soll das Lernen ab jetzt aufhören, um einen bestimmten Zustand zu bewahren?
 
-`protected void setUpdateOnGameEndOnly()  
-protected void setUpdateOnEveryMove()`  
+`protected void setUpdateOnGameEndOnly()`  
+`protected void setUpdateOnEveryMove()`  
 Diese zwei Möglichkeiten schließen einander wechselseitig aus. Wird mit einem NeuralAgent gearbeitet, muss die zweite gewählt werden; das System versucht das selbständig zu erkennen. 
 
 `public final void setPlayers(Agent... p)`  
