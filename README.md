@@ -24,21 +24,21 @@ Lege dazu per Mausklick ein Objekt der Klasse `BreakoutGameKI`, `AutoGameKI` ode
 
 Hier wird erklärt, wie man beim Entwickeln dieser Spiele allgemein vorgeht, und wie die wichtigsten Klassen zusammenhängen, so dass man eigene Spielideen umsetzen kann.
 
-### Schritt 1: 
+**Schritt 1**
 
 Man erstellt zuerst einml ein einfaches grafisches Spiel mit Greenfoot. Beispiele: `AutoGame`, `BreakoutGame`, `SnakeGame`. Ich habe das bei mir so gehalten, dass das Spiel, weil es das später einfacher macht, fast alles Nötige im Konstruktor erstellt, nur das Erstellen des zu steuernden Objekts (also das Auto oder der Schläger, die später durch einen KI-Bot ersetzt werden) habe ich in einer setup-Methode ausgelagert sein, die vom Konstruktor aufgerufen wird und von den Unterklassen überschrieben wird. 
 
 Es ist außerdem günstig, aber ebenfalls nicht nötig, alle zu dem Spiel gehörenden Actor-Unterklassen in einer gemeinsamen Oberklasse zu sammeln, siehe die Klassen `AutoElement`, `BreakoutElement` oder `SnakeElement`. Das hilft mir, den Überblick über die Klassen zu bewahren; außerdem ist das manchmal für die Spielsteuerung ganz praktisch.
 
-### Schritt 2:
+**Schritt 2**
 
 Wenn das Spiel steht, macht man die Greenfoot-Spielwelt, die bisher eine Unterklasse von `World` war, zu einer Unterklasse von `AbstractGameWorld`. Das Spiel sollte sich weiterhin wie gewohnt spielen lassen, wenn man Greenfoot die eigentliche Spielklasse als Startwelt verwenden lässt. Die neue Oberklasse `AbstractGameWorld` beeinflusst das Ausführen der Spielwelt eigentlich überhaupt nicht, jedenfalls wenn alles funktioniert.
 
-### Schritt 3:
+**Schritt 3**
 
 Man erstellt eine Unterklasse zur Spieleklasse, zum Beispiel bisher `AutoKI`, `BreakoutKI` oder `SnakeGameKI`. Diese Klassen müssen, um sinnvoll arbeiten zu können, bestimmte ererbte Methoden überschreiben. Das ist die Hauptaufgabe, die im nächsten Abschnitt erklärt wird. Die Trennung in Spiel-Welt und KI-Welt erfolgt deshalb, weil man so das Spiel unabhängig von der KI-Anwendung entwickeln kann.
 
-### Schritt 4: 
+**Schritt 4**
 
 Da es so viele Varianten gibt, die man ausprobieren möchte, legt man sich eine Unterklasse der KI-Klasse an (die ja selber, Schritt 2, eine Unterklasse von `AbstractGameWorld` ist), um so einigermaßen elegant die Varianten anbieten zu können. Bisher heißen sie `AutoSencarios`, `BreakoutScenarios` und `SnakeScenarios`.
 
