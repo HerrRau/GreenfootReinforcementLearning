@@ -6,10 +6,10 @@ public class BreakoutGameKIMinimal extends BreakoutGame {
 
     @Override    
     public void setup() {
-        setActOrder( new Class[]{ BreakoutElement.class, AnzeigeNextMoves.class });
+        setActOrder( BreakoutElement.class, AnzeigeNextMoves.class );
         schlaeger = new SchlaegerKI();
         addObject(schlaeger, 360/2, 480-20);   
-        setPlayers( new Agent []{ new Agent(0.0) } );    
+        setPlayers( new Agent(0.0) );
     }
 
     @Override

@@ -82,7 +82,7 @@ public class Agent
     public void useSimplifiedMoves(boolean b) {
         useSimpleMoves = b;
     }
-    
+
     public void setLearningRate(double d) {
         learningRate = d;
     }
@@ -179,26 +179,29 @@ public class Agent
      */
     public void play() 
     {
-        // get moves for current state
-        currentState = game.getState(playerNumber); //### was getState()
+        //# get game state (and, for display purposes only, all legal moves)
+        currentState = game.getState(playerNumber);
         int [] legalMoves = game.getLegalMoves();
 
-        //output
+        //# optional print
         if (verbose) printInfoBeforeMove(currentState, legalMoves);
 
-        //decide on the move
+        //# get values for all moves in this state
         Moves m = map.get(currentState);
-        
+
+        //# add new state if there are no values for the current state
         if (m==null) m = addNewState(currentState, legalMoves); // state not yet in list
+
+        //# from all moves, *decide* on one, using the current strategy
         move = useStrategy(m); //use strategy method
 
-        // output
+        //# optional print
         if (verbose) printInfoMove(move);
 
-        //make the move
+        //# actually make the decided-upon move, by telling the game about it
         game.makeMove(playerNumber, move);
 
-        //output
+        //# optional print
         if (verbose) printInfoAfterMove();
     }
 
@@ -206,6 +209,7 @@ public class Agent
     // Strategy method
     //
 
+    //## standard strategy: use best move, unless exploration makes you pick a random one (will be overwritten by subclasses)
     protected int useStrategy(Moves moves) {
         if (Math.random()<explorationRate) {
             int random = moves.getRandomMove();

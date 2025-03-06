@@ -8,7 +8,7 @@ public class SnakeGameKIMinimal extends SnakeGame
         Agent a = new Agent(0.0);    
         setPlayers( a );
         setSnakes( new SnakeKI() );
-        setActOrder( new Class[]{ SnakeGameElement.class, AnzeigeNextMoves.class });
+        setActOrder( SnakeGameElement.class, AnzeigeNextMoves.class );
     }
 
     @Override public void verliereSpiel(SnakeHead s) {

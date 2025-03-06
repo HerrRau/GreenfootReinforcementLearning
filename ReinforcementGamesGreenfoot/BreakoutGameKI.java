@@ -53,7 +53,7 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
     // State
 
     @Override
-    public String getState() { return getState(-1); }
+    public String getState() { return getState(0); }
 
     @Override
     public String getState(int irrelevantPlayerID) {

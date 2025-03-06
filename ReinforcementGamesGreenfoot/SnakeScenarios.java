@@ -37,7 +37,7 @@ public class SnakeScenarios extends SnakeGameKI
         setStateType(0);
         setRestartAllSnakesUponWin(true);
         int inputs = 4; // 
-        int outputs = 4; //NOSW oder NOSWX
+        int outputs = 4; //NOSW
         switch (option)  {
             case 0: {
                     setUpdateOnGameEndOnly();
