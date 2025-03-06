@@ -212,9 +212,8 @@ Soll das Lernen ab jetzt aufhören, um einen bestimmten Zustand zu bewahren?
 protected void setUpdateOnEveryMove()`  
 Diese zwei Möglichkeiten schließen einander wechselseitig aus. Wird mit einem NeuralAgent gearbeitet, muss die zweite gewählt werden; das System versucht das selbständig zu erkennen. 
 
-`public final void setPlayers(Agent [] p)  
-public final void setPlayers(Agent p)`  
-Muss aufgerufen werden, um einen oder ein Array von Agenten ins Spiel zu bringen. Die Agenten erhalten fortlaufende Nummern, sie werden der Reihe nach über die Zustände des Systems informiert (via getState), können dann Entscheidungen treffen, die sie via makeMove kommunizieren. Der Methode makeMove obliegt dann die Umsetzung in der Spielwelt.
+`public final void setPlayers(Agent... p)`  
+Muss aufgerufen werden, um einen oder mehrere oder ein Array von Agenten ins Spiel zu bringen. Die Agenten erhalten fortlaufende Nummern, sie werden der Reihe nach über die Zustände des Systems informiert (via getState), können dann Entscheidungen treffen, die sie via makeMove kommunizieren. Der Methode makeMove obliegt dann die Umsetzung in der Spielwelt.
 
 `public void setVerbose(boolean b)`  
 Eine Hilfsmethode, die den Ausdruck auf der Konsole steuert. Jeder Agent hat insbesondere eine eigene, ebenso benannte Methode setVerbose.
