@@ -120,7 +120,7 @@ Hier die Klasse dazu:
             setActOrder( BreakoutElement.class, AnzeigeNextMoves.class );
             schlaeger = new SchlaegerKI();
             addObject(schlaeger, 360/2, 480-20);   
-            setPlayers( new Agent []{ new Agent(0.0) } );    
+            setPlayers( new Agent(0.0) );    
         }
     
         @Override
