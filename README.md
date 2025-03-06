@@ -113,7 +113,7 @@ Hier die Klasse dazu:
     import greenfoot.*;
     public class BreakoutGameKIMinimal extends BreakoutGame {
 
-        // Uberschreiben von Breakout-spezifische Methoden, und Hilfsmethoden
+        // Uberschreiben von Breakout-spezifischen Methoden, und Hilfsmethoden
         
         @Override    
         public void setup() {
