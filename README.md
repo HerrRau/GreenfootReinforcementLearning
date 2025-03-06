@@ -269,10 +269,17 @@ Ja. Das Projekt ist halt entstanden aus bereits existierenden BlueJ-Projekten f�
 
 Lange Geschichte, der Versuch, das BlueJ-Projekt irgendwie zu visualisieren.
 
-Fragen gerne an Thomas Rau, lehrerzimmer@herr-rau.de
-
 ## Bilder
 
 Ein trainierter `Agent` fährt Auto: Das Auto hat hier fünf Sensoren, die zusammen den Zustand des Spiels für die KI ausmachen. Der Agent verwaltet gut 45.000 ihm bekannte Zustände in einer Tabelle. Das Auto ist ein Standard-Greenfoot-Actor und dreht sich damit immer nur in Vielfachen von 45°, SmoothMover und Varianten davon ermöglichen eleganteres Verhalten.
 
 ![KI ohne SmootMover, daher nur immer in Vielfachen von 45°](/assets/images/ki_auto_sensor_strecke1.gif)
+
+## To do
+
+* Ein leeres Spiel ohne KI-Unterklasse anbieten, zum selberbasteln
+* Die SchülerInnen-Projekte aus der 10. zum Beispiel?
+
+## Kontakt
+
+Fragen gerne an Thomas Rau, lehrerzimmer@herr-rau.de
