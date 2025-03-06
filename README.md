@@ -1,37 +1,54 @@
 # Greenfoot Reinforcement Learning
 
+## Was das hier ist
+
+Das hier ist ein Greenfoot-Projekt mit bisher drei eigentlich voneinander unabhängigen rudimentären Spielen: Ein einfaches Breakout, ein einfacheres Autorennen, ein Snake. Sie sind alle deshalb in einem Projekt, weil sie alle die gleiche zusätzliche Infrastruktur nutzen, um nämlich automatisierte Bots alleine oder gegeneinander spielen zu lassen. Diese Bots können durch KI-Agenten gesteuert werden (Reinforcement Learning) oder, insbesondere bei Snake, auch einen einfachen Algorithmus verwenden, wie er von Schülern oder Schülerinnen entwickelt werden könnte.
+
+Das Projekt ist nicht so ordentlich, wie man es sich vielleicht erhofft; diese Datei als Textatei im Markdown-Format soll Überblick verschaffen. Man kann sie, wie das ganze Projekt, herunterladen und mit einem Markdown-Betrachter öffnen, theoretisch natürlich auch mit jedem Textverarbeitungsprogramm.
+
 ## Ausprobieren (1)
 
-1. Lege per Mausklick ein Objekt der Klasse BreakoutGame an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. 
-2. Lege per Mausklick ein Objekt der Klasse AutoGame an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. Das Spiel ist nicht sehr interessant, und man muss sich die Geschwindigkeit herabsetzen.
-3. Lege per Mausklick ein Objekt der Klasse Snake Game an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten ASDW.
+Zum Ausprobieren des Projekts solltest du dir erst einmal die Spiele anschauen. Dazu:
+
+1. Lege per Mausklick ein Objekt der Klasse `BreakoutGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. 
+2. Lege per Mausklick ein Objekt der Klasse `AutoGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. Das Spiel ist nicht sehr interessant, und man muss sich die Geschwindigkeit herabsetzen.
+3. Lege per Mausklick ein Objekt der Klasse `SnakeGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten ASDW.
 
 ## Ausprobieren (2)
 
-Lege per Mausklick ein Objekt der Klassen BreakoutGameKI, AutoGameKI oder SnakeGameKI an. Dann läuft ein kurzes Beispiel-Szenario mit einer lernenden KI ab. Es gibt dabei sehr viele Konfigurationsmöglichkeiten; die Unterklasse AutoScenarios, BreakoutScenarios und SnakeScenarios bieten einige vorkonfigurierte Szenarien an.
+Zum weiteren Ausprobieren solltest du anschauen, wie die Bots die verschiedenen Spiele spielen. 
+
+Lege dazu per Mausklick ein Objekt der Klasse `BreakoutGameKI`, `AutoGameKI` oder `SnakeGameKI` an. Dann läuft jeweils ein kurzes Beispiel-Szenario mit einer lernenden KI ab. Es gibt dabei immer sehr viele Konfigurationsmöglichkeiten; die Unterklasse AutoScenarios, BreakoutScenarios und SnakeScenarios bieten einige vorkonfigurierte Szenarien an.
 
 ## Allgemeines Vorgehen
 
+Hier wird erklärt, wie man beim Entwickeln dieser Spiele allgemein vorgeht, und wie die wichtigsten Klassen zusammenhängen, so dass man eigene Spielideen umsetzen kann.
+
 ### Schritt 1: 
 
-Man erstellt ein einfaches grafisches Spiel mit Greenfoot. Beispiele: AutoGame, BreakoutGame, SnakeGame. Das Spiel sollte, weil es da einfacher macht, fast alles Nötige im Konstruktor erstellen, nur das Erstellen des zu steuernden Objekts, also Auto oder Schläger – sollte in einer setup-Methode ausgelagert sein, die vom Konstruktor aufgerufen wird. Dann können später Unterklassen leicht den Großteil der Initialisierungsarbeit der Oberklasse überlassen und nur die setup-Methode überschreiben.
-Es ist außerdem günstig, aber ebenfalls nicht nötig, alle zu dem Spiel gehörenden Actor-Unterklassen in einer gemeinsamen Oberklasse zu sammeln, siehe die Klassen AutoElement, BreakoutElement oder SnakeElement.
+Man erstellt zuerst einml ein einfaches grafisches Spiel mit Greenfoot. Beispiele: `AutoGame`, `BreakoutGame`, `SnakeGame`. Ich habe das bei mir so gehalten, dass das Spiel, weil es das später einfacher macht, fast alles Nötige im Konstruktor erstellt, nur das Erstellen des zu steuernden Objekts (also das Auto oder der Schläger, die später durch einen KI-Bot ersetzt werden) habe ich in einer setup-Methode ausgelagert sein, die vom Konstruktor aufgerufen wird und von den Unterklassen überschrieben wird. 
+
+Es ist außerdem günstig, aber ebenfalls nicht nötig, alle zu dem Spiel gehörenden Actor-Unterklassen in einer gemeinsamen Oberklasse zu sammeln, siehe die Klassen `AutoElement`, `BreakoutElement` oder `SnakeElement`. Das hilft mir, den Überblick über die Klassen zu bewahren; außerdem ist das manchmal für die Spielsteuerung ganz praktisch.
 
 ### Schritt 2:
 
-Wenn das Spiel steht, macht man die Spielwelt, die bisher eine Unterklasse von World war, zu einer Unterklasse von AbstractGameWorld. Das Spiel sollte sich weiterhin wie gewohnt spielen lassen, wenn man Greenfoot die eigentliche Spielklasse als World verwenden lässt.
+Wenn das Spiel steht, macht man die Greenfoot-Spielwelt, die bisher eine Unterklasse von `World` war, zu einer Unterklasse von `AbstractGameWorld`. Das Spiel sollte sich weiterhin wie gewohnt spielen lassen, wenn man Greenfoot die eigentliche Spielklasse als Startwelt verwenden lässt. Die neue Oberklasse `AbstractGameWorld` beeinflusst das Ausführen der Spielwelt eigentlich überhaupt nicht, jedenfalls wenn alles funktioniert.
 
 ### Schritt 3:
 
-Man erstellt eine Unterklasse zur Spieleklasse, zum Beispiel AutoKI, BreakoutKI oder SnakeGameKI. Diese Klassen müssen, um sinnvoll arbeiten zu können, bestimmte ererbte Methoden überschreiben. Das ist die Hauptaufgabe, die im nächsten Abschnitt erklärt wird.
+Man erstellt eine Unterklasse zur Spieleklasse, zum Beispiel bisher `AutoKI`, `BreakoutKI` oder `SnakeGameKI`. Diese Klassen müssen, um sinnvoll arbeiten zu können, bestimmte ererbte Methoden überschreiben. Das ist die Hauptaufgabe, die im nächsten Abschnitt erklärt wird. Die Trennung in Spiel-Welt und KI-Welt erfolgt deshalb, weil man so das Spiel unabhängig von der KI-Anwendung entwickeln kann.
 
 ### Schritt 4: 
 
-Da es so viele Varianten gibt, die man ausprobieren möchte, legt man sich eine Unterklasse der KI-Klasse an (die ja selber eine Unterklasse von AbstractGameWorld ist), um so einigermaßen elegant die Varianten anbieten zu können.
+Da es so viele Varianten gibt, die man ausprobieren möchte, legt man sich eine Unterklasse der KI-Klasse an (die ja selber, Schritt 2, eine Unterklasse von `AbstractGameWorld` ist), um so einigermaßen elegant die Varianten anbieten zu können. Bisher heißen sie `AutoSencarios`, `BreakoutScenarios` und `SnakeScenarios`.
 
 ## Die KI-Klasse und ihre Methoden
 
+Die Hauptaufgabe besteht darin, eine KI-Unterklasse zur Spielwelt zu schaffen und mit den nötigen Methoden zu bestücken. Diese Methoden könnten in `AbstractGameWorld` alle als abstrakte Methoden angelegt sein, so dass man leicht überprüfen kann, ob man sie alle hat. Ich habe mich dagegen entschieden, sondern stattdessen zu überschreibende Dummy-Methoden in `AbstractGameWorld` implementiert, damit sich das ursprünglioche Spiel eben auch ohne diese KI-Unterklasse verwenden lässt.
+
 Beispiel: AutoGameKI, BreakoutGameKI, SnakeGameKI und BreakoutGameKIMinimal. Das letztere ist eine abgespeckte Klasse zur Veranschaulichung, die wir jetzt der Reihe nach durchgehen. Der Code passt auf eine Textseite.
+
+Ab jetzt folgen Kommentare zu Methoden, die angelegt werden sollten. Als Beispiel dient dazu die Klasse `BreakoutGameKIMinimal`, die Klasse `SnakeGameKIMinimal` ist ein ähnliches minimales Beispiel, das man anschauen kann.
 
 ### Die ganz einfachen Methoden
 
