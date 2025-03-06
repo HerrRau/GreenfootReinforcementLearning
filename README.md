@@ -232,24 +232,29 @@ Der normale Agent benutzt eine Q-Tabelle für das Reinforcement Learning. Der Ko
 ### NeuralAgent
 
 Dieser Agent benutzt ein Neuronales Netz für das Reinforcement Learning. Er erfordert das manuelle oder meist automatische Setzen `setUpdateOnEveryMove()` in der KI-Spiel-Klasse. Der Konstruktor des `NeuralAgent` hat vier Parameter:  
-* Erstens die Anzahl an Eingangsknoten – sie entsprechen den durch : getrennten Ganzzahlen, die den Zustand repräsentieren. Wenn getState das Format „1“ hat, ist das ein Eingansknoten, beim Format „1:1“ sind es zwei, bei Werten wie „1:1:1:0:32“ wären es fünf.
+* Erstens die Anzahl an Eingangsknoten – sie entsprechen den durch Doppelpunkt : getrennten Ganzzahlen, die den Zustand repräsentieren. Wenn getState das Format „1“ hat, ist das ein Eingangsknoten, bei Werten wie „1:1“ sind es zwei, bei Werten wie „1:1:1:0:32“ sind es fünf.
 * Zweitens die Anzahl an Knoten der einen versteckten Ebene. 10 ist eine gute Zahl.
-* Drittens die Anzahl an Knoten der Ausgabeebene; sie muss der Anzahl an möglichen Zügen entsprechen; beim Breakout also 3 (für nichts, links, rechts), bei Snake 5 (für Nord, Ost, Süd, West, Nichts).
+* Drittens die Anzahl an Knoten der Ausgabeebene; sie muss der Anzahl an möglichen Zügen entsprechen; beim Breakout also 3 (für nichts, links, rechts), bei Snake 4 (für Nord, Ost, Süd, West).
 * Viertens die Explorationsrate, wieder 0.0 oder 0.05, zum Beispiel.
 
 ## Die Szenario-Unterklassen
 
 Das sind reine Hilfsklassen, die das Arbeiten mit verschiedenen Szenarien erleichtern.
 
-### Die Auto-Szenarien
+## Das Auto-Spiel
 
 Das Autogame ist komplex. Es gibt zwei verschiedene Hintergründe, so dass man mit dem einen trainieren und das trainierte Modell dann am anderen Hintergrund testen kann. Ziel ist, dass ein Auto selbständig den Weg zum Ziel findet. (Mehrfachspielermodus ist nur in Ansätzen imoplementiert.) Das Spielfeld ist farbig kodiert, je dunkler die Farbe wird, desto näher ist man der Ziellinie aus der richtigen Richtung gekommen.
 
 Der Zustand wird vom Fahrzeug-Objekt erzeugt. Es kann dabei zur Klasse Auto/SmoothAuto gehören, dann ist der Zustand sehr naiv und besteht aus x/y-Koordinaten: dann lernt das System sehr schnell, aber natürlich nur für diesen einen expliziten Kurs. Oder man nimmt die Klasse AutoSensor/SmoothAutoSensor: dann hat das Fahrzeug 3 oder 5 oder 7 (am besten erst einmal: 3) Sensoren, mit denen der Abstand nach vorne und zur Seite gemessen und als State verwendet wird. Das ganze geht außerdem als regulärer Actor oder als SmoothActor; letzteres ist eine beliebte Greenfoot-Lösung, um Rundungsfehler bei den x/y-Koordinaten zu reduzieren, die im Prinzip zu Winkel in Vielfachen von 45° führen.
-Man kann darüber hinaus wie immer als Player einen Agent haben (Q-Table) oder einen NeuralAgent (Q-Net, nötig, weil der Zustandsraum bei dem Sensoren-Fahrzeug sehr groß ist). 
+Man kann darüber hinaus wie immer als Player einen `Agent` haben oder einen `NeuralAgent` - für die Sensor-Varianten ist das nötig, weil der Zustandsraum bei dem Sensoren-Fahrzeug sehr groß ist. 
 
 Auch das Belohnungssystem ist komplex. Positive oder negative Belohnung kann es geben für: Vorwärtsfahren (eine dunklere Farbe erreicht, außer natürlich an der Startlinie), Rückwärtsfahren (hellere Farbe), Überqueren der Ziellinie, Verlassen der Fahrbahn.
 Laden und Speichern: Geht mit Methoden der Klasse NeuralAgent.
+
+## Das Snake-Spiel
+
+
+
 
 ## Wie gut geht das alles?
 
