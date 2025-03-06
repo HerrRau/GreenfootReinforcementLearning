@@ -95,14 +95,14 @@ Im Beispiel sind die Zustände also "0" oder "-1" oder "-10" oder "8", Doppelpun
 `public double getRewardWin() { return 10; }`  
 `public double getRewardLose() { return -5; }`  
 `public int getWinner()`  
-Bei der einfachsten Form des Lernen, in der Tabelle und ohne Neuronales Netz, wird in jedem Schritt überprüft, ob man __gewonnen__ oder __verloren__ hat. Und nur wenn man __gewonnen__ hat, gibt es eine positive Belohnung, deren Wert hier angegeben werden kann.  
-Wenn man __verloren__ hat, gibt es eine negative Belohnung. Wenn das Spiel noch läuft, gibt es bei diesem einfachen Fall gar keine Belohnung.  
+Bei der einfachsten Form des Lernen, in der Tabelle und ohne Neuronales Netz, wird in jedem Schritt überprüft, ob man _gewonnen_ oder _verloren_ hat. Und nur wenn man _gewonnen_ hat, gibt es eine positive Belohnung, deren Wert hier angegeben werden kann.  
+Wenn man _verloren_ hat, gibt es eine negative Belohnung. Wenn das Spiel noch läuft, gibt es bei diesem einfachen Fall gar keine Belohnung.  
 Die Methode `getWinner` wird regelmäßig aufgerufen und gibt zurück, ob das Spiel gewonnen wurde gewonnen hat (Rückgabewert 0 für Spieler 0, und das führt dann zur oben genannten positiven Belohnung), oder verloren hat  (Rückgabewert 1, und das führt dann zur oben genannten negativen Belohnung), oder ob das Spiel noch läuft (Rückgabe -1, oder irgendetwas <0).  
 Dieses einfache System eignet sich vor allem für Spiele mit ein oder zwei Agierenden.  
 Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
 
 `public double getRewardForPlayer(int id)`  
-Hier wird statt de oben genannten Prinzips nicht nur bei Sieg oder Niederlage belohnt, sondern nach `jeder` einzelnen Entscheidung, egal ob sie zu Sieg oder Niederlage führt, ohne dass dabei die Methode `getWinner` eine Rolle spielt. Bei Agenten mit Neuronalen Netzen (`NeuralAgent`) __muss__ das so sein, bei Q-Tabellen (`Agent`) __kann__ man sich das aussuchen.
+Hier wird statt de oben genannten Prinzips nicht nur bei Sieg oder Niederlage belohnt, sondern nach `jeder` einzelnen Entscheidung, egal ob sie zu Sieg oder Niederlage führt, ohne dass dabei die Methode `getWinner` eine Rolle spielt. Bei Agenten mit Neuronalen Netzen (`NeuralAgent`) _muss_ das so sein, bei Q-Tabellen (`Agent`) _kann_ man sich das aussuchen.
 Für das Breakout wird hier die 0 zurückgegeben, wenn sich die Kugel in der oberen Spielfeldhälfte befindet, 2 für die Berührung mit dem Schläger, und ansonsten eine negative Belohnung, deren Wert von der kartesischen Entfernung zwischen Kugel und Schläger abhängt. Auch hier kann man sich sehr viel verschiedene Varianten denken.
 
 (Welche Belohnungsvariante man sich aussucht, wird mit den Methoden `setUpdateOnEveryMove` beziehungsweise `setUpdateOnGameEndOnly` festgelegt, dazu später mehr.)
