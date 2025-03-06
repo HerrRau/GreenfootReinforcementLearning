@@ -26,7 +26,7 @@ Hier wird erklärt, wie man beim Entwickeln dieser Spiele allgemein vorgeht, und
 
 **Schritt 1**
 
-Man erstellt zuerst einml ein einfaches grafisches Spiel mit Greenfoot. Beispiele: `AutoGame`, `BreakoutGame`, `SnakeGame`. Ich habe das bei mir so gehalten, dass das Spiel, weil es das später einfacher macht, fast alles Nötige im Konstruktor erstellt, nur das Erstellen des zu steuernden Objekts (also das Auto oder der Schläger, die später durch einen KI-Bot ersetzt werden) habe ich in einer setup-Methode ausgelagert sein, die vom Konstruktor aufgerufen wird und von den Unterklassen überschrieben wird. 
+Man erstellt zuerst einmal ein einfaches grafisches Spiel mit Greenfoot. Beispiele: `AutoGame`, `BreakoutGame`, `SnakeGame`. Ich habe das bei mir so gehalten, dass das Spiel, weil es das später einfacher macht, fast alles Nötige im Konstruktor erstellt, nur das Erstellen des zu steuernden Objekts (also das Auto oder der Schläger, die später durch einen KI-Bot ersetzt werden) habe ich in einer setup-Methode ausgelagert sein, die vom Konstruktor aufgerufen wird und von den Unterklassen überschrieben wird. 
 
 Es ist außerdem günstig, aber ebenfalls nicht nötig, alle zu dem Spiel gehörenden Actor-Unterklassen in einer gemeinsamen Oberklasse zu sammeln, siehe die Klassen `AutoElement`, `BreakoutElement` oder `SnakeElement`. Das hilft mir, den Überblick über die Klassen zu bewahren; außerdem ist das manchmal für die Spielsteuerung ganz praktisch.
 
