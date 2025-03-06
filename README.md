@@ -231,10 +231,13 @@ Der normale Agent benutzt eine Q-Tabelle für das Reinforcement Learning. Der Ko
 ### NeuralAgent
 
 Dieser Agent benutzt ein Neuronales Netz für das Reinforcement Learning. Er erfordert das manuelle oder meist automatische Setzen `setUpdateOnEveryMove()` in der KI-Spiel-Klasse. Der Konstruktor des `NeuralAgent` hat vier Parameter:  
+
 * Erstens die Anzahl an Eingangsknoten – sie entsprechen den durch Doppelpunkt : getrennten Ganzzahlen, die den Zustand repräsentieren. Wenn getState das Format „1“ hat, ist das ein Eingangsknoten, bei Werten wie „1:1“ sind es zwei, bei Werten wie „1:1:1:0:32“ sind es fünf.
 * Zweitens die Anzahl an Knoten der einen versteckten Ebene. 10 ist eine gute Zahl.
 * Drittens die Anzahl an Knoten der Ausgabeebene; sie muss der Anzahl an möglichen Zügen entsprechen; beim Breakout also 3 (für nichts, links, rechts), bei Snake 4 (für Nord, Ost, Süd, West).
 * Viertens die Explorationsrate, wieder 0.0 oder 0.05, zum Beispiel.
+
+Der `NeuralAgent` besitzt Methoden zum laden und Speichern von Netzen und Belegungen, Speicherort ist standardmäßig unmittelbar außerhalb des Projektverzeichnisses.
 
 ## Die Szenario-Unterklassen
 
@@ -268,4 +271,4 @@ Lange Geschichte, der Versuch, das BlueJ-Projekt irgendwie zu visualisieren.
 
 Fragen gerne an Thomas Rau, lehrerzimmer@herr-rau.de
 
-![KI nach 100 Runden](/assets/ki_auto_strecke_runde100.png)
+![KI ohne SmootMover, daher nur immer in Vielfachen von 45°](/assets/ki_auto_sensor_strecke1.gif)
