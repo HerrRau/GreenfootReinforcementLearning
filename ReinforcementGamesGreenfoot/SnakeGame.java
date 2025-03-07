@@ -31,6 +31,8 @@ public class SnakeGame extends AbstractGameWorld
      * @param s The participating snakes, can be a single SnakeHead, several SnakeHeads, or an array of SnakeHeads.
      */
     protected final void setSnakes(SnakeHead... s) {
+        removeObjects(getObjects(SnakeHead.class));
+        removeObjects(getObjects(SnakeBodyPart.class));
         snakes = s;
         for(int i = 0; i<snakes.length; i++) {
             addObject(snakes[i], Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));

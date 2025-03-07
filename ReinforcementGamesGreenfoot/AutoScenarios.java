@@ -18,7 +18,7 @@ public class AutoScenarios extends AutoGameKI
     public AutoScenarios()
     {
         int option = 12-1; //8 //10 //12
-        option = 4+2;
+        option = 4-4;
         setupScenario(option);
     }
 
@@ -39,8 +39,8 @@ public class AutoScenarios extends AutoGameKI
         setRespawnAfterLap(false);
 
         setDisplayChanges(false);
-        setDisplayWinsLossesStates(false);
-        setVerbose(false);
+        setDisplayStatistics(false);
+        setEverybodyVerbose(false);
 
         double exploration = 0.05;
         int anzahlSensoren = 6;
@@ -59,7 +59,7 @@ public class AutoScenarios extends AutoGameKI
                 setPlayers( new Agent []{ p } );   
                 setAuto (new Auto() );        
                 showMessage(option+": Position, Q-Table, Non-Smooth, "+exploration);
-                setDisplayWinsLossesStates(true);
+                setDisplayStatistics(true);
                 break;
             case 1:
                 //non-smooth, non-sensor, table, course 2
@@ -70,7 +70,7 @@ public class AutoScenarios extends AutoGameKI
                 setPlayers( new Agent []{ p } );   
                 setAuto (new Auto() );        
                 showMessage(option+": Position, Q-Table, Non-Smooth, "+exploration);
-                setDisplayWinsLossesStates(true);
+                setDisplayStatistics(true);
                 break;
             case 2:
                 //non-smooth, sensor, table, course 1
@@ -82,7 +82,7 @@ public class AutoScenarios extends AutoGameKI
                 setPlayers( new Agent []{ p } );   
                 setAuto (new AutoSensor(anzahlSensoren) );        
                 showMessage(option+": Sensor, Q-Table, Non-Smooth, "+exploration+", "+anzahlSensoren+" Sensoren");
-                setDisplayWinsLossesStates(false);
+                setDisplayStatistics(false);
                 break;
             case 3:
                 //non-smooth, sensor, table, course 2
@@ -94,21 +94,20 @@ public class AutoScenarios extends AutoGameKI
                 setPlayers( new Agent []{ p } );   
                 setAuto (new AutoSensor(anzahlSensoren) );        
                 showMessage(option+": Sensor, Q-Table, Non-Smooth, "+exploration+", "+anzahlSensoren+" Sensoren");
-                setDisplayWinsLossesStates(true);
+                setDisplayStatistics(true);
                 break;
             case 4:
                 //non-smooth, sensor, neural net, course 1
                 // doesn't work well, and only somewhat with 3 sensors
                 chooseBackground(0);
                 anzahlSensoren = 5;
-                setUpdateOnEveryMove();
                 anzahlKnoten = 10;
                 exploration = 0.05;
                 p = new NeuralAgent(anzahlSensoren, anzahlKnoten, 3, exploration    );
                 setPlayers( new Agent []{ p } );   
                 setAuto (new AutoSensor(anzahlSensoren) );        
                 showMessage(option+": Sensor, Q-Net ("+anzahlSensoren+"-"+anzahlKnoten+"-3, 0, 3), Non-Smooth, "+exploration+", "+anzahlSensoren+" Sensoren");
-                setVerbose(false);
+                setEverybodyVerbose(false);
                 break;
             case 5:
                 //non-smooth, sensor, neural net, course 2
@@ -139,9 +138,8 @@ public class AutoScenarios extends AutoGameKI
                 verbose = false;
                 setDisplayChanges(true);
                 setDisplayNextMoves(true);
-                setDisplayWinsLossesStates(true);
+                setDisplayStatistics(true);
 
-                
                 break;
             case 7:
                 //smooth, sensor, neural net, course 2
@@ -170,7 +168,7 @@ public class AutoScenarios extends AutoGameKI
                 setStopUponLapFinished(true);
                 setExplorationRate(0);
                 setStopUpdating(true);
-                setVerbose(true);
+                setEverybodyVerbose(true);
                 break;
             case 9:
                 //works
@@ -184,7 +182,7 @@ public class AutoScenarios extends AutoGameKI
                 setPlayers( new Agent []{ p } );   
                 setAuto (new SmoothAutoSensor(anzahlSensoren) );        
                 setDisplayChanges(true); //but there are no changes when learning == 0
-                setDisplayWinsLossesStates(true);
+                setDisplayStatistics(true);
                 setStopUponOffTrack(true);
                 loadNet();
                 showMessage(option+": Sensor, Q-Net ("+anzahlSensoren+"-"+anzahlKnoten+"-3, 0, 3), Smooth, "+exploration+", "+anzahlSensoren+" Sensoren");
@@ -202,7 +200,7 @@ public class AutoScenarios extends AutoGameKI
                 showMessage(option+": Sensor, Q-Net ("+anzahlSensoren+"-"+anzahlKnoten+"-3, 0, 3), Smooth, "+exploration+", "+anzahlSensoren+" Sensoren");
                 //loadNet();
                 setStopUponLapFinished(true);
-                setVerbose(false);
+                setEverybodyVerbose(false);
                 setRespawnAfterLap(false);
                 break;
             case 11:
@@ -222,7 +220,7 @@ public class AutoScenarios extends AutoGameKI
                 // loadNet(0);
                 // setExplorationRate(0);
                 showMessage(option+": Sensor, Q-Net ("+(anzahlSensoren+1)+"-"+anzahlKnoten+"-5, 0, 3), Smooth, "+exploration+", "+anzahlSensoren+" Sensoren");
-                setVerbose(true);
+                setEverybodyVerbose(true);
                 pm.setVerbose(false);
                 setStopUpdating(false);
                 useAdditionalMovesForSpeed = true;
@@ -251,20 +249,20 @@ public class AutoScenarios extends AutoGameKI
                 // loadNet(2);
                 // setExplorationRate(0);
                 showMessage(option+": Sensor, Q-Net ("+anzahlSensoren+"-"+anzahlKnoten+"-3, 0, 3), Smooth, "+exploration+", "+anzahlSensoren+" Sensoren");
-                setVerbose(true);
+                setEverybodyVerbose(true);
                 setStopUpdating(false);
                 break;
             case 13:
                 //smooth, sensor, table, course 1
                 //works
-                chooseBackground(1+2);
+                chooseBackground(1);
                 exploration = 0.05;
                 anzahlSensoren = 3;
                 p = new Agent(exploration);
                 setPlayers( new Agent []{ p } );   
                 setAuto (new SmoothAutoSensor(anzahlSensoren) );        
                 showMessage(option+": Sensor, Q-Table, Smooth, "+exploration+", "+anzahlSensoren+" Sensoren");
-                setVerbose(true);
+                setEverybodyVerbose(true);
                 pm.setVerbose(false);
                 break;
             default:

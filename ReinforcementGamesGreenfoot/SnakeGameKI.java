@@ -9,7 +9,7 @@ public class SnakeGameKI extends SnakeGame
     private int [] countingWins;
     protected int [] countingLosses;
     protected int countingRounds;
-    private boolean useTournamentMode = true;
+    protected boolean useTournamentMode;
     private int tournamentActualRounds;
     int tournamentTrainingEndsAfter = 100;
     int tournamentPrintEveryNCountingRounds = 10;
@@ -32,11 +32,11 @@ public class SnakeGameKI extends SnakeGame
      * Wird vom Konstruktor der Oberklasse aufgerufen.
      */
     public void setup() {
-        setUpdateOnGameEndOnly();
         Agent a = new Agent(0.0);    
         Agent b = new Agent(0.0);    
         setPlayers(  a, b);
         setSnakes ( new SnakeKI(), new SnakeKI() );
+        verbose = true;
     }
 
     /**
@@ -117,7 +117,7 @@ public class SnakeGameKI extends SnakeGame
         if (dir==3) s.blickeNachWesten();
         s.setLocation(Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
     }
-    
+
     //#
     public void setName(int id, String name) {
         getSnakes()[id].setzeName(name);
@@ -254,52 +254,29 @@ public class SnakeGameKI extends SnakeGame
         // System.out.println();
         return erg.substring(0, erg.length()-1);
     }
-    //
-    // Rewards
-
-    @Override
-    public double getRewardWin() {
-        return 1;
-    }
-
-    @Override
-    public double getRewardLose() {
-        return -100; // war: 10
-    }
 
     //## -1 wenn Spiel noch laeuft, 0 wenn Spieler 1 verloren hat, 1 wenn Spieler 0 verloren hat
-
     /**
      * Wird nach jedem Zug jedes Teilnehmenden aufgerufen, also oft mehrfach!
      */
     @Override
-    public int getWinner() {
+    public int getWinner() {        
         // bei 1 Schlange: als gewonnen zaehlt, wenn man nicht verloren hat
         if (getSnakes().length==1) {
-            if (getSnakes()[0].gibVerloren()) {
-                getSnakes() [0].setzeVerloren(false);
-                return 1;
-            }
+            if (getSnakes()[0].gibVerloren()) { return 1; }
             return 0;
         }
-        //## bei 3+ Schlangen: System fkt nur kontinuierlicher Bewertung???
+        //## bei 3+ Schlangen: System fkt nur bei kontinuierlicher Bewertung
+        //## denn: wer soll bei 3 Schlangen Gewinner sein (und Belohnung erhalten), wenn 1 Schlange verliert?
         if (getSnakes().length>2) {
             for (int i=0; i<getSnakes().length; i++) {
-                if (getSnakes()[i].gibVerloren()) {
-                    //### only happens when last snake looses
-                    getSnakes() [i].setzeVerloren(false);
-                    // respawn(getSnakes() [i]); 
-                    return -1;
-                }
+                if (getSnakes()[i].gibVerloren()) { return -1; } //### only happens when last snake looses
             }
         }
         // bei 2 Schlangen: als gewonnen zaehlt, wenn die andere verloren hat        
         else {
             for (int i=0; i<getSnakes().length; i++) {
-                if (getSnakes()[i].gibVerloren()) {        
-                    getSnakes()[i].setzeVerloren(false);
-                    return (i+1)%2;
-                }
+                if (getSnakes()[i].gibVerloren()) { return (i+1)%2; }
             }
         }
         return -1;
@@ -308,8 +285,8 @@ public class SnakeGameKI extends SnakeGame
     @Override
     public double getRewardForPlayer(int id) {
         if (getSnakes()[id].gibVerloren()) {
-            getSnakes() [id].setzeVerloren(false);
-            return -10 * 10;
+            getSnakes() [id].setzeVerloren(false); //###
+            return -10;
         }
         else {
             return 10;

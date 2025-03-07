@@ -1,7 +1,7 @@
 
 public class GameRunner extends PlayerManager
 {
-    boolean useSimple = false;
+    // boolean useSimple = false;
 
     //
     // Play rounds
@@ -67,9 +67,10 @@ public class GameRunner extends PlayerManager
     }
 
     protected boolean playNextIteration() {
-        if (useSimple) return this.continueIterationSimple();
+        // if (useSimple) return this.continueIterationSimple();
         // if (useSimple) return this.continueIterationSimpleAlt();
-        else return  this.continueIterationContinuous();
+        // else 
+        return  this.continueIterationContinuous();
     }
 
     /**
@@ -108,33 +109,5 @@ public class GameRunner extends PlayerManager
         return true;
     }
 
-    /**
-     * Active player makes move. 
-     * @return true if to continue, false if end of game
-     */
-    private boolean continueIterationSimple() {
-        //bookkeeping
-        numberOfMoves++;
-
-        //make play
-        players[activePlayer].play();
-
-        //update for all players (and check if game over)
-        boolean gameOver = super.updateAllPlayersSimple();
-        if (!gameOver && game.getLegalMoves().length==0) {
-            if (verbose) System.out.println("No more moves possible!");
-            numberOfDraws++;   
-            players[0].draw(); // unused
-            players[1].draw(); // unused                
-            return false;
-        }
-        if (gameOver) return false;
-        
-        //next player
-        activePlayer = (activePlayer+1)%getPlayers().length;
-        
-        //continue game
-        return true;
-    }
 
 }

@@ -336,14 +336,14 @@ public class Agent
         if (verbose && playerNumber!=0) {
             System.out.print(" (was: "+map.get(currentState).getValue(move));
         }
-        this.increaseValueOfMoveForState(currentState, move, game.getRewardWin());   
+        //# this.increaseValueOfMoveForState(currentState, move, game.getRewardWin());   
         if (verbose && playerNumber!=0) {
             System.out.println(", is: "+map.get(currentState).getValue(move)+")");
         }
     }
 
     public void lost() {
-        if (verbose && playerNumber!=0) {
+                if (verbose && playerNumber!=0) {
             System.out.println("-----------------------------------");
             System.out.println("Player "+playerNumber+" loses! State to change: "+currentState + " (Current state: "+game.getState(playerNumber)+")");
             System.out.print("Losing move: "+move);
@@ -351,7 +351,7 @@ public class Agent
         if (verbose && playerNumber!=0) {
             System.out.print(" (was: "+map.get(currentState).getValue(move));
         }
-        this.increaseValueOfMoveForState(currentState, move, game.getRewardLose());   
+        //# this.increaseValueOfMoveForState(currentState, move, game.getRewardLose());   
         if (verbose && playerNumber!=0) {
             System.out.println(", is: "+map.get(currentState).getValue(move)+")");
         }

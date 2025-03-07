@@ -71,7 +71,7 @@ public class TTTAdapterKI extends AbstractGameWorld implements Game
         Agent opponent = new HumanGreenfootMove(); //waits for input
         opponent.useSimplifiedMoves(false);
         setPlayers( new Agent[] {opponent, trainee} );
-        setVerbose(true);
+        setEverybodyVerbose(true);
         // while (true) {   
         // System.out.println();
         // System.out.println("Continue?");

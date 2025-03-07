@@ -5,7 +5,7 @@ public abstract class AbstractGameWorld extends World implements Game
 {
     //## required
     protected PlayerManager pm;
-    protected boolean verbose = true;
+    protected boolean verbose;
     private boolean stopUpdating = false;
 
     //## optional
@@ -20,9 +20,7 @@ public abstract class AbstractGameWorld extends World implements Game
 
     private boolean displayChanges = true;              // optionaL use observation of changes
     private boolean displayNextMoves = true;
-    private boolean displayWinsLossesStates = true;
-
-    private boolean updateOnlyUponWinLose = true;       // must be false for NeuralAgents
+    private boolean displayStatistics = true;
 
     //
     // Constructors
@@ -33,6 +31,7 @@ public abstract class AbstractGameWorld extends World implements Game
         pm = new PlayerManager();
         setGame(this);
         addObject(new AnzeigeNextMoves(), 0,0); // counts next moves
+        verbose = false;
     }
 
     public AbstractGameWorld() {
@@ -58,39 +57,13 @@ public abstract class AbstractGameWorld extends World implements Game
 
     public final void setDisplayNextMoves(boolean b) { displayNextMoves = b; }
 
-    public final void setDisplayWinsLossesStates(boolean b) { displayWinsLossesStates = b; }
+    public final void setDisplayStatistics(boolean b) { displayStatistics = b; }
 
     public final void setStopUpdating(boolean b) { stopUpdating = b; }
 
-    protected void setUpdateOnEveryMove() { updateOnlyUponWinLose = false; }
+    public final void setPlayers(Agent... p) { pm.setPlayers(p); }
 
-    protected void setUpdateOnGameEndOnly() { //## safety check only made when called after setting up the players
-        if (getPlayers()!=null) {
-            for (Agent a : getPlayers()) {
-                if (a instanceof NeuralAgent) {
-                    System.out.println("====================");
-                    System.out.println("WARNING AGW: Updating on game ending only will not work/produce error");
-                    System.out.println("when at least one NeuralAgent ist part of the players.");
-                    System.out.println("====================");
-                }
-            }
-            System.out.println("====================");
-            System.out.println("WARNING AGW: No players set yet.");
-            System.out.println("====================");
-        } else {
-
-        }
-        updateOnlyUponWinLose = true;
-    }
-
-    public final void setPlayers(Agent... p) { 
-        for (Agent a : p) {
-            if (a instanceof NeuralAgent) updateOnlyUponWinLose = false;   
-        }
-        pm.setPlayers(p); 
-    }
-
-    public void setVerbose(boolean b) {
+    public void setEverybodyVerbose(boolean b) {
         verbose = b;
         pm.setVerbose(b); // which includes all the Agents!
     }
@@ -102,7 +75,6 @@ public abstract class AbstractGameWorld extends World implements Game
         String erg = "";
         for (int i : getLegalMoves()) erg = erg+",";
         return erg.substring(0, erg.length()-1);
-        //return erg;
     }
 
     private int getMax(double [] values) {
@@ -116,8 +88,8 @@ public abstract class AbstractGameWorld extends World implements Game
     }
 
     //
-
     // display
+    
     protected void showMessage(String s) {
         showText(s, getWidth()/2, (int) (getHeight()*0.9)); 
     }
@@ -142,15 +114,11 @@ public abstract class AbstractGameWorld extends World implements Game
     }
 
     public void showNextMoves(int id) {
-        if (pm.getPlayers()==null) {
-            // System.out.println("AGW: regular game, no AI, no next move"); //# regular game
-            return;
-        }     
+        if (pm.getPlayers()==null) { return; }     
         showNextMoves(id, getWidth()/2, getHeight()/2); 
     }
 
     public void showNextMoves(int id, int x, int y) {
-        if (!verbose) return;
         showText(getNextMoves(id), x, y); 
     }
 
@@ -176,12 +144,6 @@ public abstract class AbstractGameWorld extends World implements Game
 
         lastm = "\nLast move: "+getNameForMove(getPlayers()[0].getMove());
 
-        // if (getMovesNames().length>0) { // if there are names for the moves 
-        // lastm = "\nLast move: "+getNameForMove(getPlayers()[0].getMove());
-        // }
-        // else { // otherwise, use the moves, which are ints
-        // lastm = "\nLast move: "+getPlayers()[0].getMove();
-        // }
         result = result + lastm;
         return result; 
     }
@@ -207,8 +169,7 @@ public abstract class AbstractGameWorld extends World implements Game
         }
         //update, or stop learning after some time
         if (!stopLearning || wins<100) {
-            if (updateOnlyUponWinLose) pm.updateAllPlayersSimple();
-            else pm.updateAllPlayersSmart();
+            pm.updateAllPlayersSmart();
         }
 
     }
@@ -218,7 +179,7 @@ public abstract class AbstractGameWorld extends World implements Game
         int posy = getHeight()/6;
 
         //# optional: observe changes
-        if (verbose && displayChanges) {
+        if (displayChanges) {
             double newValue = getPlayers(0).getMoves(getPlayers(0).getState()).getValue(observedMove);
             String message = "No changes.\n ";
             if (newValue!=observedValue) {
@@ -239,7 +200,6 @@ public abstract class AbstractGameWorld extends World implements Game
         if (breakPeriodicallyAfterSoManyWins>0) {
             if (!hasBreaked && wins%breakPeriodicallyAfterSoManyWins==0) {
                 hasBreaked = true;
-                //getPlayers(1).setVerbose(true);
                 Greenfoot.stop();
             } 
             else if (wins%breakPeriodicallyAfterSoManyWins==1) {
@@ -248,13 +208,23 @@ public abstract class AbstractGameWorld extends World implements Game
         }
 
         //# count wins/losses, bookkeeping only
-        // might have to change for more than two outcomes 
-        int winner = getWinner();
-        if (winner==0) wins++;
-        else if (winner == 1) losses++;
+        //##  problematic: calls getWinner() a *second* time (1st time is for updating),
+        //#which might be confusing
+        // will have to change for more than two outcomes 
 
+        if (experimental) {
+            if (winnerCurrentRound==0) wins++;
+            else if (winnerCurrentRound == 1) losses++;
+        }
+        else {
+            if (false) {
+                int winner = getWinner();
+                if (winner==0) wins++;
+                else if (winner == 1) losses++;
+            }
+        }
         //# optional: displaying numbers of wins, losses, states
-        if (verbose && displayWinsLossesStates) {
+        if (displayStatistics) {
             String temp = "Wins: "+wins;
             temp = temp + "\nLosses: "+losses;
             double ratio = ((wins*1.0)/losses);
@@ -267,11 +237,17 @@ public abstract class AbstractGameWorld extends World implements Game
 
     }
 
+    int winnerCurrentRound = -1;
+    boolean experimental= true; //## wird spater mal erklaert
+
     public boolean continueIteration() { 
         if (getPlayers()==null) return true;        //so you can play regular game without any changes -> move elsewhere?
         for (Agent a : getPlayers()) a.play();      // make move -> state change
-        learnFromResults();                         // learn
-        checkOptionalElements();                  // what it says
+        if (experimental) {
+            winnerCurrentRound = getWinner();   //################################            
+        }
+        learnFromResults();                         // learn;: uses winner
+        checkOptionalElements();                  // what it says; uses winner
         return true; 
     }
 
@@ -310,23 +286,11 @@ public abstract class AbstractGameWorld extends World implements Game
     @Override
     public int getWinner() { return -1; }
 
-    //relevant ONLY for simple non-continuous, checked not every move, but only upon game ending
-    @Override
-    public double getRewardWin() {  return 1; }
-
-    //relevant ONLY for simple non-continuous, , checked not every move, but only upon game ending
-    @Override
-    public double getRewardLose() {  return -1; }
-
     //###
     //###
     //###
     //###
     //###
-
-    public void updateAllPlayersSimple() {
-        if (!stopUpdating) pm.updateAllPlayersSimple();
-    }
 
     public void updateAllPlayersSmart() {
         if (!stopUpdating) pm.updateAllPlayersSmart();

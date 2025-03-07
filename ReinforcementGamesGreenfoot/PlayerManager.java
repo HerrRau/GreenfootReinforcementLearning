@@ -102,7 +102,16 @@ public class PlayerManager
     //
 
     public boolean updateAllPlayersSimple() {
-        int winner = game.getWinner();
+        int winner = -1;
+        if (((AbstractGameWorld)game).experimental) {
+            winner = ((AbstractGameWorld)game).winnerCurrentRound; //#################1
+        }
+        else {
+            winner = game.getWinner();
+
+        }
+
+        
         boolean gameOver = false;       
         //verbose = true;
         for (int playerID=0; playerID<players.length; playerID++) {  

@@ -55,11 +55,6 @@ public interface Game
     //relevant for continuous updates only (smart or naive)
     public double getRewardForPlayer(int playerID);
 
-    // relevant for simple rewarding only - called in Agent.won()
-    double getRewardWin();
-
-    // relevant for simple rewarding only - called in Agent.lost()
-    double getRewardLose();
     
 
 }

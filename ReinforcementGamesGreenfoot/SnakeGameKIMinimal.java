@@ -4,7 +4,6 @@ public class SnakeGameKIMinimal extends SnakeGame
 {
 
     public void setup() {
-        setUpdateOnGameEndOnly();
         Agent a = new Agent(0.0);    
         setPlayers( a );
         setSnakes( new SnakeKI() );
@@ -61,18 +60,9 @@ public class SnakeGameKIMinimal extends SnakeGame
         (getSnakes()[playerID].istFreiWesten() ? 1:0);
     }
 
-    @Override public double getRewardWin() {
-        return 1;
-    }
-
-    @Override public double getRewardLose() {
-        return -10;
-    }
-
     @Override public int getWinner() {
         if (getSnakes().length==1) {
             if (getSnakes()[0].gibVerloren()) {
-                getSnakes() [0].setzeVerloren(false);
                 return 1;
             }
             return 0;
@@ -81,7 +71,6 @@ public class SnakeGameKIMinimal extends SnakeGame
         if (getSnakes().length>2) {
             for (int i=0; i<getSnakes().length; i++) {
                 if (getSnakes()[i].gibVerloren()) {
-                    getSnakes() [i].setzeVerloren(false);
                     respawn(getSnakes() [i]);
                     return -1;
                 }
@@ -90,7 +79,6 @@ public class SnakeGameKIMinimal extends SnakeGame
 
         for (int i=0; i<getSnakes().length; i++) {
             if (getSnakes()[i].gibVerloren()) {        
-                getSnakes()[i].setzeVerloren(false);
                 return (i+1)%2;
             }
         }
@@ -104,8 +92,7 @@ public class SnakeGameKIMinimal extends SnakeGame
             return -10;
         }
         else {
-            return 10;
-
+            return 1;
         }
     }
 

@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class BreakoutGameKIMinimal extends BreakoutGame {
     //
-    // Uberschreiben von Breakout-spezifische Methoden, und Hilfsmethoden
+    // Uberschreiben von Breakout-spezifischen Methoden, und Hilfsmethoden
 
     @Override    
     public void setup() {
@@ -53,11 +53,11 @@ public class BreakoutGameKIMinimal extends BreakoutGame {
         return "" + (schlaeger.getX() - kugel.getX())/10;
     }
 
-    @Override
-    public double getRewardWin() { return 10; }
+    // @Override
+    // public double getRewardWin() { return 10-9; }
 
-    @Override
-    public double getRewardLose() { return -5; }
+    // @Override
+    // public double getRewardLose() { return -5+4; }
 
     @Override
     public int getWinner() {
@@ -71,10 +71,8 @@ public class BreakoutGameKIMinimal extends BreakoutGame {
 
     @Override
     public double getRewardForPlayer(int id) {
-        if (kugel.beruehrtSchlaeger()) return 2;
-        else if (kugel.getY()>219) {
-            return -5 * berechneEntfernung(kugel.getX(), kugel.getY(), schlaeger.getX(), schlaeger.getY());
-        }
+        if (kugel.beruehrtSchlaeger()) return 10;
+        else if (istImAus()) return -10;
         else return 0;
     }
 

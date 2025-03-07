@@ -29,7 +29,7 @@ public class BreakoutScenarios extends BreakoutGameKI
                     break;
                 }
             case 2: {
-                    setRewardType(1);
+                    setRewardType(0); //#mit 1: nicht besonders gut
                     setStateType(0);
                     NeuralAgent a = new NeuralAgent(1,10,3,0.0);
                     a.setVerbose(false);

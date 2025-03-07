@@ -160,4 +160,13 @@ public class TicTacToe extends AbstractGame
         return 0;
     }
 
+    public double getRewardForPlayer(int playerID) {
+        int i = getWinner();
+        if (i==playerID) return 10; //# Spieler hat gewonnen
+        else if (i>=0) return 10;   //# anderer Spieler hat gewonnen
+        else return -1;             //# Spiel läuft noch
+        //###draw????
+
+    }
+
 }

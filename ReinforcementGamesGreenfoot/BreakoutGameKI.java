@@ -11,7 +11,7 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
 
     // state
     protected int stateType = 0;
- 
+
     // reward systemaw
     protected int rewardType;
     // 0 Original
@@ -23,10 +23,11 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
 
     @Override    
     public void setup() {
-        setActOrder( new Class[]{ BreakoutElement.class, AnzeigeNextMoves.class }); //#####
+        setActOrder( BreakoutElement.class, AnzeigeNextMoves.class ); //#####
         schlaeger = new SchlaegerKI();
         addObject(schlaeger, 360/2, 480-20);   
-        setPlayers( new Agent []{ new Agent(0.0) } );    
+        setPlayers( new Agent(0.0)  );    
+        verbose = true;
     }
 
     @Override
@@ -46,6 +47,7 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
     public double getInitialValue() { return 1; }
 
     protected void setRewardType(int i) { rewardType = i; }
+
     protected void setStateType(int i) { 
         stateType = 0; 
     }
@@ -106,20 +108,20 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
     // (used for simple reward system only)
     @Override
     public int getWinner() {
-        if (kugel.beruehrtSchlaeger()) return 0; // Spieler 0 (der einzige) ist Gewinner
+        if (verbose) System.out.print("Breakout get winner called: ");
+        if (kugel.beruehrtSchlaeger()) {
+            if (verbose) System.out.println("0");
+            return 0; // Spieler 0 (der einzige) ist Gewinner
+        }
         // else if (kugel.getY()>kugel.getWorld().getHeight()-3 ) return   2; //#vgl unten
         else if (istImAus()) {
             kugel.respawn();
+            if (verbose) System.out.println("1");
             return 1; //Spieler 0 hat verloren
         }
+        if (verbose) System.out.println("-1 - no changes");
         return -1; //Spiel laeuft noch
     }
-
-    @Override
-    public double getRewardWin() { return 10; }
-
-    @Override
-    public double getRewardLose() { return -5; }
 
     @Override
     public double getRewardForPlayer(int id) {

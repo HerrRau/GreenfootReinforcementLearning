@@ -60,7 +60,6 @@ public class AutoGameKI extends AutoGame //implements Game
         setActOrder( new Class[]{ AutoElement.class, AnzeigeNextMoves.class }); //#####
         addObject(new AnzeigeNextMoves(), 0,0); // counts next moves
         setAuto (new Auto() );
-        setUpdateOnEveryMove();
     }
 
     
@@ -95,14 +94,6 @@ public class AutoGameKI extends AutoGame //implements Game
 
     @Override public double getInitialValue() {
         return 0;
-    }
-
-    @Override public double getRewardWin() {
-        return 1;
-    }
-
-    @Override public double getRewardLose() {
-        return -1;
     }
 
     @Override public int [] getLegalMoves() {

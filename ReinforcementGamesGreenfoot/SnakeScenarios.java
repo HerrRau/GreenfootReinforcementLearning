@@ -25,31 +25,32 @@ public class SnakeScenarios extends SnakeGameKI
 
         //# 15: 1 Neural Agent, Typ 3
         //# 16: 1 Agent, Typ 3.
-        setupScenario(14);
+        //# 17: 4 Agent, Typ 0
+        // setupScenario(14);
+        setupScenario(0+17);
     }
 
     // state 1 wie 2: gute orthogonale Abdeckung, aber keine Spiralen
 
     public void setupScenario(int option) {
         verbose = true;
-        setDisplayWinsLossesStates(false);
+        setDisplayStatistics(false);
         setDisplayChanges(false);
         setStateType(0);
         setRestartAllSnakesUponWin(true);
-        int inputs = 4; // 
+        int inputs = 4; //  
         int outputs = 4; //NOSW
         switch (option)  {
             case 0: {
-                    setUpdateOnGameEndOnly();
                     setSnakes( new SnakeKI() );
                     Agent a;
                     a = new Agent(0.0);    
                     setPlayers( new Agent[] { a } );
                     showMessage("1 Agent (Q-Table)");
-                    break;
+                    verbose = true;
+                    break;                    
                 }
             case 1: {
-                    setUpdateOnGameEndOnly();
                     setSnakes( new SnakeKI(), new SnakeAutoMax()  );
                     Agent a;
                     a = new Agent(0.0);    
@@ -59,7 +60,6 @@ public class SnakeScenarios extends SnakeGameKI
                 }
             case 2: {
                     //# 1 NeuralAgent, state 0
-                    setUpdateOnEveryMove();
                     setSnakes( new SnakeKI() );
                     Agent a;
                     a = new NeuralAgent(inputs,12,inputs,0.0);
@@ -97,7 +97,6 @@ public class SnakeScenarios extends SnakeGameKI
                 }
             case 5: {
                     //# 1 NeuralAgent, 1 Agent, 1 AutoMax
-                    setUpdateOnEveryMove();
                     Agent a = new NeuralAgent(inputs, 12, outputs, 0.0);
                     a.setVerbose(false);
                     Agent b = new Agent(0.0);
@@ -109,7 +108,6 @@ public class SnakeScenarios extends SnakeGameKI
                 }
             case 6: {
                     //# 1 NeuralAgent, 1 Agent, 1 AutoMax - type 2
-                    setUpdateOnEveryMove();
                     Agent a = new NeuralAgent(inputs, 12, outputs, 0.0);
                     a.setVerbose(false);
                     Agent b = new Agent(0.0);
@@ -121,7 +119,6 @@ public class SnakeScenarios extends SnakeGameKI
                 }
             case 7: {
                     //# 1 NeuralAgent, 1 Agent, 1 AutoMax - type 2
-                    setUpdateOnEveryMove();
                     inputs = 3*3;
                     Agent a = new NeuralAgent(inputs, 90, outputs, 0.0);
                     a.setVerbose(false);
@@ -170,12 +167,10 @@ public class SnakeScenarios extends SnakeGameKI
                     setRestartAllSnakesUponWin(true);
                     setStateType(4);
                     setDisplayChanges(true);
-                    setUpdateOnEveryMove();
                     break;
                 }
             case 13: {
                     //# 2 NeuralAgent, 1 AutoMax with experimental distance state!
-                    setUpdateOnEveryMove();
                     Agent a = new NeuralAgent(inputs, 10, outputs, 0.0);
                     a.setVerbose(false);
                     Agent b = new NeuralAgent(inputs, 10, outputs, 0.0);
@@ -188,7 +183,6 @@ public class SnakeScenarios extends SnakeGameKI
                 }
             case 14: {
                     //# 1 NeuralAgent, 1 AutoMax with state 4
-                    setUpdateOnEveryMove();
                     Agent a = new NeuralAgent(inputs, 10, outputs, 0.0);
                     a.setVerbose(false);
                     setSnakes( new SnakeKI(), new SnakeAutoMax() );
@@ -208,7 +202,6 @@ public class SnakeScenarios extends SnakeGameKI
                     setRestartAllSnakesUponWin(true);
                     setStateType(3);
                     setDisplayChanges(true);
-                    setUpdateOnEveryMove();
                     break;
                 }
             case 16: {
@@ -220,8 +213,29 @@ public class SnakeScenarios extends SnakeGameKI
                     setRestartAllSnakesUponWin(true);
                     setStateType(2);
                     setDisplayChanges(true);
-                    // setUpdateOnEveryMove();
-                    setUpdateOnGameEndOnly();
+                    break;
+                }
+            case 17: {
+                //# BELOHNUNG bei 3+ Spielern kann nicht funktionieren, wenn nur am Spielende belohnt wird!!!
+                    // setSnakes( new SnakeKI(), new SnakeKI() , new SnakeKI() );
+                    setSnakes( new SnakeKI() );
+                    Agent n = new NeuralAgent(4,10,4,0.0);   
+                    n.setVerbose(false);
+                    Agent a = new Agent(0.0);   
+                    a.setVerbose(false);
+                    Agent b = new Agent(0.0);   
+                    b.setVerbose(false);
+                    Agent c = new Agent(0.0);   
+                    c.setVerbose(false);
+                    setPlayers( a, b, c);
+                    // setPlayers( a, b);
+                    setPlayers( a );
+                    // setPlayers( n );
+                    setRestartAllSnakesUponWin(true);
+                    // setStateType(0);
+                    setDisplayChanges(true);
+                    experimental = false; //## again, why this?
+                    experimental = true ;
                     break;
                 }
         }
