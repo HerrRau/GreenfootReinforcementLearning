@@ -56,17 +56,17 @@ public class BreakoutGameKIMinimal extends BreakoutGame {
     @Override
     public int getWinner() {
         if (kugel.beruehrtSchlaeger()) return 0;
-        else if (istImAus()) {
-            kugel.respawn();
-            return 1;
-        }
+        else if (istImAus()) { return 1; }
         return -1;
     }
 
     @Override
     public double getRewardForPlayer(int id) {
         if (kugel.beruehrtSchlaeger()) return 10;
-        else if (istImAus()) return -10;
+        else if (istImAus()) {
+            kugel.respawn();
+            return -10;   
+        }
         else return 0;
     }
 

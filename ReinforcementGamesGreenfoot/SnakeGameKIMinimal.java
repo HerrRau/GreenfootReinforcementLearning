@@ -62,25 +62,18 @@ public class SnakeGameKIMinimal extends SnakeGame
 
     @Override public int getWinner() {
         if (getSnakes().length==1) {
-            if (getSnakes()[0].gibVerloren()) {
-                return 1;
-            }
+            if (getSnakes()[0].gibVerloren()) { return 1; }
             return 0;
         }
 
         if (getSnakes().length>2) {
             for (int i=0; i<getSnakes().length; i++) {
-                if (getSnakes()[i].gibVerloren()) {
-                    respawn(getSnakes() [i]);
-                    return -1;
-                }
+                if (getSnakes()[i].gibVerloren()) { return -1; }
             }
         }
 
         for (int i=0; i<getSnakes().length; i++) {
-            if (getSnakes()[i].gibVerloren()) {        
-                return (i+1)%2;
-            }
+            if (getSnakes()[i].gibVerloren()) { return (i+1)%2; }
         }
 
         return -1;
@@ -89,6 +82,7 @@ public class SnakeGameKIMinimal extends SnakeGame
     @Override public double getRewardForPlayer(int id) {
         if (getSnakes()[id].gibVerloren()) {
             getSnakes() [id].setzeVerloren(false);
+            respawn(getSnakes() [id]);
             return -10;
         }
         else {

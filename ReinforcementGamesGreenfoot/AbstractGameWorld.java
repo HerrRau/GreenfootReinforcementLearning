@@ -89,7 +89,7 @@ public abstract class AbstractGameWorld extends World implements Game
 
     //
     // display
-    
+
     protected void showMessage(String s) {
         showText(s, getWidth()/2, (int) (getHeight()*0.9)); 
     }
@@ -169,8 +169,8 @@ public abstract class AbstractGameWorld extends World implements Game
         }
         //update, or stop learning after some time
         if (!stopLearning || wins<100) {
-             pm.updateAllPlayersSmart();
-             //##pm.updateAllPlayersSimple(); //## find a way to offer this as an option?
+            pm.updateAllPlayersSmart();
+            //##pm.updateAllPlayersSimple(); //## find a way to offer this as an option?
         }
 
     }
@@ -209,21 +209,10 @@ public abstract class AbstractGameWorld extends World implements Game
         }
 
         //# count wins/losses, bookkeeping only
-        //##  problematic: calls getWinner() a *second* time (1st time is for updating),
-        //#which might be confusing
-        // will have to change for more than two outcomes 
-
-        if (experimental) {
-            if (winnerCurrentRound==0) wins++;
-            else if (winnerCurrentRound == 1) losses++;
-        }
-        else {
-            if (false) {
-                int winner = getWinner();
-                if (winner==0) wins++;
-                else if (winner == 1) losses++;
-            }
-        }
+        int winner = getWinner();
+        if (winner==0) wins++;
+        else if (winner == 1) losses++;
+    
         //# optional: displaying numbers of wins, losses, states
         if (displayStatistics) {
             String temp = "Wins: "+wins;
@@ -238,15 +227,9 @@ public abstract class AbstractGameWorld extends World implements Game
 
     }
 
-    int winnerCurrentRound = -1;
-    boolean experimental= true; //## wird spater mal erklaert
-
     public boolean continueIteration() { 
         if (getPlayers()==null) return true;        //so you can play regular game without any changes -> move elsewhere?
         for (Agent a : getPlayers()) a.play();      // make move -> state change
-        if (experimental) {
-            winnerCurrentRound = getWinner();   //################################            
-        }
         learnFromResults();                         // learn;: uses winner
         checkOptionalElements();                  // what it says; uses winner
         return true; 
@@ -282,6 +265,5 @@ public abstract class AbstractGameWorld extends World implements Game
     //
     @Override
     public int getWinner() { return -1; }
-
 
 }

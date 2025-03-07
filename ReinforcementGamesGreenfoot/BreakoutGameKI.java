@@ -68,14 +68,7 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
         int kugelX = kugel.getX();
         int kugelY = kugel.getY();
         int kugelRotation = kugel.getRotation();
-        //return "x"+kugelX/20+":y"+kugelY/40+":r"+ kugelRotation/20+":x"+schlaegerX/20;
         return kugelX/20+":"+kugelY/40+":"+ kugelRotation/20+":"+schlaegerX/20;
-        // if (kugelY>getHeight()/2) {
-        // return "x"+kugelX/20+"|y"+kugelY/20+":r"+ kugelRotation/20+":x"+schlaegerX/20;
-        // }
-        // else {
-        // return "x"+kugelX/20+":y"+"?"+":r"+ kugelRotation/20+":x"+schlaegerX/20;
-        // }
     }
 
     protected String getStateXDifferenceOnly() {
@@ -111,7 +104,6 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
         if (kugel.beruehrtSchlaeger()) {
             return 0; // Spieler 0 (der einzige) ist Gewinner
         }
-        // else if (kugel.getY()>kugel.getWorld().getHeight()-3 ) return   2; //#vgl unten
         else if (istImAus()) {
             kugel.respawn();
             return 1; //Spieler 0 hat verloren

@@ -101,16 +101,10 @@ public class PlayerManager
     // Updating
     //
 
+    //# unused, at present
     public boolean updateAllPlayersSimple() {
         int winner = -1;
-        if (((AbstractGameWorld)game).experimental) {
-            winner = ((AbstractGameWorld)game).winnerCurrentRound; //#################1
-        }
-        else {
             winner = game.getWinner();
-
-        }
-        
         boolean gameOver = false;       
         //verbose = true;
         for (int playerID=0; playerID<players.length; playerID++) {  
@@ -133,7 +127,10 @@ public class PlayerManager
         return gameOver;
     }
 
-    public void updateAllPlayersSmart() {
+    public void updateAllPlayersSmart() {       
+        
+        // if (game.getWinner()<0) return;
+        
         for (int i=0; i<players.length; i++) {
             int move = players[i].getMove();
             String stateOld = players[i].getState();

@@ -216,9 +216,8 @@ public class SnakeScenarios extends SnakeGameKI
                     break;
                 }
             case 17: {
-                //# BELOHNUNG bei 3+ Spielern kann nicht funktionieren, wenn nur am Spielende belohnt wird!!!
-                    // setSnakes( new SnakeKI(), new SnakeKI() , new SnakeKI() );
-                    setSnakes( new SnakeKI() );
+                    setSnakes( new SnakeKI(), new SnakeKI() , new SnakeKI() );
+                    // setSnakes( new SnakeKI() );
                     Agent n = new NeuralAgent(4,10,4,0.0);   
                     n.setVerbose(false);
                     Agent a = new Agent(0.0);   
@@ -228,14 +227,8 @@ public class SnakeScenarios extends SnakeGameKI
                     Agent c = new Agent(0.0);   
                     c.setVerbose(false);
                     setPlayers( a, b, c);
-                    // setPlayers( a, b);
-                    setPlayers( a );
-                    // setPlayers( n );
                     setRestartAllSnakesUponWin(true);
-                    // setStateType(0);
                     setDisplayChanges(true);
-                    experimental = false; //## again, why this?
-                    experimental = true ;
                     break;
                 }
         }
