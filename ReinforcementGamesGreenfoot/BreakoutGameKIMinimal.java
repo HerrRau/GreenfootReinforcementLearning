@@ -10,7 +10,6 @@ public class BreakoutGameKIMinimal extends BreakoutGame {
         schlaeger = new SchlaegerKI();
         addObject(schlaeger, 360/2, 480-20);   
         setPlayers( new Agent(0.0) );
-        // setUpdateOnGameEndOnly(); //geht schneller, ist aber nicht der Standardfall
     }
 
     @Override
@@ -72,10 +71,8 @@ public class BreakoutGameKIMinimal extends BreakoutGame {
 
     @Override
     public double getRewardForPlayer(int id) {
-        if (kugel.beruehrtSchlaeger()) return 2;
-        else if (kugel.getY()>219) {
-            return -5 * berechneEntfernung(kugel.getX(), kugel.getY(), schlaeger.getX(), schlaeger.getY());
-        }
+        if (kugel.beruehrtSchlaeger()) return 10;
+        else if (istImAus()) return -10;
         else return 0;
     }
 
