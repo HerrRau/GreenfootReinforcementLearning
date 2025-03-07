@@ -53,12 +53,6 @@ public class BreakoutGameKIMinimal extends BreakoutGame {
         return "" + (schlaeger.getX() - kugel.getX())/10;
     }
 
-    // @Override
-    // public double getRewardWin() { return 10-9; }
-
-    // @Override
-    // public double getRewardLose() { return -5+4; }
-
     @Override
     public int getWinner() {
         if (kugel.beruehrtSchlaeger()) return 0;

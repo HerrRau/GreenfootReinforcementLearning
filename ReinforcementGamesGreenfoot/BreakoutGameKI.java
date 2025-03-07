@@ -13,7 +13,7 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
     protected int stateType = 0;
 
     // reward systemaw
-    protected int rewardType;
+    protected int rewardType; 
     // 0 Original
     // 1 Schwierig
     // 2 simplified original
@@ -108,18 +108,14 @@ public class BreakoutGameKI extends BreakoutGame //implements Game
     // (used for simple reward system only)
     @Override
     public int getWinner() {
-        if (verbose) System.out.print("Breakout get winner called: ");
         if (kugel.beruehrtSchlaeger()) {
-            if (verbose) System.out.println("0");
             return 0; // Spieler 0 (der einzige) ist Gewinner
         }
         // else if (kugel.getY()>kugel.getWorld().getHeight()-3 ) return   2; //#vgl unten
         else if (istImAus()) {
             kugel.respawn();
-            if (verbose) System.out.println("1");
             return 1; //Spieler 0 hat verloren
         }
-        if (verbose) System.out.println("-1 - no changes");
         return -1; //Spiel laeuft noch
     }
 
