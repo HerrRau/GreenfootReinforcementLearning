@@ -92,16 +92,13 @@ Hier geht es um den Zustand des Spiels. Manchmal ist der für jeden Spieler ande
 Eine der schwierigsten Entscheidungen: Wie man den Zustand codiert. Er solle zur leichteren Weiterverarbeitung später nur aus durch Doppelpunkte getrennten Ganzzahlen bestehen. Im Beispiel ist der Zustand einfach die Differenz zwischen x-Position von Kugel und Schläger. Damit ist viel wesentliche Information für eine Lösung enthalten, andere mögliche Zustände wären eine Kombinationen von x- und y-Position von Kugel und Schläger, und Blickrichtung der Kugel, eventuell noch ihre Geschwindigkeit, wenn es verschiedene Geschwindigkeiten gibt. Hier wird man viel experimentieren wollen. Deshalb enthält diese Methode in den tatsächlichen KI-Klassen auch meist einen switch, um einfach Verschiedenes ausprobieren zu können.  
 Im Beispiel sind die Zustände also "0" oder "-1" oder "-10" oder "8", Doppelpunkte tauchen gar nicht auf, weil es ich ja nur um einen einzigen Wert handelt. In der Klasse `BreakoutGameKI` gibt es Alternativen, die dann etwa das Format "10:20:40:8" haben.
 
-`public double getRewardWin() { return 10; }`  
-`public double getRewardLose() { return -5; }`  
 `public int getWinner()`  
-Diese drei Methoden gehören zu einem einfachen, rudimentären Belohnungssystem, das nur für wenige Spiele relevant ist und eher zur Demonstration dient. Es funktioniert nicht bei NeuralAgents. In jedem Schritt wird hier überprüft, ob man _gewonnen_ oder _verloren_ hat. Und nur wenn man _gewonnen_ hat, gibt es eine positive Belohnung, deren Wert hier angegeben werden kann. Wenn man _verloren_ hat, gibt es eine negative Belohnung. Wenn das Spiel noch läuft, gibt es bei diesem einfachen Fall gar keine Belohnung.  
-Die Methode `getWinner` wird regelmäßig aufgerufen und gibt zurück, ob das Spiel gewonnen wurde gewonnen hat (Rückgabewert 0 für Spieler 0, und das führt dann zur oben genannten positiven Belohnung), oder verloren hat  (Rückgabewert 1, und das führt dann zur oben genannten negativen Belohnung), oder ob das Spiel noch läuft (Rückgabe -1, oder irgendetwas <0). Bei mehr als 2 Spielteilnehmern kann man das System gar nicht verwenden. Beim System der kontinuierlichen Bewertung werden die Methoden `getRewardWin()` und `getRewardLose()` überhaupt nie aufgerufen.  
-Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
+Diese Methoden wird herangezogen um zu ermitteln, wer das Spiel gewonnen hat. Sie wird unabhängig von den Belohnungen aufgerufen, sollte also nichts am Zustand der Welt in einer Form ändern, die etwas an der Belohnung ändern würde. Die Methode gibt zurück, ob das Spiel gewonnen wurde (Rückgabewert 0 für Spieler 0) oderman  verloren hat  (Rückgabewert 1, beziehungsweise eine andere Zahl > 0) oder ob das Spiel noch läuft (Rückgabe -1, oder irgendetwas <0). Tatsächlich ist diese Methode eher für die Statistik wichtig.
 
 `public double getRewardForPlayer(int id)`  
-Das ist das eigentliche, universellere Belohnungssystem. Hier wird ebenfalls mit dem Aufruf von `getWinner()` regelmäßig überprüft, ob das Spiel beendet ist; aber nach `jeder` einzelnen Entscheidung, egal ob sie zu Sieg oder Niederlage führt oder gar nichts, wird belohnt. Die anderen beiden Belohnungsmethoden spielen keine Rolle.  
+Das ist das eigentliche Belohnungssystem. Nach `jeder` einzelnen Entscheidung wird diese Methode aufgerufen. 
 Für das Breakout wird hier die 10 zurückgegeben für die Berührung mit dem Schläger, und -10, wenn der Ball im Aus ist, ansonstn 0. Auch hier kann man sich sehr viel verschiedene Varianten denken. 
+Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
 
 (Welche Belohnungsvariante man sich aussucht, wird mit den Methoden `setUpdateOnEveryMove` beziehungsweise `setUpdateOnGameEndOnly` festgelegt, dazu später mehr. Standard ist die kontinuierliche Bewertung/Belohnung.)
 
@@ -158,13 +155,7 @@ Hier die Klasse dazu:
         public String getState(int irrelevantPlayerID) {
             return "" + (schlaeger.getX() - kugel.getX())/10;
         }
-    
-        @Override
-        public double getRewardWin() { return 10; }
-    
-        @Override
-        public double getRewardLose() { return -5; }
-    
+        
         @Override
         public int getWinner() {
             if (kugel.beruehrtSchlaeger()) return 0;
@@ -174,7 +165,7 @@ Hier die Klasse dazu:
             }
             return -1;
         }
-    
+        
         @Override
         public double getRewardForPlayer(int id) {
             if (kugel.beruehrtSchlaeger()) return 10;
