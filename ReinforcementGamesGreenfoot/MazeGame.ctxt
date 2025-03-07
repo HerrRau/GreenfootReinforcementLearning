@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=MazeGame
+comment1.params=
+comment1.target=MazeGame()
+comment2.params=
+comment2.target=void\ setup()
+comment3.params=
+comment3.target=void\ setLevel()
+numComments=4
