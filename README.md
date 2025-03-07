@@ -100,8 +100,8 @@ Die Methode `getWinner` wird regelmäßig aufgerufen und gibt zurück, ob das Sp
 Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
 
 `public double getRewardForPlayer(int id)`  
-Das ist das eigentliche, universellere Belohnungssystem. Hier wird ebenfalls mit dem Aufruf von `getWinner()` regelmäßig überprüft, ob das Spiel beendet ist; aber nach `jeder` einzelnen Entscheidung, egal ob sie zu Sieg oder Niederlage führt oder gar nichts, wird belohnt.  
-Für das Breakout wird hier die 0 zurückgegeben, wenn sich die Kugel in der oberen Spielfeldhälfte befindet, 2 für die Berührung mit dem Schläger, und ansonsten eine negative Belohnung, deren Wert von der kartesischen Entfernung zwischen Kugel und Schläger abhängt. Auch hier kann man sich sehr viel verschiedene Varianten denken. Mit dieser Art der Belohnung lernt das Breakout-System langsamer als mit der anderen, aber das ist nicht typisch.
+Das ist das eigentliche, universellere Belohnungssystem. Hier wird ebenfalls mit dem Aufruf von `getWinner()` regelmäßig überprüft, ob das Spiel beendet ist; aber nach `jeder` einzelnen Entscheidung, egal ob sie zu Sieg oder Niederlage führt oder gar nichts, wird belohnt. Die anderen beiden Belohnungsmethoden spielen keine Rolle.  
+Für das Breakout wird hier die 10 zurückgegeben für die Berührung mit dem Schläger, und -10, wenn der Ball im Aus ist, ansonstn 0. Auch hier kann man sich sehr viel verschiedene Varianten denken. 
 
 (Welche Belohnungsvariante man sich aussucht, wird mit den Methoden `setUpdateOnEveryMove` beziehungsweise `setUpdateOnGameEndOnly` festgelegt, dazu später mehr. Standard ist die kontinuierliche Bewertung/Belohnung.)
 
@@ -177,12 +177,10 @@ Hier die Klasse dazu:
     
         @Override
         public double getRewardForPlayer(int id) {
-          if (kugel.beruehrtSchlaeger()) return 2;
-          else if (kugel.getY()>219) {
-            return -5 * berechneEntfernung(kugel.getX(),kugel.getY(),schlaeger.getX(),schlaeger.getY());
-          }
-          else return 0;
-      }
+            if (kugel.beruehrtSchlaeger()) return 10;
+            else if (istImAus()) return -10;
+            else return 0;
+        }
     }
 
 ### Praktische Hilfsmethoden
