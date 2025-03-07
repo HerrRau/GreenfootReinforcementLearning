@@ -26,7 +26,7 @@ public class BreakoutScenarios extends BreakoutGameKI
                     schlaeger.useWrapAround = true;
                     setRewardType(0);
                     setStateType(0);
-                    break;
+                         break;
                 }
             case 2: {
                     setRewardType(0); //#mit 1: nicht besonders gut

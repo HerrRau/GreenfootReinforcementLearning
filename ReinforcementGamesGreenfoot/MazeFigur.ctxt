@@ -2,6 +2,7 @@
 comment0.target=MazeFigur
 comment1.params=
 comment1.target=MazeFigur()
+<<<<<<< HEAD
 comment2.params=x\ y
 comment2.target=void\ bewegeDichUm(int,\ int)
 comment3.params=x
@@ -13,3 +14,26 @@ comment5.target=boolean\ istFrei(int,\ int)
 comment6.params=
 comment6.target=void\ act()
 numComments=7
+=======
+comment10.params=x\ y
+comment10.target=void\ bewegeDichUm(int,\ int)
+comment11.params=
+comment11.target=void\ act()
+comment2.params=r\ u\ l\ o
+comment2.target=void\ MazeFigur(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment3.params=r\ u\ l\ o
+comment3.target=void\ setzeTasten(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment4.params=
+comment4.target=void\ setzeTastenASDW()
+comment5.params=
+comment5.target=void\ setzeTastenPfeile()
+comment6.params=x
+comment6.target=void\ setzeGeschwindigkeitX(int)
+comment7.params=y
+comment7.target=void\ setzeGeschwindigkeitY(int)
+comment8.params=x\ y
+comment8.target=boolean\ istFrei(int,\ int)
+comment9.params=
+comment9.target=void\ ueberpruefeSteuerung()
+numComments=12
+>>>>>>> ea449d7397bd89cfcff4238967d09b82bbb4cbcd
