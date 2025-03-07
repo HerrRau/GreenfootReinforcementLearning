@@ -169,7 +169,8 @@ public abstract class AbstractGameWorld extends World implements Game
         }
         //update, or stop learning after some time
         if (!stopLearning || wins<100) {
-            pm.updateAllPlayersSmart();
+             pm.updateAllPlayersSmart();
+             //##pm.updateAllPlayersSimple(); //## find a way to offer this as an option?
         }
 
     }
@@ -252,7 +253,7 @@ public abstract class AbstractGameWorld extends World implements Game
     }
 
     //##
-    //## from here on, overwrite methods: easy
+    //## from here on, overwrite methods
 
     @Override 
     public void printGame(String state) { }
@@ -260,7 +261,6 @@ public abstract class AbstractGameWorld extends World implements Game
     @Override 
     public int [] getLegalMoves() { return new int [0]; }
 
-    // public String [] getMovesNames() { return new String[0]; }
     public String getNameForMove(int move) { return ""+getLegalMoves()[0]; }
 
     @Override 
@@ -272,28 +272,16 @@ public abstract class AbstractGameWorld extends World implements Game
     @Override 
     public void makeMove(int player, int optionDecidedUpon) { }
 
-    //## 
-    //## from here on, overwrite methods: harder, i.e. rewards system
-
     @Override 
     public double getInitialValue() { return 0; } //relevant only for Q-Table, not Q-Net
 
-    //relevant for continuous; relevant for smart or naive continuous updates
+    //
     @Override 
     public double getRewardForPlayer(int playerID) {   return 1; }
 
-    //relevant ONLY for simple, not relevant for smart or naive continuous updates; used in pm.updateAllPlayersSimple - otherwise, bookkeeping only
+    //
     @Override
     public int getWinner() { return -1; }
 
-    //###
-    //###
-    //###
-    //###
-    //###
-
-    public void updateAllPlayersSmart() {
-        if (!stopUpdating) pm.updateAllPlayersSmart();
-    }
 
 }

@@ -110,7 +110,6 @@ public class PlayerManager
             winner = game.getWinner();
 
         }
-
         
         boolean gameOver = false;       
         //verbose = true;
@@ -139,8 +138,7 @@ public class PlayerManager
             int move = players[i].getMove();
             String stateOld = players[i].getState();
             double reward = game.getRewardForPlayer(i);            
-            players[i].update(stateOld, game.getState(i), reward, move); //# should work but doesnt
-            // players[i].update(stateOld, game.getState(), reward, move);
+            players[i].update(stateOld, game.getState(i), reward, move);
         }
     }
 }
