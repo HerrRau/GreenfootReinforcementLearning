@@ -33,6 +33,7 @@ public abstract class AbstractGameWorld extends World implements Game
         pm = new PlayerManager();
         setGame(this);
         addObject(new AnzeigeNextMoves(), 0,0); // counts next moves
+        setUpdateOnEveryMove(); //## Standard
     }
 
     public AbstractGameWorld() {

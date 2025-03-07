@@ -10,6 +10,7 @@ public class BreakoutGameKIMinimal extends BreakoutGame {
         schlaeger = new SchlaegerKI();
         addObject(schlaeger, 360/2, 480-20);   
         setPlayers( new Agent(0.0) );
+        // setUpdateOnGameEndOnly(); //geht schneller, ist aber nicht der Standardfall
     }
 
     @Override

@@ -19,6 +19,7 @@ public class BreakoutScenarios extends BreakoutGameKI
                     setPlayers( new Agent []{ new Agent(0.0) } );    
                     setRewardType(0);
                     setStateType(0);
+                    setUpdateOnGameEndOnly();
                     break;
                 }
             case 1: {
@@ -26,6 +27,7 @@ public class BreakoutScenarios extends BreakoutGameKI
                     schlaeger.useWrapAround = true;
                     setRewardType(0);
                     setStateType(0);
+                    setUpdateOnGameEndOnly();
                     break;
                 }
             case 2: {
