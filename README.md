@@ -254,7 +254,7 @@ Ja. Das Projekt ist halt entstanden aus bereits existierenden BlueJ-Projekten f√
 
 ## Was ist das mit dem Tic-Tac-Toe?
 
-Lange Geschichte, der Versuch, das BlueJ-Projekt irgendwie zu visualisieren.
+Lange Geschichte, der Versuch, das BlueJ-Projekt irgendwie zu visualisieren. Ich arbeite noch daran.
 
 ## Bilder
 
