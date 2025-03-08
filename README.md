@@ -244,7 +244,6 @@ Ein trainierter `Agent` fährt Auto: Das Auto hat hier fünf Sensoren, die zusam
 
 Das Snake-Spiel unterscheidet sich von den anderen Spielen dadurch, dass es hier interessant ist, nicht nur mit KI-Agenten zu arbeiten, sondern auch mit einfacheren Algorithmen. Mit `setSnakes` werden die mitspielenden Schlangen ausgewählt, mit `setPlayers` die mitspielenden Agenten. Es kann zum Beispiekl vier Snakes geben, drei davon gehören zur Klasse SnakeKI, eine zu einer anderen Snake-Klasse. Wenn es drei KI-Snakes gibt, müssen auch drei Agenten ausgewählt werden (ohne Agent macht die Schlange einfach nichts). Die Agenten werden in der Reihenfolge der Angabe auf die Snakes verteilt. Die vierte Snake, ohne Agent, reagiert nach ihrem eigenen Algorithmus.
 
-![Snake Game](/Material/images/snakeGame.png)
 ![Snake Game](/Material/images/snakes_kurz.gif)
 
 ## Wie gut geht das alles?
