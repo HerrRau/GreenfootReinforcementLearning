@@ -20,6 +20,9 @@ Zum weiteren Ausprobieren solltest du anschauen, wie die Bots die verschiedenen 
 
 Lege dazu per Mausklick ein Objekt der Klasse `BreakoutGameKI`, `AutoGameKI` oder `SnakeGameKI` an. Dann läuft jeweils ein kurzes Beispiel-Szenario mit einer lernenden KI ab. Es gibt dabei immer sehr viele Konfigurationsmöglichkeiten; die Unterklasse AutoScenarios, BreakoutScenarios und SnakeScenarios bieten einige vorkonfigurierte Szenarien an.
 
+![Breakout](/Material/images/breakout.png)
+
+
 ## Allgemeines Vorgehen
 
 Hier wird erklärt, wie man beim Entwickeln dieser Spiele allgemein vorgeht, und wie die wichtigsten Klassen zusammenhängen, so dass man eigene Spielideen umsetzen kann.
