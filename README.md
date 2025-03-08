@@ -103,8 +103,6 @@ Das ist das eigentliche Belohnungssystem. Nach `jeder` einzelnen Entscheidung wi
 Für das Breakout wird hier die 10 zurückgegeben für die Berührung mit dem Schläger, und -10, wenn der Ball im Aus ist, ansonstn 0. Auch hier kann man sich sehr viel verschiedene Varianten denken. 
 Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
 
-(Welche Belohnungsvariante man sich aussucht, wird mit den Methoden `setUpdateOnEveryMove` beziehungsweise `setUpdateOnGameEndOnly` festgelegt, dazu später mehr. Standard ist die kontinuierliche Bewertung/Belohnung.)
-
 Hier die Klasse dazu:
 <div style="page-break-after: always;"></div>
 
@@ -177,6 +175,8 @@ Hier die Klasse dazu:
         }
     }
 
+![Snake Game](/Material/images/snakeGame.png)
+
 ### Praktische Hilfsmethoden
 
 In der Klasse `AbstractGameWorld` gibt es Hilfsmethoden, die man in den Unterklassen, vermutlich beim Setup, aufrufen kann:
@@ -195,18 +195,8 @@ Soll der nächste Zug angezeigt werden? Ist schön, dauert Zeit.
 `public final void setDisplayWinsLossesStates(boolean b)`  
 Sollen die Anzahl von Siegen, Niederlagen und verrwalteten Zuständen angezeigt werden?
 
-`public final void setStopUpdating(boolean b)`  
-Soll das Lernen ab jetzt aufhören, um einen bestimmten Zustand zu bewahren?
-
-`protected void setUpdateOnGameEndOnly()`  
-`protected void setUpdateOnEveryMove()`  
-Diese zwei Möglichkeiten schließen einander wechselseitig aus. Wird mit einem NeuralAgent gearbeitet, muss die zweite gewählt werden; das System versucht das selbständig zu erkennen. 
-
 `public final void setPlayers(Agent... p)`  
 Muss aufgerufen werden, um einen oder mehrere oder ein Array von Agenten ins Spiel zu bringen. Die Agenten erhalten fortlaufende Nummern, sie werden der Reihe nach über die Zustände des Systems informiert (via getState), können dann Entscheidungen treffen, die sie via makeMove kommunizieren. Der Methode makeMove obliegt dann die Umsetzung in der Spielwelt.
-
-`public void setVerbose(boolean b)`  
-Eine Hilfsmethode, die den Ausdruck auf der Konsole steuert. Jeder Agent hat insbesondere eine eigene, ebenso benannte Methode setVerbose.
 
 `protected void showMessage(String s)`
 
