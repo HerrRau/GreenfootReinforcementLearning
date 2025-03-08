@@ -220,7 +220,7 @@ Dieser Agent benutzt ein Neuronales Netz für das Reinforcement Learning. Er erf
 * Drittens die Anzahl an Knoten der Ausgabeebene; sie muss der Anzahl an möglichen Zügen entsprechen; beim Breakout also 3 (für nichts, links, rechts), bei Snake 4 (für Nord, Ost, Süd, West).
 * Viertens die Explorationsrate, wieder 0.0 oder 0.05, zum Beispiel.
 
-Der `NeuralAgent` besitzt Methoden zum laden und Speichern von Netzen und Belegungen, Speicherort ist standardmäßig unmittelbar außerhalb des Projektverzeichnisses.
+Der `NeuralAgent` besitzt Methoden zum Laden und Speichern von Netzen und Belegungen, Speicherort ist standardmäßig unmittelbar außerhalb des Projektverzeichnisses. Am einfachsten: in den Code schreiben oder Greenfoot pausieren lassen und per Mausklick diese Methoden aufrufen; das ist aber nur in AutoGameKI implementiert - zur Laufzeit kommt man ja in Greenfoot anders als in BlueJ nur an die unmittelbar sichtbaren Objekte heran, also Welt und Actos darin, und kann nur deren Methoden manuell aufrufen.
 
 ## Die Szenario-Unterklassen
 
