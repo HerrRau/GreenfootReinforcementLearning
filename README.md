@@ -175,8 +175,6 @@ Hier die Klasse dazu:
         }
     }
 
-![Snake Game](/Material/images/snakeGame.png)
-
 ### Praktische Hilfsmethoden
 
 In der Klasse `AbstractGameWorld` gibt es Hilfsmethoden, die man in den Unterklassen, vermutlich beim Setup, aufrufen kann:
@@ -233,9 +231,15 @@ Man kann darüber hinaus wie immer als Player einen `Agent` haben oder einen `Ne
 Auch das Belohnungssystem ist komplex. Positive oder negative Belohnung kann es geben für: Vorwärtsfahren (eine dunklere Farbe erreicht, außer natürlich an der Startlinie), Rückwärtsfahren (hellere Farbe), Überqueren der Ziellinie, Verlassen der Fahrbahn.
 Laden und Speichern: Geht mit Methoden der Klasse NeuralAgent.
 
+![KI ohne SmootMover, daher nur immer in Vielfachen von 45°](/Material/images/ki_auto_sensor_strecke1.gif)  
+Ein trainierter `Agent` fährt Auto: Das Auto hat hier fünf Sensoren, die zusammen den Zustand des Spiels für die KI ausmachen. Der Agent verwaltet gut 45.000 ihm bekannte Zustände in einer Tabelle. Das Auto ist ein Standard-Greenfoot-Actor und dreht sich damit immer nur in Vielfachen von 45°, SmoothMover und Varianten davon ermöglichen eleganteres Verhalten.
+
+
 ## Das Snake-Spiel
 
 Das Snake-Spiel unterscheidet sich von den anderen Spielen dadurch, dass es hier interessant ist, nicht nur mit KI-Agenten zu arbeiten, sondern auch mit einfacheren Algorithmen. Mit `setSnakes` werden die mitspielenden Schlangen ausgewählt, mit `setPlayers` die mitspielenden Agenten. Es kann zum Beispiekl vier Snakes geben, drei davon gehören zur Klasse SnakeKI, eine zu einer anderen Snake-Klasse. Wenn es drei KI-Snakes gibt, müssen auch drei Agenten ausgewählt werden (ohne Agent macht die Schlange einfach nichts). Die Agenten werden in der Reihenfolge der Angabe auf die Snakes verteilt. Die vierte Snake, ohne Agent, reagiert nach ihrem eigenen Algorithmus.
+
+![Snake Game](/Material/images/snakeGame.png)
 
 ## Wie gut geht das alles?
 
@@ -248,12 +252,6 @@ Ja. Das Projekt ist halt entstanden aus bereits existierenden BlueJ-Projekten f�
 ## Was ist das mit dem Tic-Tac-Toe?
 
 Lange Geschichte, der Versuch, das BlueJ-Projekt irgendwie zu visualisieren. Ich arbeite noch daran.
-
-## Bilder
-
-Ein trainierter `Agent` fährt Auto: Das Auto hat hier fünf Sensoren, die zusammen den Zustand des Spiels für die KI ausmachen. Der Agent verwaltet gut 45.000 ihm bekannte Zustände in einer Tabelle. Das Auto ist ein Standard-Greenfoot-Actor und dreht sich damit immer nur in Vielfachen von 45°, SmoothMover und Varianten davon ermöglichen eleganteres Verhalten.
-
-![KI ohne SmootMover, daher nur immer in Vielfachen von 45°](/Material/images/ki_auto_sensor_strecke1.gif)
 
 ## Jetzt selber ausprobieren!
 
