@@ -6,6 +6,8 @@ Das hier ist ein Greenfoot-Projekt mit mehreren eigentlich voneinander unabhäng
 
 Das Projekt ist nicht so ordentlich, wie man es sich vielleicht erhofft; diese Datei als Textatei im Markdown-Format soll Überblick verschaffen. Man kann sie, wie das ganze Projekt, herunterladen und mit einem Markdown-Betrachter öffnen, theoretisch natürlich auch mit jedem Textverarbeitungsprogramm.
 
+Greenfoot ist eine didaktische Programmierumgebung für Java (oder Stride), die in Schulen viel verwendet wird: https://www.greenfoot.org/download
+
 _Fußnote: In früheren Fassungen des Projekts gab es noch zwei unterschiedliche Belohnungssysteme. Ich baue das alte, primitivere Modell gelegentlich als Option wieder ein, es schien mir aber im Moment doch zu verwirrend zu sein._
 
 ## Ausprobieren (1)
