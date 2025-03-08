@@ -47,7 +47,7 @@ Da es so viele Varianten gibt, die man ausprobieren möchte, legt man sich eine 
 
 ## Die KI-Klasse und ihre Methoden
 
-Die Hauptaufgabe besteht darin, eine KI-Unterklasse zur Spielwelt zu schaffen und mit den nötigen Methoden zu bestücken. Diese Methoden könnten in `AbstractGameWorld` alle als abstrakte Methoden angelegt sein, so dass man leicht überprüfen kann, ob man sie alle hat. Ich habe mich dagegen entschieden, sondern stattdessen zu überschreibende Dummy-Methoden in `AbstractGameWorld` implementiert, damit sich das ursprünglioche Spiel eben auch ohne diese KI-Unterklasse verwenden lässt.
+Die Hauptaufgabe besteht darin, eine KI-Unterklasse zur Spielwelt zu schaffen und mit den nötigen Methoden zu bestücken. Diese Methoden könnten in `AbstractGameWorld` alle als abstrakte Methoden angelegt sein, so dass man leicht überprüfen kann, ob man sie alle hat. Ich habe mich dagegen entschieden, sondern stattdessen zu überschreibende Dummy-Methoden in `AbstractGameWorld` implementiert, damit sich das ursprüngliche Spiel eben auch ohne diese KI-Unterklasse verwenden lässt.
 
 Beispiel: AutoGameKI, BreakoutGameKI, SnakeGameKI und BreakoutGameKIMinimal. Das letztere ist eine abgespeckte Klasse zur Veranschaulichung, die wir jetzt der Reihe nach durchgehen. Der Code passt auf eine Textseite.
 
