@@ -270,4 +270,4 @@ Aufgabe 3: Experimentiere mit größeren Labyrinten. Der Agent oder NeuralAgent 
 
 ## Kontakt
 
-Fragen gerne an Thomas Rau, lehrerzimmer@herr-rau.de
+Fragen gerne an Thomas Rau, lehrerzimmer@herr-rau.de oder https://fnordon.de/@herr_rau
