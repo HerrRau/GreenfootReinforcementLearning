@@ -57,7 +57,7 @@ Beispiel: AutoGameKI, BreakoutGameKI, SnakeGameKI und BreakoutGameKIMinimal. Das
 
 Ab jetzt folgen Kommentare zu Methoden, die angelegt werden sollten. Als Beispiel dient dazu die Klasse `BreakoutGameKIMinimal`, die Klasse `SnakeGameKIMinimal` ist ein ähnliches minimales Beispiel, das man anschauen kann.
 
-### Die ganz einfachen Methoden
+### Die ganz einfachen Methoden ohne KI-Bezug
 
 `public void setup()`  
 Überschreibt lediglich die Methode der Oberklasse, die als Teil des Konstruktors dort aufgerufen wird.  
@@ -70,7 +70,7 @@ Der Aufruf von `setPlayers(  new Agent(0.0)  )` legt fest, dass ein Standard-Age
 Ist nur dazu dazu, um die ererbte Methode, mit der man im regulären Spiel zum nächsten Schwierigkeitsgrad kommt, zu überschreiben, und das Spiel damit zu vereinfachen.
 
 `private double berechneEntfernung(int x, int y, int x2, int y2)`  
-Eine Hilfsmethode, die die Entfernung zweier Punkte in einem kartesischen Koordinatensystem berechnet.
+Eine Hilfsmethode, die die Entfernung zweier Punkte in einem kartesischen Koordinatensystem berechnet. Sie wird hier gar nicht verwendet, aber vielleicht will man sie ja für einen Zustand heranziehen.
 
 ### Die einfachen überschreibenden KI-Methoden
 
@@ -108,7 +108,6 @@ Für das Breakout wird hier die 10 zurückgegeben für die Berührung mit dem Sc
 Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
 
 Hier die Klasse dazu:
-<div style="page-break-after: always;"></div>
 
     import greenfoot.*;
     public class BreakoutGameKIMinimal extends BreakoutGame {
