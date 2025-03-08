@@ -113,11 +113,12 @@ public abstract class AbstractGameWorld extends World implements Game
     }
 
     public void showNextMoves(int id) {
-        if (pm.getPlayers()==null) { return; }     
         showNextMoves(id, getWidth()/2, getHeight()/2); 
     }
 
     public void showNextMoves(int id, int x, int y) {
+        if (pm.getPlayers()==null) { return; }     
+        if (!displayNextMoves) return;
         showText(getNextMoves(id), x, y); 
     }
 
