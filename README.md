@@ -262,10 +262,19 @@ Ein trainierter `Agent` fährt Auto: Das Auto hat hier fünf Sensoren, die zusam
 
 ![KI ohne SmootMover, daher nur immer in Vielfachen von 45°](/Material/images/ki_auto_sensor_strecke1.gif)
 
-## To do
+## Jetzt selber ausprobieren!
 
-* Ein leeres Spiel ohne KI-Unterklasse anbieten, zum selberbasteln
-* Die SchülerInnen-Projekte aus der 10. zum Beispiel?
+![Maze Game](/Material/images/mazeGame.png)
+
+Die Klasse MazeGame ist vorgegeben, in ihr werden ein kleines Labyrinth erzeugt, eine mit ASDW lenkbare Spielfigur und ein mehr oder weniger zufällig agierender Bot. Aufgabe: Schreibe eine KI-Unterklasse, so dass die Figur den Bot zu fangen versucht.
+
+### Vorstufe: Einen Weg nach rechts unten finden
+
+Hinweise folgen.
+
+### Danach: Einen Weg zum Bot finden
+
+Hinweise folgen.    
 
 ## Kontakt
 
