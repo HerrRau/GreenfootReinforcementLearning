@@ -100,7 +100,7 @@ Eine der schwierigsten Entscheidungen: Wie man den Zustand codiert. Er solle zur
 Im Beispiel sind die Zustände also "0" oder "-1" oder "-10" oder "8", Doppelpunkte tauchen gar nicht auf, weil es ich ja nur um einen einzigen Wert handelt. In der Klasse `BreakoutGameKI` gibt es Alternativen, die dann etwa das Format "10:20:40:8" haben.
 
 `public int getWinner()`  
-Diese Methoden wird herangezogen um zu ermitteln, wer das Spiel gewonnen hat. Sie wird unabhängig von den Belohnungen aufgerufen, sollte also nichts am Zustand der Welt in einer Form ändern, die etwas an der Belohnung ändern würde. Die Methode gibt zurück, ob das Spiel gewonnen wurde (Rückgabewert 0 für Spieler 0) oderman  verloren hat  (Rückgabewert 1, beziehungsweise eine andere Zahl > 0) oder ob das Spiel noch läuft (Rückgabe -1, oder irgendetwas <0). Tatsächlich ist diese Methode eher für die Statistik wichtig.
+Diese Methoden wir herangezogen um zu ermitteln, wer das Spiel gewonnen hat. Sie wird unabhängig von den Belohnungen aufgerufen, sollte also nichts am Zustand der Welt in einer Form ändern, die etwas an der Belohnung ändern würde. Die Methode gibt zurück, ob das Spiel gewonnen wurde (Rückgabewert 0 für Spieler 0) oderman  verloren hat  (Rückgabewert 1, beziehungsweise eine andere Zahl > 0) oder ob das Spiel noch läuft (Rückgabe -1, oder irgendetwas <0). Tatsächlich ist diese Methode eher für die Statistik wichtig.
 
 `public double getRewardForPlayer(int id)`  
 Das ist das eigentliche Belohnungssystem. Nach `jeder` einzelnen Entscheidung wird diese Methode aufgerufen. 
