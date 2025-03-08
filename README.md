@@ -4,7 +4,7 @@
 
 Das hier ist ein Greenfoot-Projekt mit mehreren eigentlich voneinander unabhängigen rudimentären Spielen: Ein einfaches **Breakout,** ein einfacheres **Autorennen**, ein **Snake**. Sie sind alle deshalb in einem Projekt, weil sie alle die gleiche zusätzliche Infrastruktur nutzen, um nämlich automatisierte Bots alleine oder gegeneinander spielen zu lassen. Diese Bots können durch KI-Agenten gesteuert werden (Reinforcement Learning) oder, insbesondere bei Snake, auch einen einfachen Algorithmus verwenden, wie er von Schülern oder Schülerinnen entwickelt werden könnte.
 
-Das Projekt ist nicht so ordentlich, wie man es sich vielleicht erhofft; diese Datei als Textatei im Markdown-Format soll Überblick verschaffen. Man kann sie, wie das ganze Projekt, herunterladen und mit einem Markdown-Betrachter öffnen, theoretisch natürlich auch mit jedem Textverarbeitungsprogramm.
+Das Projekt ist nicht so ordentlich, wie man es sich vielleicht erhofft; diese Datei als Textdatei im Markdown-Format soll Überblick verschaffen. Man kann sie, wie das ganze Projekt, herunterladen und mit einem Markdown-Betrachter öffnen, theoretisch natürlich auch mit jedem Textverarbeitungsprogramm.
 
 Greenfoot ist eine didaktische Programmierumgebung für Java (oder Stride), die in Schulen viel verwendet wird: https://www.greenfoot.org/download
 
