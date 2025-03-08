@@ -11,6 +11,24 @@ public class MazeFigur extends MazeElement
         grenzenlos = true;
     }
 
+    protected void geheNord() { bewegeDichUm(0, -1);    }
+
+    protected void geheOst() { bewegeDichUm(1, 0);    }
+
+    protected void geheSued() { bewegeDichUm(0, 1);    }
+
+    protected void geheWest() { bewegeDichUm(-1, 0);    }
+
+    protected boolean istFreiNord() { return istFrei( getX(), getY()-1);    }
+
+    protected boolean istFreiOst() { return istFrei(getX()+1, getY());    }
+
+    protected boolean istFreiSued() { return istFrei(getX(), getY()+1);    }
+
+    protected boolean istFreiWest() { return istFrei(getX()-1,getY());    }
+
+    int count = 0;
+
     public void bewegeDichUm(int x, int y) {
         int xNeu = getX()+x;
         int yNeu = getY()+y;
@@ -23,9 +41,14 @@ public class MazeFigur extends MazeElement
         }
         if (istFrei(xNeu, yNeu)) {
             setLocation(xNeu,yNeu);            
+        } else {
+            count++;
+            if (count==100) {
+                count = 0;
+                // Greenfoot.playSound("ping.mp3");
+            }
         }
     }
-
 
     public void setzeGeschwindigkeitX(int x)
     {
@@ -38,9 +61,7 @@ public class MazeFigur extends MazeElement
     }
 
     public boolean istFrei(int x, int y) {
-        return getWorld().getObjectsAt(x,y,MazeElement.class).size()==0;
+        return getWorld().getObjectsAt(x,y,MazeBlock.class).size()==0;
     }
-
- 
 
 }

@@ -39,6 +39,8 @@ public class NeuralAgent extends Agent
         tempErgebnisseZiel = new double[outputActions];
         setzeAktivierungsfunktion(0); // Standard: Sigmoid
         initialiseNet(3);
+        
+        outputStuff = false;
     }
 
     void setzeEinstellungen(int aktivierung, int initialisierung, double lernrateNetz, double learningRate, double gamma) {

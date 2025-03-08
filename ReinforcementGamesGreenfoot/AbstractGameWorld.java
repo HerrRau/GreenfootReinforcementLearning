@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 
-//public abstract class AbstractGame extends MyWorld implements Game
 public abstract class AbstractGameWorld extends World implements Game
 {
     //## required
@@ -13,18 +12,21 @@ public abstract class AbstractGameWorld extends World implements Game
     private int losses;                                 // optional: bookkeeping
     private int breakPeriodicallyAfterSoManyWins = 0;   // optional: break at certain point
     private boolean hasBreaked = true;                  // optional: break at certain point
-    private boolean stopUponChange = false;             // optional: stop when sth changes
-    private boolean stopLearning = false;               // optional: stop learning after some time?
-    private int observedMove;                           // optionaL use observation of changes
-    private double observedValue;                       // optionaL use observation of changes   
+    private boolean stopUponChange = false;             // optional: stop when sth changes, rarely useful
+    private int observedMove;                           // optional: use observation of changes
+    private double observedValue;                       // optional: use observation of changes   
 
-    private boolean displayChanges = true;              // optionaL use observation of changes
-    private boolean displayNextMoves = true;
-    private boolean displayStatistics = true;
+    private boolean displayChanges = true;              // optional: display changes
+    private boolean displayNextMoves = true;            // optional: display next move
+    private boolean displayStatistics = true;           // optional: display wins/losses/number of known states
 
     //
     // Constructors
     //
+
+    public AbstractGameWorld() {
+        this(600,400,1);
+    }
 
     public AbstractGameWorld(int x, int y, int pixel) {
         super(x,y,pixel);
@@ -34,9 +36,6 @@ public abstract class AbstractGameWorld extends World implements Game
         verbose = false;
     }
 
-    public AbstractGameWorld() {
-        this(600,400,1);
-    }
 
     //
     // Getters & setters & such
@@ -88,7 +87,7 @@ public abstract class AbstractGameWorld extends World implements Game
     }
 
     //
-    // display
+    // display message
 
     protected void showMessage(String s) {
         showText(s, getWidth()/2, (int) (getHeight()*0.9)); 
@@ -122,10 +121,11 @@ public abstract class AbstractGameWorld extends World implements Game
         showText(getNextMoves(id), x, y); 
     }
 
+    //# must be called *after* moving
     private String getNextMoves(int id) {
-        String s = getState(id);
-        Moves m = getPlayers(id).getMoves(s); //## 
-        String result = "Moves for state: "+s;
+        String state = getState(id); // state of game
+        Moves m = getPlayers(id).getMoves(state);
+        String result = "Moves for state: "+state;
         if (m!=null) {
             double [] d = new double[getLegalMoves().length];
             for (int i=0; i<d.length; i++) {
@@ -140,11 +140,8 @@ public abstract class AbstractGameWorld extends World implements Game
         else {
             result = "\nNew State!\n\n\n";
         }
-        String lastm = "";
-
-        lastm = "\nLast move: "+getNameForMove(getPlayers()[0].getMove());
-
-        result = result + lastm;
+        String lastMove = "\nLast move: "+getNameForMove(getPlayers()[0].getMove());
+        result = result + lastMove;
         return result; 
     }
 
@@ -152,13 +149,14 @@ public abstract class AbstractGameWorld extends World implements Game
     // the loop 
 
     @Override
-    public final void act() {
-        boolean continueGame = continueIteration();
-        if (!continueGame) greenfoot.Greenfoot.stop();
+    public void act() {
+        if (getPlayers()==null) return;         //so you can play regular game without any changes
+        for (Agent a : getPlayers()) a.play();  // make move -> state change
+        if (!stopUpdating) learnFromResults();  // learn
+        checkOptionalElements();                // what it says
     }
 
     protected final void learnFromResults(){
-        if (stopUpdating) return;
         if (displayChanges) //optional: observe changes, i.e. remember values
         {
             String stateOld = getPlayers(0).getState();
@@ -167,12 +165,8 @@ public abstract class AbstractGameWorld extends World implements Game
                 observedValue = getPlayers(0).getMoves(stateOld).getValue(observedMove); 
             }
         }
-        //update, or stop learning after some time
-        if (!stopLearning || wins<100) {
-            pm.updateAllPlayersSmart();
-            //##pm.updateAllPlayersSimple(); //## find a way to offer this as an option?
-        }
-
+        pm.updateAllPlayersSmart();
+        //##pm.updateAllPlayersSimple(); //## find a way to offer this as an option?
     }
 
     protected final void checkOptionalElements() {
@@ -212,7 +206,7 @@ public abstract class AbstractGameWorld extends World implements Game
         int winner = getWinner();
         if (winner==0) wins++;
         else if (winner == 1) losses++;
-    
+
         //# optional: displaying numbers of wins, losses, states
         if (displayStatistics) {
             String temp = "Wins: "+wins;
@@ -225,14 +219,6 @@ public abstract class AbstractGameWorld extends World implements Game
 
         }
 
-    }
-
-    public boolean continueIteration() { 
-        if (getPlayers()==null) return true;        //so you can play regular game without any changes -> move elsewhere?
-        for (Agent a : getPlayers()) a.play();      // make move -> state change
-        learnFromResults();                         // learn;: uses winner
-        checkOptionalElements();                  // what it says; uses winner
-        return true; 
     }
 
     //##

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=MazeFigurAuto
+comment1.params=
+comment1.target=void\ act()
+comment2.params=x\ y
+comment2.target=void\ bewegeDichUm(int,\ int)
+numComments=3

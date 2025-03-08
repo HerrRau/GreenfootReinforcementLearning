@@ -2,8 +2,10 @@
 comment0.target=MazeGame
 comment1.params=
 comment1.target=MazeGame()
-comment2.params=
-comment2.target=void\ setup()
-comment3.params=startX\ startY\ width\ height\ gapsSides\ gapsTop
-comment3.target=void\ makeSpiral(int,\ int,\ int,\ int,\ boolean,\ boolean)
-numComments=4
+comment2.params=width\ height\ cellSize
+comment2.target=MazeGame(int,\ int,\ int)
+comment3.params=
+comment3.target=void\ setup()
+comment4.params=startX\ startY\ width\ height\ gapsSides\ gapsTop
+comment4.target=void\ makeSpiral(int,\ int,\ int,\ int,\ boolean,\ boolean)
+numComments=5
