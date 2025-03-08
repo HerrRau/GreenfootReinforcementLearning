@@ -237,7 +237,7 @@ Auch das Belohnungssystem ist komplex. Positive oder negative Belohnung kann es 
 Laden und Speichern: Geht mit Methoden der Klasse NeuralAgent.
 
 ![KI ohne SmootMover, daher nur immer in Vielfachen von 45°](/Material/images/ki_auto_sensor_strecke1.gif)  
-Ein trainierter `Agent` fährt Auto: Das Auto hat hier fünf Sensoren, die zusammen den Zustand des Spiels für die KI ausmachen. Der Agent verwaltet gut 45.000 ihm bekannte Zustände in einer Tabelle. Das Auto ist ein Standard-Greenfoot-Actor und dreht sich damit immer nur in Vielfachen von 45°, SmoothMover und Varianten davon ermöglichen eleganteres Verhalten.
+(Im Bild: Ein trainierter `Agent` fährt Auto: Das Auto hat hier fünf Sensoren, die zusammen den Zustand des Spiels für die KI ausmachen. Der Agent verwaltet gut 45.000 ihm bekannte Zustände in einer Tabelle. Das Auto ist ein Standard-Greenfoot-Actor und dreht sich damit immer nur in Vielfachen von 45°, SmoothMover und Varianten davon ermöglichen eleganteres Verhalten.)
 
 
 ## Das Snake-Spiel
