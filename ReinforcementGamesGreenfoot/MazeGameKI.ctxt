@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=MazeGameKI
+comment1.params=
+comment1.target=MazeGameKI()
+comment2.params=
+comment2.target=void\ setup()
+comment3.params=
+comment3.target=int[]\ getLegalMoves()
+comment4.params=move
+comment4.target=java.lang.String\ getNameForMove(int)
+comment5.params=player\ move
+comment5.target=void\ makeMove(int,\ int)
+comment6.params=irrelevantPlayerID
+comment6.target=java.lang.String\ getState(int)
+comment7.params=
+comment7.target=int\ getWinner()
+comment8.params=
+comment8.target=void\ respawn()
+comment9.params=id
+comment9.target=double\ getRewardForPlayer(int)
+numComments=10
