@@ -261,15 +261,11 @@ Lange Geschichte, der Versuch, das BlueJ-Projekt irgendwie zu visualisieren. Ich
 
 ![Maze Game](/Material/images/mazeGame.png)
 
-Die Klasse MazeGame ist vorgegeben, in ihr werden ein kleines Labyrinth erzeugt, eine mit ASDW lenkbare Spielfigur und ein mehr oder weniger zufällig agierender Bot. Aufgabe: Schreibe eine KI-Unterklasse, so dass die Figur den Bot zu fangen versucht.
+Die Klasse MazeGame ist vorgegeben, in ihr werden ein kleines Labyrinth erzeugt, eine mit ASDW lenkbare Spielfigur und ein mehr oder weniger zufällig agierender Bot. 
 
-### Vorstufe: Einen Weg nach rechts unten finden
+Aufgabe 1: Schreibe eine KI-Unterklasse, so dass die Figur den Weg nach rechts unten findet. Die Klasse MazeGameKI ist dazu vorgegeben, alle notwendigen Methoden sind als Kopf enthalten, ihr Inhalt muss aber meist geaendert werden. Siehe Kommentare in der Klasse.
 
-Hinweise folgen.
-
-### Danach: Einen Weg zum Bot finden
-
-Hinweise folgen.    
+Aufgabe 2: Passe die Klasse so an, dass das Ziel jetzt ist, den Bot zu fangen. Dazu muss der Zustand erweitert werden (mindestens um die Position des Bot), außerde die Methoden `getWinner` und getRewardForPlayer`, vielleicht auch die respawn-Methode.
 
 ## Kontakt
 
