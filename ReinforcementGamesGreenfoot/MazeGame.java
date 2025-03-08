@@ -19,7 +19,7 @@ public class MazeGame extends AbstractGameWorld
     }
 
     public void setup() {
-        player0 = new MazeFigur();
+        player0 = new MazeFigurLenkbar();
         player1 = new MazeFigurAuto();
         addObject(player0, 1,1);
         addObject(player1, getWidth()-2,getHeight()-2); // optional

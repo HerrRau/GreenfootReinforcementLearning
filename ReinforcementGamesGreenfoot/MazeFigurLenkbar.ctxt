@@ -1,9 +1,9 @@
 #BlueJ class context
-comment0.target=MazeFigurGesteuert
+comment0.target=MazeFigurLenkbar
 comment1.params=
-comment1.target=MazeFigurGesteuert()
+comment1.target=MazeFigurLenkbar()
 comment2.params=r\ u\ l\ o
-comment2.target=void\ MazeFigur(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.target=MazeFigurLenkbar(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment3.params=r\ u\ l\ o
 comment3.target=void\ setzeTasten(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment4.params=

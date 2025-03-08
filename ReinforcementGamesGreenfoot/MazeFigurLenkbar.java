@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot und MouseInfo)
 
-public class MazeFigurGesteuert extends MazeFigur
+public class MazeFigurLenkbar extends MazeFigur
 {
 
     private String rechts;
@@ -8,12 +8,12 @@ public class MazeFigurGesteuert extends MazeFigur
     private String oben;
     private String unten;
 
-    public MazeFigurGesteuert()
+    public MazeFigurLenkbar()
     {
         setzeTastenASDW();
     }
 
-    public void MazeFigur(String r, String u, String l, String o)
+    public MazeFigurLenkbar(String r, String u, String l, String o)
     {
         setzeTasten(r, u, l, o);
     }
