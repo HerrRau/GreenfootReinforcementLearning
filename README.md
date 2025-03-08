@@ -178,11 +178,15 @@ Hier die Klasse dazu:
         }
     }
 
-### Praktische Hilfsmethoden
+### Weitere Hilfsmethoden
 
-In der Klasse `AbstractGameWorld` gibt es Hilfsmethoden, die man in den Unterklassen, vermutlich beim Setup, aufrufen kann:
+In der Klasse `AbstractGameWorld` gibt es Hilfsmethoden, die man in den Unterklassen, typischerweise beim Setup, aber auch zur Laufzeit, aufrufen kann:
 
-`public final void setExplorationRate(double e)`
+`public final void setPlayers(Agent... p)`  
+Diese Methode **muss** aufgerufen werden, um einen oder mehrere oder ein Array von Agenten ins Spiel zu bringen. Die Agenten erhalten fortlaufende Nummern, sie werden der Reihe nach über die Zustände des Systems informiert (via getState), können dann Entscheidungen treffen, die sie via makeMove kommunizieren. Der Methode makeMove obliegt dann die Umsetzung in der Spielwelt.
+
+`public final void setExplorationRate(double e)`  
+Eigentlich nur zur Diagnose, so kann man das Programm laufen lassen, dann auf Pause drücken und die Explorationsrate auf einen anderen Wert setzen.
 
 `public final void setBreakPeriodically(int i)`  
 Alle i Siege pausiert der Ablauf. Zur Diagnose einsetzbar.
@@ -196,10 +200,8 @@ Soll der nächste Zug angezeigt werden? Ist schön, dauert Zeit.
 `public final void setDisplayWinsLossesStates(boolean b)`  
 Sollen die Anzahl von Siegen, Niederlagen und verrwalteten Zuständen angezeigt werden?
 
-`public final void setPlayers(Agent... p)`  
-Muss aufgerufen werden, um einen oder mehrere oder ein Array von Agenten ins Spiel zu bringen. Die Agenten erhalten fortlaufende Nummern, sie werden der Reihe nach über die Zustände des Systems informiert (via getState), können dann Entscheidungen treffen, die sie via makeMove kommunizieren. Der Methode makeMove obliegt dann die Umsetzung in der Spielwelt.
-
-`protected void showMessage(String s)`
+`protected void showMessage(String s)`  
+Zeigt unten an eine Nachricht an.
 
 ## Agenten
 
