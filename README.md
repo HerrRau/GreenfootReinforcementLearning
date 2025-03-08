@@ -273,3 +273,11 @@ Aufgabe 3: Experimentiere mit größeren Labyrinthen. Der Agent oder NeuralAgent
 ## Kontakt
 
 Fragen gerne an Thomas Rau, lehrerzimmer@herr-rau.de oder https://fnordon.de/@herr_rau
+
+Blogeinträge dazu:
+
+* https://www.herr-rau.de/wordpress/2023/03/ki-reinforcement-learning-1.htm
+* https://www.herr-rau.de/wordpress/2023/03/ki-reinforcement-learning-2.htm
+* https://www.herr-rau.de/wordpress/2023/03/ki-reinforcement-learning-3.htm
+* https://www.herr-rau.de/wordpress/2023/03/ki-reinforcement-learning-4-autofahren.htm
+* https://www.herr-rau.de/wordpress/2025/03/kw-9-briefwahl-snakebots-dorian-hawkmoon.htm (am Rande)
