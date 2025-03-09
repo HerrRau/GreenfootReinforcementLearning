@@ -18,7 +18,7 @@ public class AutoScenarios extends AutoGameKI
     public AutoScenarios()
     {
         int option = 12-1; //8 //10 //12
-        option = 4-4;
+        option = 6;
         setupScenario(option);
     }
 

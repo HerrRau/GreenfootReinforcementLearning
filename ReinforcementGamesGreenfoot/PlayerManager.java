@@ -23,15 +23,7 @@ public class PlayerManager
     boolean verbose = false;
 
     //
-    // Constructors
-    //
-
-    public PlayerManager() {
-    }
-
-    //
     // Setters & getters
-    //
 
     public void setPlayers(Agent [] players) {        
         this.players = players;
@@ -45,18 +37,13 @@ public class PlayerManager
 
     } 
 
-    public void setPlayers(Agent p0, Agent p1) {
-        setPlayers( new Agent[] { p0, p1} );
-    }
+    public void setPlayers(Agent p0, Agent p1) { setPlayers( new Agent[] { p0, p1} ); }
 
-    public Agent [] getPlayers() {
-        return players;
-    }
+    public Agent [] getPlayers() { return players; }
 
-    public Agent getPlayer(int id) {
-        //no safety checks
-        return players[id];
-    }
+    public Agent getPlayer(int id) { return players[id]; }
+
+    public Game getGame() { return game; }
 
     public void setGame(Game g) {
         game = g;
@@ -70,10 +57,6 @@ public class PlayerManager
         }
     }
 
-    public Game getGame() {
-        return game;
-    }
-
     public void setVerbose(boolean b){
         verbose = b;
         if (players==null) return;
@@ -83,12 +66,10 @@ public class PlayerManager
     public void setExplorationRate(double e) {
         if (players==null) return;
         for (Agent a : players) a.setExplorationRate(e);     
-
     }
 
     //
     // Printers
-    //
 
     public void printInfo() {
         System.out.println("=====================================");
@@ -99,17 +80,17 @@ public class PlayerManager
 
     //
     // Updating
-    //
 
     //# unused, at present
     public boolean updateAllPlayersSimple() {
         int winner = -1;
-            winner = game.getWinner();
+        winner = game.getWinner();
         boolean gameOver = false;       
         //verbose = true;
         for (int playerID=0; playerID<players.length; playerID++) {  
             //game unfinished
             if (winner<0) {                
+                break;
             }
             //winner
             else if (winner==playerID) {
@@ -127,10 +108,13 @@ public class PlayerManager
         return gameOver;
     }
 
-    public void updateAllPlayersSmart() {       
-        
-        // if (game.getWinner()<0) return;
-        
+    boolean enforceNaiveSystem = false; //#
+    public void updateAllPlayersSmart() {   
+        if (enforceNaiveSystem) {
+            updateAllPlayersSimple();
+            return;
+        }
+        // # if (game.getWinner()<0) return; //# does this make a lot of difference?
         for (int i=0; i<players.length; i++) {
             int move = players[i].getMove();
             String stateOld = players[i].getState();

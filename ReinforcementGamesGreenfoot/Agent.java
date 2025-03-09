@@ -253,8 +253,7 @@ public class Agent
     //
 
     //
-    // used for continuous updating only
-    //
+    // used for regular updating only
 
     /**
      * IMPORTANT, double-checked, should work
@@ -317,9 +316,9 @@ public class Agent
     }
 
     //
-    // relevant for simple updating only
-    //
+    // relevant for naive updating only
 
+    //# called only with naive system
     public void draw() {
         if (verbose) {
             System.out.println("-----------------------------------");
@@ -327,6 +326,7 @@ public class Agent
         }
     }
 
+    //# called only with naive system
     public void won() {
         if (verbose && playerNumber!=0) {
             System.out.println("-----------------------------------");
@@ -336,12 +336,15 @@ public class Agent
         if (verbose && playerNumber!=0) {
             System.out.print(" (was: "+map.get(currentState).getValue(move));
         }
+        System.out.println("```````````````````````???");
         //# this.increaseValueOfMoveForState(currentState, move, game.getRewardWin());   
+        this.increaseValueOfMoveForState(currentState, move, game.getRewardForPlayer(playerNumber));   
         if (verbose && playerNumber!=0) {
             System.out.println(", is: "+map.get(currentState).getValue(move)+")");
         }
     }
 
+    //# called only with naive system
     public void lost() {
         if (verbose && playerNumber!=0) {
             System.out.println("-----------------------------------");
@@ -352,6 +355,7 @@ public class Agent
             System.out.print(" (was: "+map.get(currentState).getValue(move));
         }
         //# this.increaseValueOfMoveForState(currentState, move, game.getRewardLose());   
+        this.increaseValueOfMoveForState(currentState, move, game.getRewardForPlayer(playerNumber));   
         if (verbose && playerNumber!=0) {
             System.out.println(", is: "+map.get(currentState).getValue(move)+")");
         }
@@ -395,13 +399,15 @@ public class Agent
                     String [] item = entries[i].split(":");
                     options[i-1] = Integer.parseInt(item[0]);
                     values[i-1] = Double.parseDouble(item[1]);
-                }               
+                }              
                 Moves moves = new MovesList(options, values);
-                System.out.print("Added for "+entries[0]+": ");
-                for (int i=0; i<values.length; i++) {
-                    System.out.print(options[i]+":"+values[i]+" ");
+                if (false) {
+                    System.out.print("Added for "+entries[0]+": ");
+                    for (int i=0; i<values.length; i++) {
+                        System.out.print(options[i]+":"+values[i]+" ");
+                    }
+                    System.out.println();
                 }
-                System.out.println();
                 map.put( entries[0], moves);
             } 
             myReader.close();
