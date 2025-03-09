@@ -283,3 +283,4 @@ Blogeinträge dazu:
 * https://www.herr-rau.de/wordpress/2023/03/ki-reinforcement-learning-3.htm
 * https://www.herr-rau.de/wordpress/2023/03/ki-reinforcement-learning-4-autofahren.htm
 * https://www.herr-rau.de/wordpress/2025/03/kw-9-briefwahl-snakebots-dorian-hawkmoon.htm (am Rande)
+* https://www.herr-rau.de/wordpress/2025/03/greenfoot-reinforcement-learning-meine-beispielprojekte.htm (mit Hinweis auf Github)
