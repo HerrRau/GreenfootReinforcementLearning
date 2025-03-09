@@ -14,7 +14,7 @@ _Fußnote: In früheren Fassungen des Projekts gab es noch zwei unterschiedliche
 
 ## Ausprobieren (1)
 
-Zum Ausprobieren des Projekts solltest du dir erst einmal die Spiele anschauen. Dazu:
+Zum Ausprobieren des Projekts solltest du dir erst einmal die Spiele anschauen. Öffne das Projekt in Greenfoot und:
 
 1. Lege per Mausklick ein Objekt der Klasse `BreakoutGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. 
 2. Lege per Mausklick ein Objekt der Klasse `SnakeGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten ASDW.
