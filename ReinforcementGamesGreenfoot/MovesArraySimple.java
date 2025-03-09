@@ -65,6 +65,13 @@ public class MovesArraySimple extends Moves
         return result;
     }
 
+    public String getMovesAndValues() {
+        String result = "";
+        for (int i=0; i<values.length; i++) {
+            result += i+":"+values[i]+";";
+        }
+        return result.substring(0, result.length()-1);
+    }
     //
     // Simple getters & setters & such
     //

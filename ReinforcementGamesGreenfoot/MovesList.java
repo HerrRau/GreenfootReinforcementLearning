@@ -72,12 +72,20 @@ public class MovesList extends Moves
         }
     }
 
-    public String getList() {
-        String result = "MovesList: ";
+    public String getList() { //## mal umbenennen
+        String result = "Moves: ";
         for (int i=0; i<moves.size(); i++) {
             result += moves.get(i)+" ";
         }
         return result;
+    }
+
+    public String getMovesAndValues() {
+        String result = "";
+        for (int i=0; i<moves.size(); i++) {
+            result +=  moves.get(i)+":"+values.get(i) +";";
+        }
+        return result.substring(0, result.length()-1);
     }
     //
     // Simple getters & setters & such

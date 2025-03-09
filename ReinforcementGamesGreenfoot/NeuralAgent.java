@@ -181,11 +181,11 @@ public class NeuralAgent extends Agent
     // 
 
     // speichert nicht: (Biases), Aktivierungsfunktionen, Lernrate, Smooth/nicht
-    public void saveNet(String filename) {
+    public void save(String filename) {
         FileManager.speichereGewichte(filename, net.gibAnzahlEingang(), net.gibAnzahlHidden(), net.gibAnzahlAusgang(), net.gibGewichte());
     } 
 
-    public void loadNet(String filename) {
+    public void load(String filename) {
         net.setzeGewichte( FileManager.ladeGewichte(filename, net.gibAnzahlEingang(), net.gibAnzahlHidden(), net.gibAnzahlAusgang()) );
     }
 

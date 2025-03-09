@@ -176,7 +176,7 @@ public class AutoGameKI extends AutoGame //implements Game
     }
 
     private void loadNet(int id, String filename) {
-    ((NeuralAgent) getPlayers(id)).loadNet(filename);        
+    ((NeuralAgent) getPlayers(id)).load(filename);        
     }
 
     public void resetNet() {

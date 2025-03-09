@@ -133,7 +133,7 @@ public class SnakeGameKI extends SnakeGame
             NeuralAgent n = (NeuralAgent)a;
             int numberOfInputs = 4;
             String filename = "snakesNeuralNetWeights_"+n.net.gibAnzahlEingang()+"-"+n.net.gibAnzahlHidden()+"-"+n.net.gibAnzahlAusgang()+".txt";
-            n.saveNet(filename);
+            n.save(filename);
         }
     }
 
@@ -141,7 +141,7 @@ public class SnakeGameKI extends SnakeGame
         Agent a = getPlayers()[playerNumber];
         if (a instanceof NeuralAgent) {
             NeuralAgent n = (NeuralAgent)a;
-            n.loadNet(filename);
+            n.load(filename);
         }
     }
 

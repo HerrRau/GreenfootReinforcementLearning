@@ -343,7 +343,7 @@ public class Agent
     }
 
     public void lost() {
-                if (verbose && playerNumber!=0) {
+        if (verbose && playerNumber!=0) {
             System.out.println("-----------------------------------");
             System.out.println("Player "+playerNumber+" loses! State to change: "+currentState + " (Current state: "+game.getState(playerNumber)+")");
             System.out.print("Losing move: "+move);
@@ -354,6 +354,60 @@ public class Agent
         //# this.increaseValueOfMoveForState(currentState, move, game.getRewardLose());   
         if (verbose && playerNumber!=0) {
             System.out.println(", is: "+map.get(currentState).getValue(move)+")");
+        }
+    }
+
+    public void save(String filename) {
+        String outputFilePath = filename;
+        java.io.File file = new java.io.File(outputFilePath);
+        try {
+            java.io.BufferedWriter bf = new java.io.BufferedWriter( new java.io.FileWriter(file));
+            // iterate map entries 
+            for (java.util.Map.Entry<String, Moves> entry : map.entrySet()) { 
+
+                bf.write(entry.getKey() + ";" + ((Moves)entry.getValue()).getMovesAndValues());
+
+                // new line 
+                bf.newLine(); 
+            } 
+
+            bf.flush(); 
+            bf.close();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void load(String filename) {
+        System.out.println("Agent: Laden noch nicht wirklich getestet.");
+        String outputFilePath = filename;
+        java.io.File file = new java.io.File(outputFilePath);
+        try {
+            map = new java.util.HashMap<String, Moves>();
+            java.util.Scanner myReader = new java.util.Scanner(file);
+            while(myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String [] entries = data.split(";");
+                int [] options = new int[entries.length-1];
+                double [] values = new double[entries.length-1];
+                for (int i=1; i<entries.length; i++) {
+                    String [] item = entries[i].split(":");
+                    options[i-1] = Integer.parseInt(item[0]);
+                    values[i-1] = Double.parseDouble(item[1]);
+                }               
+                Moves moves = new MovesList(options, values);
+                System.out.print("Added for "+entries[0]+": ");
+                for (int i=0; i<values.length; i++) {
+                    System.out.print(options[i]+":"+values[i]+" ");
+                }
+                System.out.println();
+                map.put( entries[0], moves);
+            } 
+            myReader.close();
+        }
+        catch(Exception e) {
+            System.out.println(e);
         }
     }
 

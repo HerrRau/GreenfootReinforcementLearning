@@ -229,12 +229,24 @@ public abstract class AbstractGameWorld extends World implements Game
             temp = temp + "\nLosses: "+losses;
             double ratio = ((wins*1.0)/losses);
             ratio = Math.floor(ratio*1000)/1000;
-            if (losses>0) temp = temp + "\nRtio: " +ratio;
+            if (losses>0) temp = temp + "\nRatio: " +ratio;
             temp = temp + "\nStates: "+getPlayers(0).getNumberOfKnownStates();
             showText(temp, displayStatisticsX, displayStatisticsY);        
 
         }
 
+    }
+
+    public void load(String s) {
+        // if (getPlayers()[0] instanceof Agent) {
+        getPlayers()[0].load(s);            
+        // }
+    }
+
+    public void save(String s) {
+        // if (getPlayers()[0] instanceof Agent) {
+        getPlayers()[0].save(s);            
+        // }
     }
 
     //##
