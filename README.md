@@ -17,8 +17,8 @@ _Fußnote: In früheren Fassungen des Projekts gab es noch zwei unterschiedliche
 Zum Ausprobieren des Projekts solltest du dir erst einmal die Spiele anschauen. Dazu:
 
 1. Lege per Mausklick ein Objekt der Klasse `BreakoutGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. 
-2. Lege per Mausklick ein Objekt der Klasse `AutoGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. Das Spiel ist nicht sehr interessant, und man muss sich die Geschwindigkeit herabsetzen.
-3. Lege per Mausklick ein Objekt der Klasse `SnakeGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten ASDW.
+2. Lege per Mausklick ein Objekt der Klasse `SnakeGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten ASDW.
+3. Lege per Mausklick ein Objekt der Klasse `AutoGame` an. Du kannst dann ein einfaches Spiel spielen, gesteuert mit den Tasten A und D. Das Spiel ist nicht sehr interessant, und man muss sich die Geschwindigkeit herabsetzen.
 
 ## Ausprobieren (2)
 
