@@ -107,7 +107,7 @@ Diese Methoden wir herangezogen um zu ermitteln, wer das Spiel gewonnen hat. Sie
 `public double getRewardForPlayer(int id)`  
 Das ist das eigentliche Belohnungssystem. Nach `jeder` einzelnen Entscheidung wird diese Methode aufgerufen. 
 Für das Breakout wird hier die 10 zurückgegeben für die Berührung mit dem Schläger, und -10, wenn der Ball im Aus ist, ansonstn 0. Auch hier kann man sich sehr viel verschiedene Varianten denken. 
-Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels. Belohnt wird hier also nicht kontinuierlich.
+Bei dem Beispiel zählt als Gewinn, wenn der Schläger die Kugel berührt, und als Niederlage, wenn die Kugel im Aus ist. Alles andere ist Fortsetzung des Spiels.
 
 Hier die Klasse dazu:
 
