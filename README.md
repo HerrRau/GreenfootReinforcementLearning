@@ -266,7 +266,7 @@ Die Klasse MazeGame ist vorgegeben, in ihr werden ein kleines Labyrinth erzeugt,
 
 Aufgabe 1: Schreibe eine KI-Unterklasse, so dass die Figur den Weg nach rechts unten findet. Die Klasse `MazeGameKI` ist dazu vorgegeben, alle notwendigen Methoden sind als Kopf enthalten, ihr Inhalt muss aber meist geändert werden. Die Kommentare in der Klasse `MazeGameKI` helfen dabei.
 
-Aufgabe 2: Passe die Klasse so an, dass das Ziel jetzt ist, den Bot zu fangen. Dazu muss der Zustand erweitert werden (mindestens um die Position des Bot), außerde die Methoden `getWinner` und getRewardForPlayer`, vielleicht auch die respawn-Methode. 
+Aufgabe 2: Passe die Klasse so an, dass das Ziel jetzt ist, den Bot zu fangen. Dazu muss der Zustand erweitert werden (mindestens um die Position des Bot), außerdem die Methoden `getWinner` und getRewardForPlayer`, vielleicht auch die respawn-Methode. 
 
 Aufgabe 3: Experimentiere mit größeren Labyrinthen. Der Agent oder NeuralAgent tut sich manchmal erstaunlich schwer bei der Aufgabe.
 
