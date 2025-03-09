@@ -8,7 +8,7 @@ Das Projekt ist nicht so ordentlich, wie man es sich vielleicht erhofft; diese D
 
 Greenfoot ist eine didaktische Programmierumgebung für Java (oder Stride), die in Schulen viel verwendet wird: https://www.greenfoot.org/download
 
-_Fußnote: In früheren Fassungen des Projekts gab es noch zwei unterschiedliche Belohnungssysteme. Ich baue das alte, primitivere Modell gelegentlich als Option wieder ein, es schien mir aber im Moment doch zu verwirrend zu sein._
+_Fußnote: In früheren Fassungen des Projekts gab es noch zwei unterschiedliche Belohnungssysteme. Ich baue das alte, primitivere Modell gelegentlich als Option wieder ein, es schien mir aber im Moment doch zu verwirrend zu sein. Außerdem basrtle ich ständig an undokumentierten Funktionen auf; ich freue mich über Hinweise, was ich als Nächstes präsentabel machen soll._
 
 ![Games](/Material/images/games.png)
 
