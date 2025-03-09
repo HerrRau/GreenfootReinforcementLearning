@@ -19,6 +19,12 @@ public abstract class AbstractGameWorld extends World implements Game
     private boolean displayChanges = true;              // optional: display changes
     private boolean displayNextMoves = true;            // optional: display next move
     private boolean displayStatistics = true;           // optional: display wins/losses/number of known states
+    private int displayChangesX;
+    private int displayChangesY;
+    private int displayNextMovesX;
+    private int displayNextMovesY;
+    private int displayStatisticsX;
+    private int displayStatisticsY;
 
     //
     // Constructors
@@ -34,8 +40,13 @@ public abstract class AbstractGameWorld extends World implements Game
         setGame(this);
         addObject(new AnzeigeNextMoves(), 0,0); // counts next moves
         verbose = false;
+        displayChangesX = getWidth()/6;
+        displayChangesY = getHeight()/6;
+        displayStatisticsX = getWidth()-1-getWidth()/6;
+        displayStatisticsY = getHeight()-1-getHeight()/6;
+        displayNextMovesX = getWidth()/2;
+        displayNextMovesY = getHeight()/2;
     }
-
 
     //
     // Getters & setters & such
@@ -52,11 +63,20 @@ public abstract class AbstractGameWorld extends World implements Game
 
     public void setBreakPeriodically(int i) { breakPeriodicallyAfterSoManyWins = i; }
 
-    public final void setDisplayChanges(boolean b) { displayChanges = b; }
+    public final void setDisplayChanges(boolean b) { 
+        if (!b) showText("", displayChangesX, displayChangesY);
+        displayChanges = b;
+    }
 
-    public final void setDisplayNextMoves(boolean b) { displayNextMoves = b; }
+    public final void setDisplayNextMoves(boolean b) { 
+        if(!b) showText("", displayNextMovesX, displayNextMovesY);
+        displayNextMoves = b; 
+    }
 
-    public final void setDisplayStatistics(boolean b) { displayStatistics = b; }
+    public final void setDisplayStatistics(boolean b) { 
+        if(!b) showText("", displayStatisticsX, displayStatisticsY);
+        displayStatistics = b; 
+    }
 
     public final void setStopUpdating(boolean b) { stopUpdating = b; }
 
@@ -108,12 +128,9 @@ public abstract class AbstractGameWorld extends World implements Game
         showNextMoves(0); 
     }
 
-    public void showNextMoves(int x, int y) {
-        showNextMoves(0, x, y); 
-    }
-
     public void showNextMoves(int id) {
         showNextMoves(id, getWidth()/2, getHeight()/2); 
+        //showNextMoves(id, getWidth()/2, getHeight()/2); 
     }
 
     public void showNextMoves(int id, int x, int y) {
@@ -171,9 +188,6 @@ public abstract class AbstractGameWorld extends World implements Game
     }
 
     protected final void checkOptionalElements() {
-        int posx = getWidth()/6;
-        int posy = getHeight()/6;
-
         //# optional: observe changes
         if (displayChanges) {
             double newValue = getPlayers(0).getMoves(getPlayers(0).getState()).getValue(observedMove);
@@ -185,10 +199,11 @@ public abstract class AbstractGameWorld extends World implements Game
                 double delta = newValue - observedValue;
                 if (delta>0) direction = "↑";
                 else if (delta<0) direction = "↓";
-                message = "Move "+getNameForMove(observedMove)+"\n"+newValueShort+"\n change "+direction+"\nin "+getPlayers(0).getState();                showText(message, posx, posy);
+                message = "Move "+getNameForMove(observedMove)+"\n"+newValueShort+"\n change "+direction+"\nin "+getPlayers(0).getState();
+                showText(message, displayChangesX, displayChangesY);
             }
             else {
-                showText("", posy, posx);
+                showText("", displayChangesX, displayChangesY);
             }
         }
 
@@ -216,7 +231,7 @@ public abstract class AbstractGameWorld extends World implements Game
             ratio = Math.floor(ratio*1000)/1000;
             if (losses>0) temp = temp + "\nRtio: " +ratio;
             temp = temp + "\nStates: "+getPlayers(0).getNumberOfKnownStates();
-            this.showText(temp, getWidth()-1-posx, getHeight()-1-posy);        
+            showText(temp, displayStatisticsX, displayStatisticsY);        
 
         }
 
