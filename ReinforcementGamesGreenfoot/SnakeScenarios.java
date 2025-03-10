@@ -27,7 +27,7 @@ public class SnakeScenarios extends SnakeGameKI
         //# 16: 1 Agent, Typ 3.
         //# 17: 4 Agent, Typ 0
         // setupScenario(14);
-        setupScenario(0+17);
+        setupScenario(0);
     }
 
     // state 1 wie 2: gute orthogonale Abdeckung, aber keine Spiralen

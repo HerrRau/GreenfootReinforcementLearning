@@ -328,35 +328,40 @@ public class Agent
 
     //# called only with naive system
     public void won() {
-        if (verbose && playerNumber!=0) {
+        // if (verbose && playerNumber!=0) {
+        if (verbose) {
             System.out.println("-----------------------------------");
             System.out.println("Player "+playerNumber+" wins! State to change: "+currentState + " (Current state: "+game.getState(playerNumber)+")");
             System.out.print("Winning move: "+move);
         }
-        if (verbose && playerNumber!=0) {
+        //if (verbose && playerNumber!=0) {
+        if (verbose) {
             System.out.print(" (was: "+map.get(currentState).getValue(move));
         }
-        System.out.println("```````````````````````???");
         //# this.increaseValueOfMoveForState(currentState, move, game.getRewardWin());   
         this.increaseValueOfMoveForState(currentState, move, game.getRewardForPlayer(playerNumber));   
-        if (verbose && playerNumber!=0) {
+        // if (verbose && playerNumber!=0) {
+        if (verbose) {
             System.out.println(", is: "+map.get(currentState).getValue(move)+")");
         }
     }
 
     //# called only with naive system
     public void lost() {
-        if (verbose && playerNumber!=0) {
+        // if (verbose && playerNumber!=0) {
+        if (verbose) {
             System.out.println("-----------------------------------");
             System.out.println("Player "+playerNumber+" loses! State to change: "+currentState + " (Current state: "+game.getState(playerNumber)+")");
             System.out.print("Losing move: "+move);
         }
-        if (verbose && playerNumber!=0) {
+        // if (verbose && playerNumber!=0) {
+        if (verbose) {
             System.out.print(" (was: "+map.get(currentState).getValue(move));
         }
         //# this.increaseValueOfMoveForState(currentState, move, game.getRewardLose());   
         this.increaseValueOfMoveForState(currentState, move, game.getRewardForPlayer(playerNumber));   
-        if (verbose && playerNumber!=0) {
+        // if (verbose && playerNumber!=0) {
+        if (verbose) {
             System.out.println(", is: "+map.get(currentState).getValue(move)+")");
         }
     }

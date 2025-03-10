@@ -9,7 +9,7 @@ public class BreakoutScenarios extends BreakoutGameKI
         // 0: Agent mit Q-Table
         // 1: Agent mit Q-Table und wraparound
         // 2: Agent mit Q-Net
-        setupScenario(0);        
+        setupScenario(0);
     }
 
     public void setupScenario(int option) {
@@ -33,7 +33,17 @@ public class BreakoutScenarios extends BreakoutGameKI
                     setStateType(0);
                     NeuralAgent a = new NeuralAgent(1,10,3,0.0);
                     a.setVerbose(false);
-                    setPlayers( new Agent []{ a } );    
+                    setPlayers(  a  );    
+                    break;
+                }
+            case 3: {
+                    setRewardType(0);
+                    setStateType(0);
+                    Agent a = new Agent(0.0);
+                    a.setVerbose(true);
+                    setPlayers(  a  );  
+                    pm.enforceNaiveSystem = true;
+                    stopUponChange = true;
                     break;
                 }
         }

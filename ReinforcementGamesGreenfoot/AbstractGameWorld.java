@@ -12,7 +12,7 @@ public abstract class AbstractGameWorld extends World implements Game
     private int losses;                                 // optional: bookkeeping
     private int breakPeriodicallyAfterSoManyWins = 0;   // optional: break at certain point
     private boolean hasBreaked = true;                  // optional: break at certain point
-    private boolean stopUponChange = false;             // optional: stop when sth changes, rarely useful
+    protected boolean stopUponChange = false;             // optional: stop when sth changes, rarely useful
     private int observedMove;                           // optional: use observation of changes
     private double observedValue;                       // optional: use observation of changes   
 
