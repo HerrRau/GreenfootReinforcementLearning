@@ -41,7 +41,7 @@ Es ist außerdem günstig, aber ebenfalls nicht nötig, alle zu dem Spiel gehör
 
 **Schritt 2**
 
-Wenn das Spiel steht, macht man die Greenfoot-Spielwelt, die bisher eine Unterklasse von `World` war, zu einer Unterklasse von `AbstractGameWorld`. Das Spiel sollte sich weiterhin wie gewohnt spielen lassen, wenn man Greenfoot die eigentliche Spielklasse als Startwelt verwenden lässt. Die neue Oberklasse `AbstractGameWorld` beeinflusst das Ausführen der Spielwelt eigentlich überhaupt nicht, jedenfalls wenn alles funktioniert.
+Wenn das Spiel steht, macht man die Greenfoot-Spielwelt, die bisher eine Unterklassen von `World` war, zu einer Unterklasse von `AbstractGameWorld`. Das Spiel sollte sich weiterhin wie gewohnt spielen lassen, wenn man Greenfoot die eigentliche Spielklasse als Startwelt verwenden lässt. Die neue Oberklasse `AbstractGameWorld` beeinflusst das Ausführen der Spielwelt eigentlich überhaupt nicht, jedenfalls wenn alles funktioniert.
 
 **Schritt 3**
 
@@ -207,7 +207,7 @@ Zeigt unten an eine Nachricht an.
 
 ## Agenten
 
-Agenten heißen die Bots, die von der KI aufgefordert werden, einen Zug zu machen, indem deren Methode `play()` aufgerufen wird. Darin wird überlicherweise erst der Zustand der Spielwelt erfragt, dann wird beim Verwenden einer Q-Tabelle nachgeschlagen, was für diesen Zustand der beste Zug ist; wenn zu diesem Zustand keine Information erhalten ist, wird ein neuer Eintrag in der Tabelle angelegt. Dann wird der ausgewählte Zug dem Spiel kommuniziert, das wiederum den Zug durchführt und die Belohnung dafür kommuniziert. Unterklasse von `Agent` nutzen ein Q-Net statt einer Tabelle (`NeuralAgent`), oder - das braucht man nur in speziellen Fällen und zum Testen - wählen einen zufälligen Zug (`RandomAgent`) oder geben einem Menschen Gelegenheit, zu entscheiden (`HumanGreenfootMove`).
+Agenten heißen die Bots, die von der KI aufgefordert werden, einen Zug zu machen, indem deren Methode `play()` aufgerufen wird. Darin wird überlicherweise erst der Zustand der Spielwelt erfragt, dann wird beim Verwenden einer Q-Tabelle nachgeschlagen, was für diesen Zustand der beste Zug ist; wenn zu diesem Zustand keine Information erhalten ist, wird ein neuer Eintrag in der Tabelle angelegt. Dann wird der ausgewählte Zug dem Spiel kommuniziert, das wiederum den Zug durchführt und die Belohnung dafür kommuniziert. Unterklasse von `Agent` nutzen ein Q-Net statt einer Tabelle (`NeuralAgent`), oder - das braucht man nur in speziellen Fällen und zum Trainieren oder Testen - wählen einen zufälligen Zug (`RandomAgent`) oder geben einem Menschen Gelegenheit, zu entscheiden (`HumanGreenfootMove`).
 
 ### Agent
 
