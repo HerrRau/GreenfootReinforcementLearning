@@ -79,7 +79,7 @@ Eine Hilfsmethode, die die Entfernung zweier Punkte in einem kartesischen Koordi
 Diese Methoden werden von `AbstractGameWorld` und verschiedenen weiteren Klassen verwendet. Sie sind in `AbstractGameWorld` vordeklariert, müssen aber überschrieben werden.
 
 `public int [] getLegalMoves() { return new int [] { 1, 2, 0}; }`  
-Die verschiedenen Spielzüge oder Entscheidungsmöglichkeiten, zwischen denen die KI sich entscheichen kann, werden als `int` modelliert. Diese Methode gibt einfach ein Array zurück mit allen grundsätzlich möglichen Spielzügen.
+Die verschiedenen Spielzüge oder Entscheidungsmöglichkeiten, zwischen denen die KI sich entscheichen kann, werden als `int` modelliert. Diese Methode gibt einfach ein Array zurück mit allen grundsätzlich möglichen Spielzügen. Im Moment müssen die Züge alle von 0 bis n codiert werden.
 
 `public String getNameForMove(int move)`  
 Zur Anzeige kann man sich statt der Zahlen für die Züge auch einen schöneren Namen geben lassen. Wird diese Methode nicht überschrieben, werden stattdessen einfach die Zahlenwerte dargestellt. Im Moment wird 0 auf "N" (nichts), 1 auf "L" (nach links gehen), 2 auf "R" (nach rechts gehen) abgebildet. Normalerweise würde man das sicher mit einem Array-Attribut umsetzen, aber ich wollte die Minimalklasse minimal halten.
