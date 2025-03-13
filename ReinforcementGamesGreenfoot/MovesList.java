@@ -65,7 +65,7 @@ public class MovesList extends Moves
     /**
      * Prints all possible moves managed by this object, including values
      */
-    public void printList() {
+    public void printList() { //##mal umbenennen
         System.out.println("MovesList: ");
         for (int i=0; i<moves.size(); i++) {
             System.out.println("Move "+moves.get(i)+" ("+values.get(i)+")");
@@ -80,7 +80,7 @@ public class MovesList extends Moves
         return result;
     }
 
-    public String getMovesAndValues() {
+    public String getMovesAndValues() {//##mal umbenennen
         String result = "";
         for (int i=0; i<moves.size(); i++) {
             result +=  moves.get(i)+":"+values.get(i) +";";

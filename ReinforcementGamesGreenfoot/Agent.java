@@ -320,50 +320,31 @@ public class Agent
 
     //# called only with naive system
     public void draw() {
-        if (verbose) {
-            System.out.println("-----------------------------------");
-            System.out.println("A draw! ");
-        }
+        if (verbose) System.out.println("-----------------------------------\nA draw! ");
     }
 
     //# called only with naive system
     public void won() {
-        // if (verbose && playerNumber!=0) {
-        if (verbose) {
-            System.out.println("-----------------------------------");
-            System.out.println("Player "+playerNumber+" wins! State to change: "+currentState + " (Current state: "+game.getState(playerNumber)+")");
-            System.out.print("Winning move: "+move);
-        }
-        //if (verbose && playerNumber!=0) {
-        if (verbose) {
-            System.out.print(" (was: "+map.get(currentState).getValue(move));
-        }
-        //# this.increaseValueOfMoveForState(currentState, move, game.getRewardWin());   
-        this.increaseValueOfMoveForState(currentState, move, game.getRewardForPlayer(playerNumber));   
-        // if (verbose && playerNumber!=0) {
-        if (verbose) {
-            System.out.println(", is: "+map.get(currentState).getValue(move)+")");
-        }
+        winOrLose(true);
     }
 
     //# called only with naive system
     public void lost() {
-        // if (verbose && playerNumber!=0) {
+        winOrLose(false);
+    }
+
+    private void winOrLose(boolean b) {
+        String outcome = (b) ? "wins" : "loses";
         if (verbose) {
             System.out.println("-----------------------------------");
-            System.out.println("Player "+playerNumber+" loses! State to change: "+currentState + " (Current state: "+game.getState(playerNumber)+")");
-            System.out.print("Losing move: "+move);
+            System.out.println("Player "+playerNumber+" "+outcome+"! State to change: "+currentState + " (Current state: "+game.getState(playerNumber)+")");
+            System.out.print("Winning move: "+move);
         }
-        // if (verbose && playerNumber!=0) {
-        if (verbose) {
-            System.out.print(" (was: "+map.get(currentState).getValue(move));
-        }
-        //# this.increaseValueOfMoveForState(currentState, move, game.getRewardLose());   
-        this.increaseValueOfMoveForState(currentState, move, game.getRewardForPlayer(playerNumber));   
-        // if (verbose && playerNumber!=0) {
-        if (verbose) {
-            System.out.println(", is: "+map.get(currentState).getValue(move)+")");
-        }
+        
+        if (verbose) System.out.print(" (was: "+map.get(currentState).getValue(move));
+        increaseValueOfMoveForState(currentState, move, game.getRewardForPlayer(playerNumber));   
+        if (verbose) System.out.println(", is: "+map.get(currentState).getValue(move)+")");
+
     }
 
     public void save(String filename) {
@@ -406,7 +387,8 @@ public class Agent
                     values[i-1] = Double.parseDouble(item[1]);
                 }              
                 Moves moves = new MovesList(options, values);
-                if (false) {
+                boolean printOutLines = false;
+                if (printOutLines) {
                     System.out.print("Added for "+entries[0]+": ");
                     for (int i=0; i<values.length; i++) {
                         System.out.print(options[i]+":"+values[i]+" ");

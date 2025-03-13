@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=SnakeGameSchule
+comment0.text=\r\n\ Diese\ Klasse\ wuerde\ man\ verwenden,\ um\ automatische\ Snake-Bots\ gegeneinander\ spielen\ zu\ lassen.\r\n\ Es\ geht\ hier\ also\ gar\ nicht\ um\ KI.\r\n\ Die\ teilnehmenden\ Bots\ muessen\ eine\ act-Methode\ haben,\ in\ der\ genau\ einmal\ die\ Methode\ \r\n\ macheSchritt()\ aufgerufen\ wird.\r\n
 comment1.params=
 comment1.target=void\ setup()
 numComments=2
