@@ -1,3 +1,6 @@
+<span style="color:red">Dieses Repository funktioniert, ist aber nicht mehr aktuell: Die neueste Projektfassung ist hier:  
+https://codeberg.org/HerrRau/GreenfootReinforcementLearning</span>
+
 # Greenfoot Reinforcement Learning
 
 ## Was das hier ist
