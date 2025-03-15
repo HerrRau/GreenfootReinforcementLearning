@@ -1,4 +1,4 @@
-<span style="color:red">Dieses Repository funktioniert, ist aber nicht mehr aktuell: Die neueste Projektfassung ist hier:  
+**DIESES REPOSITORY FUNKTIONIERT, IST ABER NICHT MEHR AKTUELL. DIE NEUESTE PROJEKTFASSUNG IST HIERHIN UMGEZOGEN:**  
 https://codeberg.org/HerrRau/GreenfootReinforcementLearning</span>
 
 # Greenfoot Reinforcement Learning
